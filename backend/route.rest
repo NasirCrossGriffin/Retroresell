@@ -1,0 +1,29 @@
+GET http://localhost:3001/users
+
+###
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "name": "Nasir Cross-Griffin",
+    "email": "nasircrossgriffin@gmail.com",
+    "password": "NovaBlade1991%",
+    "image": "someimage"
+}
+
+###
+
+GET http://localhost:3001/users/6735f735f41e9d66bcc55d87
+
+###
+
+GET http://localhost:3001/users/name/crossg57
+
+###
+
+POST http://localhost:3001/users/authenticate/crossg57
+Content-Type: application/json
+
+{
+    "password": "1"
+}

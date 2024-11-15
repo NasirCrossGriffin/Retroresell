@@ -1,0 +1,42 @@
+.Signup {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 25px;
+    height : fit-content;
+    width : fit-content;
+    display : flex;
+    justify-content : center;
+    justify-self: center;
+    padding: 25px 25px 25px 25px;
+}
+
+.SignupCont form {
+    display: flex;
+    flex-direction: column;
+}
+
+.SignupCont input[type="text"] {
+    margin : 5px 0 5px 0;
+    border-radius: 5px;
+}
+
+.SignupCont input[type="submit"]:hover {
+    border-style: none;
+    color : rgb(67, 67, 67);
+    background-color: rgb(0, 0, 53);
+    border-width: 1px;
+    border-radius: 10px;
+    margin : 5px 0 5px 0;
+    padding : 15px 20px 15px 20px
+}
+
+.SignupCont input[type="submit"] {
+    border-style: none;
+    color : white;
+    background-color: blue;
+    border-width: 1px;
+    border-radius: 10px;
+    margin : 5px 0 5px 0;
+    padding : 15px 20px 15px 20px
+}

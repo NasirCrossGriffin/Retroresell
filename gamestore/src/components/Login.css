@@ -44,3 +44,11 @@
 form p {
     color: red;
 }
+
+.SignupPrompt {
+    display: flex;
+    text-align: center;
+    justify-self: center;
+    border: none;
+    font-size: 20px;
+}

@@ -1,8 +1,8 @@
 import "./Signup.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-function Signup({ setUserIDProp }) {
+function Signup({ setUserIDProp, setLogged_InProp }) {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -70,7 +70,8 @@ function Signup({ setUserIDProp }) {
             const data = await response.json();
             console.log('User created:', data);
             setUserIDProp(data._id);
-            navigate("/Profile");
+            setLogged_InProp(true);
+            navigate("/Home");
 
         } catch (err) {
             console.error('Error:', err.message);
@@ -78,6 +79,7 @@ function Signup({ setUserIDProp }) {
     };
 
     return (
+        <>
         <div className="Signup">
             <div className="SignupCont">
                 <h1>Signup</h1>
@@ -93,6 +95,8 @@ function Signup({ setUserIDProp }) {
                 </form>
             </div>
         </div>
+        <Link to="/Login" className="LoginPrompt">Already have an account? Log in.</Link>
+        </>
     );
 }
 

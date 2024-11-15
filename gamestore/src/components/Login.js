@@ -1,8 +1,8 @@
 import "./Login.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-function Login({ setUserIDProp }) {
+function Login({ setUserIDProp, setLogged_InProp }) {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -37,13 +37,15 @@ function Login({ setUserIDProp }) {
             console.log('User found:', user);
             console.log(user._id);
             setUserIDProp(user._id);
-            navigate("/Profile");
+            setLogged_InProp(true);
+            navigate("/Home");
         } catch (err) {
             console.error('Error:', err.message);
         }
     };
 
   return (
+    <>
     <div className="Login">
         <div className="LoginCont">
             <h1>Login</h1>
@@ -57,6 +59,8 @@ function Login({ setUserIDProp }) {
             </form>
         </div>
     </div>
+    <Link to="/Signup" className="SignupPrompt">Need an account? Sign up now!</Link>
+    </>
   );
 }
 

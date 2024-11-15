@@ -1,0 +1,43 @@
+.background {
+    z-index: 1000; /* Below modal's z-index */
+    background-color: rgba(0, 0, 0, 0.3); /* Add background-color */
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+.modal {
+    z-index: 2000;
+    color: black;
+    background-color: white;
+    height: 100%; /* Full vertical height */
+    width: 25%; /* 25% horizontal width */
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0; /* Align to the far left */
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column; /* Arrange links in a column */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    gap: 20px; /* Add spacing between links */
+    color: black;
+    font-size: 20px;
+    height: 100%; /* Ensure it takes full height of the modal */
+}
+
+
+.OptionsLink {
+    border: none;
+    color: black;
+    width:fit-content;
+    height:fit-content;
+}

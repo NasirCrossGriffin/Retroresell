@@ -43,12 +43,6 @@ function Signup({ setUserIDProp, setLogged_InProp }) {
                 image: await setImage(e)
             };
 
-            console.log(username);
-            console.log(email);
-            console.log(password);
-            console.log(await setImage(e))
-            console.log(JSON.stringify(userData))
-
             const response = await fetch('http://localhost:3001/users', {
                 method: 'POST',
                 headers: {

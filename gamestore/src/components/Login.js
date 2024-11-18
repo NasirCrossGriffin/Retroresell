@@ -1,6 +1,7 @@
 import "./Login.css";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { findUser, findGame, findGameImage, postUser, authenticate, setProfileImage } from "./middleware";
 
 function Login({ setUserIDProp, setLogged_InProp }) {
     const [email, setEmail] = useState("");
@@ -13,34 +14,19 @@ function Login({ setUserIDProp, setLogged_InProp }) {
     const submitHandler = async (e) => {
         e.preventDefault(); // Prevents default form submission behavior
 
-        try {
-            console.log(username);
-            console.log(password);
-
-            const response = await fetch(`http://localhost:3001/users/authenticate/${username}`, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                "password" : password,
-            })
-          });
-          
-
-            if (!response.ok) {
-                setIsVisible(true)
-                throw new Error('Cannot find user'); 
-            }
-
-            const user = await response.json();
+        const user = await authenticate(username, password)
+                
+        if (user) {
             console.log('User found:', user);
             console.log(user._id);
             setUserIDProp(user._id);
             setLogged_InProp(true);
             navigate("/Home");
-        } catch (err) {
-            console.error('Error:', err.message);
+        }
+        else
+        {
+            setIsVisible(true)
+            throw new Error('Cannot find user'); 
         }
     };
 

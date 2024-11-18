@@ -8,6 +8,7 @@ const Schema = mongoose.Schema;
 const gameSchema = new Schema(
     {
         name: {type: String, required: true, unique: false},
+        description: {type: String, required: true, unique: false},
         price: {type: Number, required: true, unique: false},
         date: {type: Date, required: true},
         seller: { 

@@ -27,3 +27,7 @@ Content-Type: application/json
 {
     "password": "1"
 }
+
+###
+
+GET http://localhost:3001/gameimage/game/673a55bae2c51e13185c78b6

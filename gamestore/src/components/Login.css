@@ -34,7 +34,7 @@
 .LoginCont input[type="submit"] {
     border-style: none;
     color : white;
-    background-color: blue;
+    background-color: rgb(255, 0, 0);
     border-width: 1px;
     border-radius: 10px;
     margin : 5px 0 5px 0;

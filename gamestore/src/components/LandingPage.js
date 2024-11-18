@@ -4,9 +4,9 @@ import "./LandingPage.css";
 function LandingPage( ) {
     return (
         <form className="SearchBar">
-            <label htmlFor="Search">Search</label>
-            <input type="text" name="Search" id="Search" />
-            <input type="submit" className="submit"/>
+            <label htmlFor="Search" className="SearchLabel">Search</label>
+            <input type="text" className="Search" id="Search" />
+            <input type="submit" className="SearchSubmit"/>
         </form>
     );
 }

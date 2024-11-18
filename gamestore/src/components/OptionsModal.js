@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Logout } from "./middleware";
+
 import "./OptionsModal.css"
 
-function OptionsModal ({ visibility, setOptionsVisibilityProp }) {
+function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, setLogged_InProp }) {
     const [isVisible, setIsVisible] = useState(false);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         setIsVisible(visibility)
@@ -18,6 +22,14 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp }) {
         }
     }
 
+    const logout = async () => {
+        const response = await Logout()
+        if (response.ok) {
+            setLogged_InProp(false)
+            navigate("/Login");  
+        }
+    }
+
     if (!visibility) {
         return ReactDom.createPortal(<></>, document.getElementById('OptionsModal'));
     }
@@ -28,7 +40,9 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp }) {
                 <div className="modal">
                     <div className="container">
                         <Link to="/Home" className="OptionsLink">Home</Link>
-                        <Link to="/Login" className="OptionsLink">Login</Link>
+                        {logged_inProp ? <button className="LogOut" onClick={logout}>Log Out</button> : <Link to="/Login" className="OptionsLink">Login</Link>}
+                        <Link to="/MyGames" className="OptionsLink">My Games</Link>
+
                     </div>
                 </div>
             </div>

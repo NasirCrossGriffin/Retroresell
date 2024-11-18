@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
+import { findUser, findGame, findGameImage, postUser, authenticate, setProfileImage } from "./middleware";
+
 
 function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibilityProp }) {
     const [user, setUser] = useState(null);
@@ -8,24 +10,6 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
     const [logged_in, setLogged_in] = useState( logged_inProp );
     const [optionsVisibility, setOptionsVisibility] = useState(OptionsVisibilityProp);
     const navigate = useNavigate();
-
-    const findUser = async (userId) => {
-        try {
-            const response = await fetch(`http://localhost:3001/users/${userId}`, {
-                method: 'GET',
-            });
-
-            if (!response.ok) {
-                throw new Error('No user found');
-            }
-
-            const userData = await response.json();
-            return userData;
-        } catch (err) {
-            console.error('Error:', err.message);
-            return null;
-        }
-    };
 
     const navigateToProfile = async () => {
         if (logged_in) {
@@ -44,7 +28,6 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
             setOptionsVisibilityProp(false)
         }
     }
-
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -70,7 +53,27 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
 
     
     if (!logged_inProp) {
-        return <></>;
+        <>
+        <div className="Navbar">
+            <div className="NavbarContainer">
+                <button className="navmodaltrigger" onClick={showOptionsMenu}>
+                <span />
+                <span />
+                <span />
+                </button>
+
+                <h1>Retroresell</h1>
+
+                <div className="profilePic" onClick={navigateToProfile}>
+                    {profilePic ? (
+                        <img src={`http://localhost:3001${profilePic}`} alt="" />
+                    ) : (
+                        <p></p>
+                    )}
+                </div>
+            </div>
+        </div>
+    </>
     }
 
 
@@ -90,7 +93,7 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
                         {profilePic ? (
                             <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
                         ) : (
-                            <p>Loading...</p>
+                            <p></p>
                         )}
                     </div>
                 </div>

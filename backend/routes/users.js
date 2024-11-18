@@ -34,6 +34,7 @@ router.post('/authenticate/:name', getUserByName, async (req, res) => {
         const isMatch = await comparePassword(req.body.password, res.user.password)
         if ( isMatch == true)
         {
+            req.session.userID = user._id;
             res.send(res.user)
         }
         else
@@ -44,6 +45,25 @@ router.post('/authenticate/:name', getUserByName, async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 })
+
+router.get('/auth/checkSession', (req, res) => {
+    if (req.session.userID) {
+        res.status(200).json({ loggedIn: true, userID: req.session.userID });
+    } else {
+        res.status(401).json({ loggedIn: false, message: 'Session not found' });
+    }
+});
+
+router.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Logout failed' });
+        }
+        res.clearCookie('connect.sid'); // Clear session cookie
+        res.status(200).json({ message: 'Logged out successfully' });
+    });
+});
+
 
 router.post('/', async (req, res) => {
     console.log(req.body);
@@ -85,6 +105,7 @@ router.patch('/:id', getUser, async (req, res) =>  {
         res.status(400).json({ message: err.message })
     }
 })
+
 
 router.delete('/', (req, res) =>  {
 

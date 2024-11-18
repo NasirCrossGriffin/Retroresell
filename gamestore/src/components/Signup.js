@@ -1,6 +1,7 @@
 import "./Signup.css";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { findUser, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage } from "./middleware";
 
 function Signup({ setUserIDProp, setLogged_InProp }) {
     const [email, setEmail] = useState("");
@@ -10,66 +11,19 @@ function Signup({ setUserIDProp, setLogged_InProp }) {
 
     const navigate = useNavigate();
 
-    const setImage = async (event) => {
-        const formData = new FormData();
-        formData.append("profilePic", file);
-
-        try {
-            const response = await fetch("http://localhost:3001/users/uploadProfilePic", {
-                method: "POST",
-                body: formData,
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                console.log("File uploaded successfully:", result.filePath);
-                return result.filePath; // Return the file path directly
-            } else {
-                throw new Error("File upload failed");
-            }
-        } catch (error) {
-            console.error("Error uploading file:", error.message);
-        }
-    };
-
     const submitHandler = async (e) => {
         e.preventDefault(); // Prevents default form submission behavior
 
-        try {
-            const userData = {
-                name: username,
-                email: email,
-                password: password,
-                image: await setImage(e)
-            };
+            const user = await postUser(username, email, password, uploadProfileImage(file))
 
-            const response = await fetch('http://localhost:3001/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                /*body: JSON.stringify({
-                    "name" : userData.name,
-                    "email" : userData.email,
-                    "password" : userData.password,
-                    "image" : userData.image
-                })*/
-                body: JSON.stringify(userData) 
-            });
-
-            if (!response.ok) {
+            if (user) {
+                console.log('User created:', user);
+                setUserIDProp(user._id);
+                setLogged_InProp(true);
+                navigate("/Login");
+            } else {
                 throw new Error('Failed to create user');
             }
-
-            const data = await response.json();
-            console.log('User created:', data);
-            setUserIDProp(data._id);
-            setLogged_InProp(true);
-            navigate("/Home");
-
-        } catch (err) {
-            console.error('Error:', err.message);
-        }
     };
 
     return (

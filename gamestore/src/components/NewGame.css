@@ -1,0 +1,70 @@
+.NewGameBackground {
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.NewGameModal {
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: white;
+    height: 75%;
+    width: 75%;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px; /* Optional: Rounded corners for modal */
+}
+
+.NewGameContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.gameForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.gameForm input[type="text"],
+.gameForm input[type="textarea"],
+.gameForm input[type="number"],
+.gameForm input[type="file"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.gameForm textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 50px;
+    width: 80%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-sizing: border-box;
+}

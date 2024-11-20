@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from 'react-dom';
-import { findUser, findGame, findGameImage, postUser, 
-    authenticate, uploadProfileImage, changeProfileImage, findGamesByUser,
-    findGameImagesByGame, uploadGameImage, postGame, postGameImage, checkSession } from "./middleware"
+import "./NewGame.css"
+import { postGame, uploadGameImage, postGameImage } from "./middleware";
 
 function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
     const [name, setName] = useState("");
@@ -22,7 +21,7 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
             for (const image of images) {
                 console.log(image);
                 const uploadedImage = await uploadGameImage(image);
-                console.log(newGame._id)
+                console.log(newGame._id);
                 const response = await postGameImage(uploadedImage, newGame._id);
                 if (!response.ok) {
                     console.error("Failed to upload game image.");
@@ -67,8 +66,7 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
                                 onChange={(e) => setName(e.target.value)}
                             />
                             <label htmlFor="description">Description</label>
-                            <input
-                                type="textarea"
+                            <textarea
                                 name="description"
                                 id="description"
                                 value={description}
@@ -87,15 +85,27 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
                                 type="file"
                                 accept="image/*"
                                 className="addImage"
-                                onChange={(e) => setImages([...images, e.target.files[0]])}
+                                onChange={(e) => {
+                                    const newFiles = e.target.files;
+                                    if (newFiles && newFiles.length > 0) {
+                                        setImages([...images, newFiles[0]]);
+                                    }
+                                }}
                             />
                             <button type="submit">Create Game</button>
                             {isVisible && <p style={{ color: "red" }}>Invalid Game</p>}
-                            <ul>
-                            {images.map((image, index) => (
-                                <li key={index}>{image.name}</li>
-                            ))}
-                            </ul>
+                            <div className="previews">
+                                {images.map((image, index) => (
+                                    <img
+                                        key={index}
+                                        className="preview"
+                                        src={URL.createObjectURL(image)} // Create a local URL for the image file
+                                        alt={`preview-${index}`}
+                                    />
+                                ))}
+                            </div>
+
+                            
                         </form>
                     </div>
                 </div>

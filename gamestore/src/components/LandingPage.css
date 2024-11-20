@@ -1,3 +1,9 @@
+.LandingPage {
+    width : 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
 .SearchBar {
     display: flex;
     flex-direction: row;
@@ -45,4 +51,57 @@
 .SearchLabel {
     margin-right: 25px;
     font-size: 50px;
+}
+
+/* Style for the grid container */
+.gameView {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+    gap: 16px; /* Space between grid items */
+    padding: 16px; /* Padding around the grid */
+    justify-content: center; /* Center the grid horizontally if it's smaller than the container */
+    align-items: start; /* Align items to the top of the row */
+}
+
+/* Style for individual grid items */
+.singleGame {
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: flex-start; /* Align items at the top */
+    align-items: center; /* Center items horizontally */
+    background-color: #f9f9f9; /* Light background for the item */
+    padding: 16px; /* Padding inside each grid cell */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    text-align: center; /* Center text inside the item */
+}
+
+/* Style for images in the grid */
+.singleGame img {
+    width: 100%; /* Make the image fill the width of the container */
+    max-width: 200px; /* Optional max-width for larger images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Optional rounded corners */
+    margin-bottom: 8px; /* Space below the image */
+}
+
+/* Style for text inside the grid item */
+.singleGame p {
+    margin: 8px 0; /* Space between text elements */
+    font-size: 16px; /* Font size for readability */
+    color: #333; /* Text color */
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .gameView {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .gameView {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
 }

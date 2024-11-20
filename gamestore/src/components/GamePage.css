@@ -1,0 +1,23 @@
+.View p {
+    font-size: 50px;
+    text-align: center;
+}
+
+.GameGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-items: center;
+    overflow-y: auto;
+}
+.GameGrid img {
+    display : flex;
+    justify-content: center;
+    justify-self: center;
+    width : 70%;
+    height: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}

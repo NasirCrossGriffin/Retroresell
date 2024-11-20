@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import OptionsModal from './components/OptionsModal';
 import MyGamesPage from './components/MyGamesPage';
+import GamePage from './components/GamePage';
 import { checkSession } from './components/middleware'; // Import your middleware
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
                             <Route path="/" element={<Navigate to="/Home" />} />
                             <Route path="/Profile" element={<Profile id={userID} />} />
                             <Route path="/MyGames" element={<MyGamesPage id={userID} />} />
+                            <Route path="/GameView/:id" element={<GamePage />} />
                             <Route path="/Home" element={<LandingPage />} />
                         </>
                     ) : (

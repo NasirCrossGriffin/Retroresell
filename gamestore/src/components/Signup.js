@@ -14,13 +14,13 @@ function Signup({ setUserIDProp, setLogged_InProp }) {
     const submitHandler = async (e) => {
         e.preventDefault(); // Prevents default form submission behavior
 
-            const user = await postUser(username, email, password, uploadProfileImage(file))
+            const user = await postUser(username, email, password, await uploadProfileImage(file))
 
             if (user) {
                 console.log('User created:', user);
                 setUserIDProp(user._id);
                 setLogged_InProp(true);
-                navigate("/Login");
+                navigate("/Home");
             } else {
                 throw new Error('Failed to create user');
             }

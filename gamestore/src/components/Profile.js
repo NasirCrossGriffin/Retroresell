@@ -31,7 +31,8 @@ function Profile({ id }) {
     const changeProfilePic = async () => {
         const newImage = await uploadProfileImage(file);
         await changeProfileImage(id, newImage);
-        
+        const user = await findUser(id);
+        setProfilePic(user.image)
     }
 
     return (

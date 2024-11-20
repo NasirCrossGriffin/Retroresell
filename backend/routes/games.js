@@ -10,7 +10,7 @@ module.exports = router
 
 //Routes
 
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
     try {
         const Games = await Game.find();
         res.json(Games);

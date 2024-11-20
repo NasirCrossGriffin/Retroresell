@@ -4,6 +4,7 @@ import { findUser, findGame, findGameImage, postUser,
     authenticate, uploadProfileImage, changeProfileImage, findGamesByUser,
     findGameImagesByGame, uploadGameImage, postGame, postGameImage, checkSession } from "./middleware"
 import NewGame from './NewGame';
+import { useNavigate} from "react-router-dom"
 
 
 function MyGamesPage( id ) {
@@ -11,6 +12,7 @@ function MyGamesPage( id ) {
     const [newGameVisibility, setNewGameVisibility] = useState(false)
     const [gameImage, setGameImage] = useState("");
     const [gamePreviews, setGamePreviews] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchGames = async () => {
@@ -49,10 +51,13 @@ function MyGamesPage( id ) {
         }
     }
 
-    const retrieveFirstImage = async (game) => {
-        
+    const accessGamePage = (event) => {
+        const gameid = event.target.id;
+        if (gameid)
+        {
+            navigate(`/GameView/${gameid}`);
+        }
     }
-
 
     if (!games) {
         return (<>
@@ -62,19 +67,21 @@ function MyGamesPage( id ) {
     }
     
     return (
-        <> 
-            <NewGame id={id} newGameVisibilityProp={newGameVisibility} setNewGameVisibilityProp={setNewGameVisibility}/>
-            <button onClick={alterVisibility} className="NewGame">New Game</button>
-            <div className="gameView">
-                {games.map((game, index) => (
-                    <div className="singleGame" id={game._id}>
-                        <img src={`http://localhost:3001${gamePreviews[index] || "/placeholder.png"}`}/>
-                        <p>{game.name}</p>
-                        <p>{game.price}</p>
-                        <p>uploaded on {game.date}</p>
-                    </div>
-                ))}
-            </div>
+        <>  
+            <div className="MyGames">
+                <NewGame id={id} newGameVisibilityProp={newGameVisibility} setNewGameVisibilityProp={setNewGameVisibility}/>
+                <button onClick={alterVisibility} className="NewGameBTN">New Game</button>
+                <div className="gameView">
+                    {games.map((game, index) => (
+                        <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
+                            <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`http://localhost:3001${gamePreviews[index] || "/placeholder.png"}`}/>
+                            <p>{game.name}</p>
+                            <p>${game.price}</p>
+                            <p>uploaded on {game.date}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>   
         </>
     );
 }

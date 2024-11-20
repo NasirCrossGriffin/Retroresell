@@ -1,5 +1,4 @@
 //Middleware for users
-
 const findUser = async (userId) => {
     try {
         const response = await fetch(`http://localhost:3001/users/${userId}`, {
@@ -176,6 +175,25 @@ const findGame = async (gameId) => {
     }
 };
 
+const findAllGames = async (gameId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/game/all`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error('No games found');
+        }
+
+        const games = await response.json();
+        return games;
+        
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
 const findGamesByUser = async (userId) => {
     try {
         const response = await fetch(`http://localhost:3001/game/user/${userId}`, {
@@ -315,4 +333,4 @@ const postGameImage = async ( image, game ) => {
 module.exports = { findUser, findGame, findGameImage, postUser, 
     authenticate, uploadProfileImage, changeProfileImage, findGamesByUser,
     findGameImagesByGame, uploadGameImage, postGame, postGameImage, checkSession,
-    Logout };
+    findAllGames, Logout };

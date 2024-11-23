@@ -13,7 +13,7 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
 
     const navigateToProfile = async () => {
         if (logged_in) {
-          navigate("/Profile");  
+          navigate(`/Profile/${user._id}`, { replace: true });  
         }
     }
 

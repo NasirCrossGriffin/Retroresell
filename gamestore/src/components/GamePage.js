@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { findGame, findGameImagesByGame } from "./middleware";
+import { findGame, findGameImagesByGame, findUser } from "./middleware";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./GamePage.css"
+
 
 function GamePage() {
     const [game, setGame] = useState([]);
+    const [seller, setSeller] = useState("");
     const [gameImages, setGameImages] = useState([]);
+    const [index, setIndex] = useState(0);
+    const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
@@ -16,6 +21,10 @@ function GamePage() {
                 const gameData = await findGame(id);
                 if (isMounted && gameData) {
                     setGame(gameData);
+                    const user = await findUser(gameData.seller);
+                    if (user) {
+                        setSeller(user);
+                    }
                     const TheGameImages = await findGameImagesByGame(id)
                     if (TheGameImages) {
                         setGameImages(TheGameImages)
@@ -35,6 +44,31 @@ function GamePage() {
         };
     }, []);
     
+    const scroll = (event) => {
+        if (event.target.id === "Left") {
+            if (!(index === 0)) {
+                setIndex(index-1)
+            }
+            else {
+                setIndex(gameImages.length - 1)
+            }
+
+        } else if (event.target.id === "Right") {
+            if (!(index === gameImages.length - 1)) {
+                setIndex(index+1)
+            }
+            else {
+                setIndex(0)
+            }
+
+        }
+
+    }
+
+    const navigateToProfile = async () => {
+           
+    }
+
     return (
         <>
             <div className="GamePage">
@@ -43,14 +77,26 @@ function GamePage() {
                                 <p>{game.name}</p>
                                 <p>{game.date}</p>
                                 <p>${game.price}</p>
-                                <div className="GameImages">
-                                    <div className="GameGrid">
-                                        {gameImages.map((image, index) => (
-                                            <img key={index} src={`http://localhost:3001${image.image || "/placeholder.png"}`}/>
-                                        ))}
+                                <div className="Seller">
+                                    <p>{seller.name}</p>
+                                    <div className="SellerPicContainer">
+                                        <img className="SellerPic" onClick={() => (navigate(`/Profile/${seller._id}`))} src={`http://localhost:3001${seller.image}`} alt="profile picture" />
                                     </div>
                                 </div>
-                                <p>{game.description}</p>
+                                <div className="GameImages">
+                                    {
+                                        (gameImages && gameImages.length > 0) ?
+                                        <div className="GameGrid">
+                                            <img id="Left" className="Left" onClick={(e) => (scroll(e))} src={"/static/ArrowLeft.png"}/>
+                                            <div className="ImageDiv">
+                                                <img className="Image" src={`http://localhost:3001${gameImages[index].image || "/placeholder.png"}`}/>
+                                            </div>
+                                            <img id="Right" className="Right" onClick={(e) => (scroll(e))} src={"/static/ArrowRight.png"}/>
+                                        </div> : <p>loading</p>
+                                    }
+                                </div>
+                                    
+                                <p>{game.description}</p> 
                             </div> 
                         :
                         <div>

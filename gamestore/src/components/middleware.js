@@ -155,7 +155,6 @@ const changeProfileImage = async ( id, image ) => {
 };
 
 //Middleware for games
-
 const findGame = async (gameId) => {
     try {
         const response = await fetch(`http://localhost:3001/game/${gameId}`, {
@@ -328,9 +327,140 @@ const postGameImage = async ( image, game ) => {
     }
 };
 
+//Middleware for messages
+
+const findMessage = async (messageId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/message/${messageId}`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error('No message found');
+        }
+
+        const message = await response.json();
+        return message;
+        
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const findAllMessages = async (gameId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/message/all`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error('No games found');
+        }
+
+        const messages = await response.json();
+        return messages;
+        
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const findMessageBySender = async (senderId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/message/sender/${senderId}`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error('No messages found');
+        }
+
+        const messages = await response.json();
+        console.log(messages)
+        return messages;
+        
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const findMessageByRecipient = async (recipientId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/message/recipient/${recipientId}`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error('No messages found');
+        }
+
+        const messages = await response.json();
+        return messages;
+        
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const findMessageByConversation = async (senderId, recipientId) => {
+    try {
+        console.log(senderId)
+        console.log(recipientId)
+        const messagesBySender = await findMessageBySender(senderId)
+
+        console.log(messagesBySender)
+        
+        if (!messagesBySender) {
+            throw new Error('No messages found');
+        }
+
+        console.log("Here are the messages by sender")
+        console.log(messagesBySender)
+        const conversation = await messagesBySender.filter(message => message.recipient === recipientId) 
+        console.log(conversation)
+        return conversation;       
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const postMessage = async ( message, date, sender, recipient) => {
+    try {
+        const messageData = {
+            message: message,
+            date: date,
+            sender: sender,
+            recipient: recipient
+        };
+
+        const response = await fetch('http://localhost:3001/message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(messageData) 
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to create message');
+        } else {
+            const message = await response.json()
+            return message;
+        }
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
 
 
 module.exports = { findUser, findGame, findGameImage, postUser, 
-    authenticate, uploadProfileImage, changeProfileImage, findGamesByUser,
+    authenticate, Logout, uploadProfileImage, changeProfileImage, findGamesByUser,
     findGameImagesByGame, uploadGameImage, postGame, postGameImage, checkSession,
-    findAllGames, Logout };
+    findAllGames, findMessage, findMessageBySender, findMessageByRecipient, 
+    findMessageByConversation, findAllMessages, postMessage};

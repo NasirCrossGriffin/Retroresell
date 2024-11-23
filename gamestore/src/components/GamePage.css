@@ -5,19 +5,75 @@
 
 .GameGrid {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     justify-self: center;
     justify-items: center;
     align-items: center;
-    overflow-y: auto;
 }
-.GameGrid img {
+
+.ImageDiv {
+    width: 500px;
+    height: 500px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    overflow: hidden; 
+    position: relative; 
+}
+
+.Image {
+    object-fit: contain; 
+    width: 100%; 
+    height: 100%; 
+    margin: 0; 
+}
+
+.Seller {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    justify-content: center;
+}
+
+.Seller p {
+    margin-right: 20px;
+}
+
+.SellerPicContainer {
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden;  /* Prevent image from overflowing */
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Ensure the picture is centered in the parent container */
+}
+
+.SellerPic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Ensure the image stays centered */
+}
+
+.Left {
+    margin-right: 20px;
+    width : 5%;
+    height : auto;
     display : flex;
     justify-content: center;
     justify-self: center;
-    width : 70%;
-    height: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    align-self: center;
+}
+
+.Right {
+    margin-left: 20px;
+    width : 5%;
+    height : auto;
+    display : flex;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
 }

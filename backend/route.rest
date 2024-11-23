@@ -31,3 +31,9 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/gameimage/game/673a55bae2c51e13185c78b6
+
+###
+
+GET http://localhost:3001/message/sender/6736bba037feb3888625bf19
+
+

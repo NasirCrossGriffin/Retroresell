@@ -8,6 +8,7 @@ import LandingPage from './components/LandingPage';
 import OptionsModal from './components/OptionsModal';
 import MyGamesPage from './components/MyGamesPage';
 import GamePage from './components/GamePage';
+import Conversation from './components/Conversation';
 import { checkSession } from './components/middleware'; // Import your middleware
 
 function App() {
@@ -59,9 +60,10 @@ function App() {
                     {loggedIn ? (
                         <>
                             <Route path="/" element={<Navigate to="/Home" />} />
-                            <Route path="/Profile" element={<Profile id={userID} />} />
+                            <Route path="/Profile/:profileid" element={<Profile id={userID} />} />
                             <Route path="/MyGames" element={<MyGamesPage id={userID} />} />
                             <Route path="/GameView/:id" element={<GamePage />} />
+                            <Route path="/Conversation/:recipientid" element={<Conversation id={userID} />} />
                             <Route path="/Home" element={<LandingPage />} />
                         </>
                     ) : (

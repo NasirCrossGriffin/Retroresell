@@ -1,14 +1,11 @@
 GET http://localhost:3001/users
 
 ###
-POST http://localhost:3001/users
+PATCH http://localhost:3001/users/6736bba037feb3888625bf19
 Content-Type: application/json
 
 {
-    "name": "Nasir Cross-Griffin",
-    "email": "nasircrossgriffin@gmail.com",
-    "password": "NovaBlade1991%",
-    "image": "someimage"
+    "password": "NovaBlade1991%"
 }
 
 ###
@@ -36,4 +33,5 @@ GET http://localhost:3001/gameimage/game/673a55bae2c51e13185c78b6
 
 GET http://localhost:3001/message/sender/6736bba037feb3888625bf19
 
-
+###
+DELETE http://localhost:3001/game/6745fa3dc8868053cd4bde40

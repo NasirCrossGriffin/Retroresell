@@ -10,7 +10,7 @@ module.exports = router
 
 //Routes
 
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
     try {
         const Users = await User.find();
         res.json(Users);
@@ -79,6 +79,7 @@ router.post('/', async (req, res) => {
 
    try {
         const newUser = await user.save()
+        req.session.userID = newUser._id;
         res.status(201).json(newUser)
     } catch (err) {
         res.status(400).json({ message: err.message })
@@ -86,14 +87,15 @@ router.post('/', async (req, res) => {
 })
 
 router.patch('/:id', getUser, async (req, res) =>  {
-    if (req.body.name != null) {
+    if (req.body.name != null && req.body.name != '') {
         res.user.name = req.body.name
     }
     if (req.body.email != null) {
         res.user.email = req.body.email
     }
     if (req.body.password != null) {
-        res.user.password = await hashPassword(req.body.password)
+        const hashedPassword = await hashPassword(req.body.password)
+        res.user.password = hashedPassword;
     }
     if (req.body.image != null) {
         res.user.image = req.body.image
@@ -107,8 +109,19 @@ router.patch('/:id', getUser, async (req, res) =>  {
 })
 
 
-router.delete('/', (req, res) =>  {
-
+router.delete('/:id', getUser, async (req, res) =>  {
+    try {
+        const user = res.user;
+        if (user) {
+            await User.deleteOne({ _id: user._id });
+            return res.status(200).json({ message: "Deletion was successful" });
+        }
+           
+        throw new Error("User not found");
+    
+    } catch (err) {
+        return res.status(400).json({ message: err.message });
+    }
 })
 
 //For storing profile pictures

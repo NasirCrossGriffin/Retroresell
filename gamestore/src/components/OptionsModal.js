@@ -41,6 +41,7 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
                     <div className="container">
                         <Link to="/Home" className="OptionsLink">Home</Link>
                         {logged_inProp ? <button className="LogOut" onClick={logout}>Log Out</button> : <Link to="/Login" className="OptionsLink">Login</Link>}
+                        {logged_inProp ? <Link to="/Chat" className="OptionsLink">Chat</Link> : <></>}
                         <Link to="/MyGames" className="OptionsLink">My Games</Link>
 
                     </div>

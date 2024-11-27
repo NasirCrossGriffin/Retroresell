@@ -18,6 +18,44 @@ const findUser = async (userId) => {
     }
 };
 
+const findUserByName = async (username) => {
+    try {
+        const response = await fetch(`http://localhost:3001/users/name/${username}`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error('No user found');
+        }
+
+        const user = await response.json();
+        return user;
+        
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const findAllUsers = async () => {
+    try {
+        const response = await fetch(`http://localhost:3001/users/all/`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error('No users found');
+        }
+
+        const user = await response.json();
+        return user;
+        
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
 const postUser = async ( username, email, password, image ) => {
     try {
         const userData = {
@@ -37,6 +75,37 @@ const postUser = async ( username, email, password, image ) => {
 
         if (!response.ok) {
             throw new Error('Failed to create user');
+        } else {
+            const user = response.json();
+            return user;
+        }
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const patchUser = async ( username, email, password, image, gameId ) => {
+    try {
+        const userData = {
+            name: username,
+            email: email,
+            password: password,
+            image: image
+        };
+
+        console.log(userData);
+
+        const response = await fetch(`http://localhost:3001/users/${gameId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData) 
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to patch user');
         } else {
             const user = response.json();
             return user;
@@ -82,10 +151,15 @@ const authenticate = async (username, password) => {
         })
     });
         
-        const user = await response.json()
-        console.log(user)
+        
+    if (response.ok) {
+        const user = await response.json();
+        console.log(user);
+        return user;  
+    }
+    
+    return null;
 
-        return user;
     } catch (err) {
         console.error('Error:', err.message);
         return null;
@@ -107,6 +181,21 @@ const Logout = async () => {
         return null;
     }
 };
+
+const deleteUser = async (userId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/users/${userId}`,{
+            method: 'DELETE'
+        });
+
+        if (!response.ok)
+            throw new Error('Failed to delete game');
+
+        console.log("game deleted successful")
+    } catch (err) {
+        console.error('Error:', err.message)
+    }
+}
 
 const uploadProfileImage = async (file) => {
     const formData = new FormData();
@@ -242,6 +331,51 @@ const postGame = async ( name, description, price, date, seller ) => {
     }
 };
 
+const patchGame = async ( name, description, price, date, seller, gameId) => {
+    try {
+        const userData = {
+            name: name,
+            description: description,
+            price: price,
+            date: date,
+            seller: seller
+        };
+
+        const response = await fetch(`http://localhost:3001/game/${gameId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData) 
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to patch game');
+        } else {
+            const game = await response.json()
+            return game;
+        }
+    } catch (err) {
+        console.error('Error:', err.message);
+        return null;
+    }
+};
+
+const deleteGame = async (gameId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/game/${gameId}`,{
+            method: 'DELETE'
+        });
+
+        if (!response.ok)
+            throw new Error('Failed to delete game');
+
+        console.log("game deleted successful")
+    } catch (err) {
+        console.error('Error:', err.message)
+    }
+}
+
 //Middleware for game images
 
 const findGameImage = async (gameImageId) => {
@@ -326,6 +460,22 @@ const postGameImage = async ( image, game ) => {
         return null;
     }
 };
+
+const deleteGameImage = async (gameImage) => {
+    try {
+        const response = await fetch(`http://localhost:3001/gameimage/${gameImage}`,{
+            method: 'DELETE'
+        });
+
+        if (!response.ok)
+            throw new Error('Failed to delete game image');
+
+        console.log("game deleted successful")
+    } catch (err) {
+        console.error('Error:', err.message)
+    }
+}
+
 
 //Middleware for messages
 
@@ -458,9 +608,24 @@ const postMessage = async ( message, date, sender, recipient) => {
     }
 };
 
+const deleteMessage = async (messageId) => {
+    try {
+        const response = await fetch(`http://localhost:3001/message/${messageId}`,{
+            method: 'DELETE'
+        });
+
+        if (!response.ok)
+            throw new Error('Failed to delete message');
+
+        console.log("message deleted successful")
+    } catch (err) {
+        console.error('Error:', err.message)
+    }
+}
 
 module.exports = { findUser, findGame, findGameImage, postUser, 
-    authenticate, Logout, uploadProfileImage, changeProfileImage, findGamesByUser,
-    findGameImagesByGame, uploadGameImage, postGame, postGameImage, checkSession,
+    authenticate, Logout, uploadProfileImage, changeProfileImage, findGamesByUser, patchUser,
+    findGameImagesByGame, uploadGameImage, postGame, deleteGame, postGameImage, deleteGameImage, checkSession,
     findAllGames, findMessage, findMessageBySender, findMessageByRecipient, 
-    findMessageByConversation, findAllMessages, postMessage};
+    findMessageByConversation, findAllMessages, postMessage, findAllUsers,
+    findUserByName, patchGame, deleteUser, deleteMessage};

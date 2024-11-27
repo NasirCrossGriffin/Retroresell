@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import EditUser from "./EditUser"
 import { findUser, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage } from "./middleware";
 
 function Profile({ id }) {
@@ -10,7 +12,11 @@ function Profile({ id }) {
     const [file, setFile] = useState("");
     const [viewer, setViewer] = useState("")
     const [profile, setProfile] = useState("")
+    const [editUserVisibility, setEditUserVisibility] = useState(false)
     const { profileid } = useParams();
+    
+    const navigate = useNavigate();
+
 
     console.log(id)
     console.log(profileid)
@@ -51,43 +57,57 @@ function Profile({ id }) {
         await changeProfileImage(id, newImage);
         const user = await findUser(id);
         setProfilePic(user.image)
+        window.location.reload();
+    }
+
+    const navigateToConversation = ( profileid ) => {
+        navigate(`/Conversation/${profileid}`, { replace: true });
+    }
+
+    const editUserHandler = () => {
+        setEditUserVisibility(true);
     }
 
     return (
-        <>
-            {(viewer._id === profile._id) ?
+        viewer._id === profile._id ? (
+            <>
+                <EditUser 
+                    userId={id} 
+                    editUserVisibilityProp={editUserVisibility} 
+                    setEditUserVisibilityProp={setEditUserVisibility} 
+                />
+                <div className="Profile">
+                    <div className="ProfileCont">
+                        <div className="info"> 
+                            <h1 className="info-item">{username}</h1>
+                            <p className="info-item">{email}</p>
+                            <button className="EditUserBTN" onClick={editUserHandler}>Edit User</button>
+                            <p className="info-item">Change Profile Picture</p>
+                            <input type="file" accept="image/*" className="setImage" onChange={setImage} />
+                            <button onClick={changeProfilePic}>Submit Profile Picture</button>
+                        </div>
+                        <div className="picture">
+                            <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
+                        </div>
+                    </div>
+                </div> 
+            </>
+        ) : (
             <div className="Profile">
                 <div className="ProfileCont">
                     <div className="info"> 
                         <h1 className="info-item">{username}</h1>
                         <p className="info-item">{email}</p>
-                        <p className="info-item">Change Profile Picture</p>
-                        <input type="file" accept="image/*" className="setImage"  onChange={setImage} />
-                        <button onClick={changeProfilePic}>Submit Profile Picture</button>
+                        <button onClick={() => navigateToConversation(profileid)}>Send Message</button>
                     </div>
-
                     <div className="picture">
                         <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
                     </div>
-                    
                 </div>
-            </div> 
-            : 
-            <div className="Profile">
-                <div className="ProfileCont">
-                    <div className="info"> 
-                        <h1 className="info-item">{username}</h1>
-                        <p className="info-item">{email}</p>
-                    </div>
-
-                    <div className="picture">
-                        <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
-                    </div>
-                    
-                </div>
-            </div>}
-        </>
+            </div>
+        )
     );
 }
+    
 
 export default Profile;

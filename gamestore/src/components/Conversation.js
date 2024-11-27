@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { findMessageByConversation, findUser, postMessage } from "./middleware";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -14,13 +14,18 @@ function Conversation( id ) {
     const [sender, setSender] = useState(null);
     const [recipient, setRecipient] = useState(null);
     const [text, setText] = useState("");
-
     const socket = io("http://localhost:3001");
+    const conversationEndRef = useRef(null);
+    const textAreaRef = useRef(null); // Reference for the textare
+
+    const scrollToBottom = () => {
+        conversationEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     useEffect(() => {
-
-        }, []
-    )
+        // Scroll to the bottom when the component mounts or messages change
+        scrollToBottom();
+    }, [conversation]);
 
     useEffect(() => {
         const fetchSender = async () => {
@@ -158,6 +163,11 @@ function Conversation( id ) {
         } else {
             console.log("That didn't work, sorry");
         }
+
+        if (textAreaRef.current) {
+            textAreaRef.current.value = '';  // Clear the text area
+            setText('');  // Reset the state as well
+        }
     }
 
     
@@ -185,14 +195,15 @@ function Conversation( id ) {
                             </div>
                   ))  
                 }
-            </div> :
+                <div ref={conversationEndRef}/>
+            </div > :
 
             <p>no messages yet</p>
 
             }
             <div className="NewMessageContainer">
                 <form className="NewMessage" onSubmit={(e) => (submitHandler(e))}>
-                    <textarea type="text" onInput={autoResizeTextarea} onChange={(e) => (updateMessage(e))}/>
+                    <textarea type="text" ref={textAreaRef}  onInput={autoResizeTextarea} onChange={(e) => (updateMessage(e))}/>
                     <input type="submit" value="Send"/>
                 </form>
             </div>

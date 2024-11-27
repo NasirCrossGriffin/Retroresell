@@ -49,18 +49,20 @@
     border-color: transparent;
     color: white;
     background-color: red;
-    padding: 5px 10px 5px 10px;
-    margin-top: 25px;
+    padding: 15px 30px 15px 30px;
+    font-size: 15px;
+    margin-top: 1%;
     font-weight: bold;
 }
 
 .NewGameBTN:hover {
     border-radius: 25px;
     border-color: transparent;
-    color: white;
+    color: rgb(119, 119, 119);
     background-color: rgb(65, 0, 0);
-    padding: 5px 10px 5px 10px;
-    margin-top: 25px;
+    padding: 15px 30px 15px 30px;
+    font-size: 15px;
+    margin-top: 1%;
     font-weight: bold;
 }
 

@@ -61,8 +61,19 @@ router.patch('/:id', getMessage, async (req, res) =>  {
     }
 })
 
-router.delete('/', (req, res) =>  {
-
+router.delete('/:id', getMessage, async (req, res) =>  {
+    try {
+        const message = res.message;
+        if (message) {
+            await Message.deleteOne({ _id: message._id });
+            return res.status(200).json({ message: "Deletion was successful" });
+        }
+           
+        throw new Error("Message not found");
+    
+    } catch (err) {
+        return res.status(400).json({ message: err.message });
+    }
 })
 
 //Middleware

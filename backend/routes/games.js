@@ -52,19 +52,19 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', getGame, async (req, res) =>  {
     if (req.body.name != null) {
-        res.user.name = req.body.name
+        res.game.name = req.body.name
     }
     if (req.body.description != null) {
-        res.user.description = req.body.description
+        res.game.description = req.body.description
     }
     if (req.body.price != null) {
-        res.user.price = req.body.price
+        res.game.price = req.body.price
     }
     if (req.body.date != null) {
-        res.user.date = req.body.date
+        res.game.date = req.body.date
     }
     if (req.body.seller != null) {
-        res.user.seller = req.body.seller
+        res.game.seller = req.body.seller
     }
     try {
         const updatedGame = await res.game.save();
@@ -74,8 +74,19 @@ router.patch('/:id', getGame, async (req, res) =>  {
     }
 })
 
-router.delete('/', (req, res) =>  {
-
+router.delete('/:id', getGame, async (req, res) =>  {
+    try {
+        const game = res.game;
+        if (game) {
+            await Game.deleteOne({ _id: game._id });
+            return res.status(200).json({ message: "Deletion was successful" });
+        }
+           
+        throw new Error("Game not found");
+    
+    } catch (err) {
+        return res.status(400).json({ message: err.message });
+    }
 })
 
 //Middleware
@@ -84,12 +95,12 @@ async function getGame(req, res, next) {
     try {
         game = await Game.findById(req.params.id);
         if (game == null) {
-            return res.status(404).json({ message: 'Cannot find game'})
+            return res.status(404).json({ message: 'Cannot find game'});
         }
         res.game = game;
         next();
     } catch (err) {
-        res.status(500).json({ message: err.message })
+        res.status(500).json({ message: err.message });
     }
 }
 

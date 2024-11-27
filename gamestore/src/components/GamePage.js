@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from "react";
+import EditGame from "./EditGame"
+import DeleteGame from "./DeleteGame"
 import { findGame, findGameImagesByGame, findUser } from "./middleware";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import "./GamePage.css"
 
 
-function GamePage() {
+function GamePage( userId ) {
     const [game, setGame] = useState([]);
     const [seller, setSeller] = useState("");
     const [gameImages, setGameImages] = useState([]);
+    const [editGameVisibility, setEditGameVisibility] = useState(false);
+    const [deleteGameVisibility, setDeleteGameVisibility] = useState(false);
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
     const { id } = useParams();
+
+    useEffect(() => {
+        console.log(userId.userId)
+    }, [])
+
+    useEffect(() => {
+        console.log(seller._id)
+    }, [seller])
 
     useEffect(() => {
         let isMounted = true; // Flag to track if the component is mounted
@@ -65,12 +77,54 @@ function GamePage() {
 
     }
 
-    const navigateToProfile = async () => {
-           
+    const alterVisibility = (event) => {
+        if (event.target.id === "EditGameBTN") {
+            console.log("Button clicked: " + editGameVisibility)
+            if (editGameVisibility === true) {
+                setEditGameVisibility(false);
+                console.log("if statement entered")
+
+            } else {
+                setEditGameVisibility(true);
+                console.log("else statement entered")
+
+            }
+        }
+
+        if (event.target.id === "RemoveGameBTN") {
+            console.log("Button clicked: " + deleteGameVisibility)
+            if (deleteGameVisibility === true) {
+                setDeleteGameVisibility(false);
+                console.log("if statement entered")
+
+            } else {
+                setDeleteGameVisibility(true);
+                console.log("else statement entered")
+
+            }
+        }
     }
 
     return (
         <>
+            <>
+                {
+                    <DeleteGame gameId={id} deleteGameVisibilityProp={deleteGameVisibility} setDeleteGameVisibilityProp={setDeleteGameVisibility}/>
+                }
+            </>
+            <>
+                {
+                    <EditGame gameId={id} editGameVisibilityProp={editGameVisibility} setEditGameVisibilityProp={setEditGameVisibility}/>
+                }
+            </>
+            <>
+                {
+                    userId.userId === seller._id ? <div className="ButtonsDiv">
+                                                        <button onClick={(e) => alterVisibility(e)} id="EditGameBTN" className="EditGameBTN">Edit Game</button>
+                                                        <button onClick={(e) => alterVisibility(e)} id="RemoveGameBTN" className="RemoveGameBTN">Remove Game</button>
+                                                   </div> : <></>
+                }
+            </>
             <div className="GamePage">
                 {
                     game ? <div className="View">

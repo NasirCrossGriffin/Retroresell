@@ -77,3 +77,59 @@
     justify-self: center;
     align-self: center;
 }
+
+.EditGameBTN {
+    border-radius: 25px;
+    border-color: transparent;
+    color: white;
+    background-color: red;
+    padding: 15px 30px 15px 30px;
+    font-size: 15px;
+    margin-top: 1%;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-weight: bold;
+}
+
+.EditGameBTN:hover {
+    border-radius: 25px;
+    border-color: transparent;
+    color: rgb(104, 104, 104);
+    background-color: rgb(64, 1, 1);
+    padding: 15px 30px 15px 30px;
+    font-size: 15px;
+    margin-top: 1%;
+    margin-right: 25px;
+    font-weight: bold;
+}
+
+.RemoveGameBTN {
+    border-radius: 25px;
+    border-color: transparent;
+    color: white;
+    background-color: red;
+    padding: 15px 30px 15px 30px;
+    font-size: 15px;
+    margin-top: 1%;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.RemoveGameBTN:hover {
+    border-radius: 25px;
+    border-color: transparent;
+    color: rgb(104, 104, 104);
+    background-color: rgb(64, 1, 1);
+    padding: 15px 30px 15px 30px;
+    font-size: 15px;
+    margin-top: 1%;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.ButtonsDiv {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    justify-content: center;
+}

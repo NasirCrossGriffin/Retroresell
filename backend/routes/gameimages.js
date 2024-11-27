@@ -4,6 +4,7 @@ const multer = require("multer");
 const GameImage = require('../models/GameImage')
 const path = require("path");
 const bcrypt = require('bcrypt');
+const { error } = require('console');
 
 
 module.exports = router
@@ -55,8 +56,18 @@ router.patch('/:id', getGameImage, async (req, res) =>  {
     }
 })
 
-router.delete('/', (req, res) =>  {
+router.delete('/:id', getGameImage, async (req, res) =>  {
+    try {
+        const gameImage = res.gameImage;
+        if (gameImage) {
+            await GameImage.deleteOne({ _id: gameImage._id });
+            return res.status(200).json({ message: "Deletion was successful" })
+        }
 
+        throw new Error("Game Image not found");
+    } catch (err) {
+        return res.status(400).json({ message: err.message })
+    }
 })
 
 //For storing profile pictures

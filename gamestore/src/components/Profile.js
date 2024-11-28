@@ -53,11 +53,13 @@ function Profile({ id }) {
     };
 
     const changeProfilePic = async () => {
-        const newImage = await uploadProfileImage(file);
-        await changeProfileImage(id, newImage);
-        const user = await findUser(id);
-        setProfilePic(user.image)
-        window.location.reload();
+        if (file) {
+            const newImage = await uploadProfileImage(file);
+            await changeProfileImage(id, newImage);
+            const user = await findUser(id);
+            setProfilePic(user.image)
+            window.location.reload();
+        }
     }
 
     const navigateToConversation = ( profileid ) => {
@@ -84,7 +86,7 @@ function Profile({ id }) {
                             <button className="EditUserBTN" onClick={editUserHandler}>Edit User</button>
                             <p className="info-item">Change Profile Picture</p>
                             <input type="file" accept="image/*" className="setImage" onChange={setImage} />
-                            <button onClick={changeProfilePic}>Submit Profile Picture</button>
+                            <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
                         </div>
                         <div className="picture">
                             <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
@@ -98,7 +100,7 @@ function Profile({ id }) {
                     <div className="info"> 
                         <h1 className="info-item">{username}</h1>
                         <p className="info-item">{email}</p>
-                        <button onClick={() => navigateToConversation(profileid)}>Send Message</button>
+                        <button className="SendMessageBTN" onClick={() => navigateToConversation(profileid)}>Send Message</button>
                     </div>
                     <div className="picture">
                         <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />

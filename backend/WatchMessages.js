@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb")
 
 const watchMessages = async (io) => {
-    const mongoUrl = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+    const mongoUrl = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
     
     const mongoClient = new MongoClient(mongoUrl);
 

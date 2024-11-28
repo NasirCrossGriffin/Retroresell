@@ -125,6 +125,8 @@ useEffect(() => {
         navigate(`/Conversation/${id}`, { replace: true });
     }
 
+    
+
     useEffect(() => {
         const fetchAllProfilePictures = async () => {
             const newProfilePictures = new Map(profilePictures);
@@ -149,6 +151,10 @@ useEffect(() => {
             
         };
 
+        const fetchAllRecipients = async () => {
+            
+        }
+
         if (chats.size > 0) fetchAllProfilePictures();
     }, [chats]);
 
@@ -160,23 +166,27 @@ useEffect(() => {
                 <div className="allChats"> 
                     {sortedChats.map((chat, index) => (
                         (chat.sender === activeUser._id) ? (
-                            <div key={index} className="chat" onClick={() => (navigateToConversation(chat.recipient))}>
-                                <div className="Bubble"> 
-                                    <p>{chat.message}</p>
+                            <>
+                                <div key={index} className="chat" onClick={() => (navigateToConversation(chat.recipient))}>
+                                    <div className="Bubble"> 
+                                        <p>{chat.message}</p>
+                                    </div>
+                                    <div className="MSGProfilePicture">
+                                        <img src={`http://localhost:3001${profilePictures.get(chat.recipient) || "profile pic"}`} alt="profile picture" />
+                                    </div>
                                 </div>
-                                <div className="MSGProfilePicture">
-                                    <img src={`http://localhost:3001${profilePictures.get(chat.recipient) || "profile pic"}`} alt="profile picture" />
-                                </div>
-                            </div>
+                            </>
                         ) : (
-                            <div key={index} className="chat" onClick={() => (navigateToConversation(chat.sender))}>
-                                <div className="Bubble"> 
-                                    <p>{chat.message}</p>
+                            <>
+                                <div key={index} className="chat" onClick={() => (navigateToConversation(chat.sender))}>
+                                    <div className="Bubble"> 
+                                        <p>{chat.message}</p>
+                                    </div>
+                                    <div className="MSGProfilePicture">
+                                        <img src={`http://localhost:3001${profilePictures.get(chat.sender)}`} alt="profile picture" />
+                                    </div>
                                 </div>
-                                <div className="MSGProfilePicture">
-                                    <img src={`http://localhost:3001${profilePictures.get(chat.sender)}`} alt="profile picture" />
-                                </div>
-                            </div>
+                            </>
                         )
                     ))}
                 </div>

@@ -26,7 +26,6 @@ function Login({ setUserIDProp, setLogged_InProp }) {
         else
         {
             setIsVisible(true)
-            throw new Error('Cannot find user'); 
         }
     };
 

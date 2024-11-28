@@ -48,3 +48,20 @@
     font-size: 20px;
     text-decoration: underline;
 }
+
+.modal-enter {
+    transform: translateX(-100%);
+  }
+  .modal-enter-active {
+    opacity: 1;
+    transform: translateX(0); /* Slide in to the center */
+    transition: transform 300ms; /* Smooth transition */
+  }
+  .modal-exit {
+    transform: translateX(0); /* Start from the center */
+  }
+  .modal-exit-active {
+    transform: translateX(-100%); /* Slide out off-screen to the left */
+    transition: transform 300ms; /* Smooth transition */
+  }
+  

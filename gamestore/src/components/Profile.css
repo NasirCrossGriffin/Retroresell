@@ -50,3 +50,87 @@
     object-fit: cover;
     object-position: center; /* Ensure the image stays centered */
 }
+
+.EditUserBTN {
+    border-radius: 25px;
+    border-color: transparent;
+    color: white;
+    background-color: red;
+    padding: 15px 30px 15px 30px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.EditUserBTN:hover {
+    border-radius: 25px;
+    border-color: transparent;
+    color: white;
+    background-color: rgb(65, 0, 0);
+    padding: 15px 30px 15px 30px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.ChngPrflBTN {
+    border-radius: 25px;
+    border-color: transparent;
+    color: rgb(255, 251, 251);
+    background-color: red;
+    padding: 15px 30px 15px 30px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.ChngPrflBTN:hover {
+    border-radius: 25px;
+    border-color: transparent;
+    color: rgb(79, 79, 79);
+    background-color: rgb(65, 0, 0);
+    padding: 15px 30px 15px 30px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.SendMessageBTN {
+    border-radius: 25px;
+    border-color: transparent;
+    color: white;
+    background-color: red;
+    padding: 15px 30px 15px 30px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.SendMessageBTN:hover {
+    border-radius: 25px;
+    border-color: transparent;
+    color: white;
+    background-color: rgb(65, 0, 0);
+    padding: 15px 30px 15px 30px;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 25px;
+}

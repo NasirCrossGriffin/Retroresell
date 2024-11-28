@@ -1,8 +1,8 @@
 .DeleteGameBackground {
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
@@ -25,9 +25,34 @@
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 10px; /* Optional: Rounded corners for modal */
+    border-radius: 10px;
     overflow-y: auto;
+    transform-origin: center; /* Ensures animation starts from center */
 }
+
+.Del-enter {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9); /* Start slightly scaled down at center */
+}
+
+.Del-enter-active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Scale up to normal size */
+    transition: opacity 300ms, transform 300ms;
+}
+
+.Del-exit {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Normal size */
+}
+
+.Del-exit-active {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9); /* Scale back down */
+    transition: opacity 300ms, transform 300ms;
+}
+
+
 
 .DelBTNS {
     display: flex;
@@ -60,3 +85,4 @@
     margin-right: 25px;
     font-size: 50px;
 }
+

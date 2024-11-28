@@ -23,6 +23,7 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
                 const uploadedImage = await uploadGameImage(image);
                 console.log(newGame._id);
                 const response = await postGameImage(uploadedImage, newGame._id);
+                window.location.reload();
                 if (!response.ok) {
                     console.error("Failed to upload game image.");
                 }

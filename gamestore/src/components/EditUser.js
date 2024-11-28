@@ -104,12 +104,12 @@ function EditUser({ userId, editUserVisibilityProp, setEditUserVisibilityProp })
                         <input type="text" className="username" name="username" id="username" onChange={(e) => setUsername(e.target.value)}/>
                     </form>
                     <>
-                        {(changingPassword === true) ? <>
+                        {(changingPassword === true) ? <div className="ChangePasswords">
                                 <label htmlFor="OldPassword">Old Password: </label>
                                 <input type="password" className="OldPassword" name="OldPassword" id="OldPassword" onChange={(e) => setPassword(e.target.value)}/>
                                 <label htmlFor="NewPassword">New Password: </label>
                                 <input type="password" className="NewPassword" name="NewPassword" id="NewPassword" onChange={(e) => setNewPassword(e.target.value)}/>
-                                </> : <></>
+                            </div> : <></>
                         }
                     </>
                     <div className="EditUserBTNS">

@@ -53,6 +53,7 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
 
     
     if (!logged_inProp) {
+        return (
         <>
         <div className="Navbar">
             <div className="NavbarContainer">
@@ -73,7 +74,8 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
                 </div>
             </div>
         </div>
-    </>
+        </>
+        )
     }
 
 

@@ -14,6 +14,8 @@ function Profile({ id }) {
     const [profile, setProfile] = useState("")
     const [editUserVisibility, setEditUserVisibility] = useState(false)
     const { profileid } = useParams();
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
     
     const navigate = useNavigate();
 
@@ -89,7 +91,7 @@ function Profile({ id }) {
                             <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
                         </div>
                         <div className="Profilepicture">
-                            <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
+                            <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
                         </div>
                     </div>
                 </div> 
@@ -103,7 +105,7 @@ function Profile({ id }) {
                         <button className="SendMessageBTN" onClick={() => navigateToConversation(profileid)}>Send Message</button>
                     </div>
                     <div className="Profilepicture">
-                        <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
+                        <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
                     </div>
                 </div>
             </div>

@@ -1,7 +1,9 @@
+const BASE_URL = process.env.REACT_APP_REQ_URL || "";
+
 //Middleware for users
 const findUser = async (userId) => {
     try {
-        const response = await fetch(`/users/${userId}`, {
+        const response = await fetch(`${BASE_URL}/users/${userId}`, {
             method: 'GET'
         });
 
@@ -20,7 +22,7 @@ const findUser = async (userId) => {
 
 const findUserByName = async (username) => {
     try {
-        const response = await fetch(`/users/name/${username}`, {
+        const response = await fetch(`${BASE_URL}/users/name/${username}`, {
             method: 'GET'
         });
 
@@ -39,7 +41,7 @@ const findUserByName = async (username) => {
 
 const findAllUsers = async () => {
     try {
-        const response = await fetch(`/users/all/`, {
+        const response = await fetch(`${BASE_URL}/users/all/`, {
             method: 'GET'
         });
 
@@ -65,7 +67,7 @@ const postUser = async ( username, email, password, image ) => {
             image: image
         };
 
-        const response = await fetch('/users', {
+        const response = await fetch(`${BASE_URL}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -96,7 +98,7 @@ const patchUser = async ( username, email, password, image, gameId ) => {
 
         console.log(userData);
 
-        const response = await fetch(`/users/${gameId}`, {
+        const response = await fetch(`${BASE_URL}/users/${gameId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -117,7 +119,7 @@ const patchUser = async ( username, email, password, image, gameId ) => {
 };
 
 const checkSession = async () => {
-    const response = await fetch('/users/auth/checkSession', {
+    const response = await fetch(`${BASE_URL}/users/auth/checkSession`, {
         method: 'GET',
         credentials: 'include', // Include session cookies in requests
     });
@@ -139,8 +141,9 @@ const authenticate = async (username, password) => {
     try {
         console.log("Username is: " + username);
         console.log("Password is: " + password);
+        console.log(BASE_URL)
 
-        const response = await fetch(`/users/authenticate/${username}`, {
+        const response = await fetch(`${BASE_URL}/users/authenticate/${username}`, {
         method: 'POST',
         credentials: 'include', // Ensure cookies are sent with the request
         headers: {
@@ -150,6 +153,8 @@ const authenticate = async (username, password) => {
             "password" : password,
         })
     });
+
+    console.log(response)
         
         
     if (response.ok) {
@@ -167,7 +172,7 @@ const authenticate = async (username, password) => {
 };
 
 const Logout = async () => {
-    const response = await fetch('/users/logout', {
+    const response = await fetch(`${BASE_URL}/users/logout`, {
         method : 'POST',
         credentials: 'include', 
         headers: {
@@ -184,7 +189,7 @@ const Logout = async () => {
 
 const deleteUser = async (userId) => {
     try {
-        const response = await fetch(`/users/${userId}`,{
+        const response = await fetch(`${BASE_URL}/users/${userId}`,{
             method: 'DELETE'
         });
 
@@ -202,7 +207,7 @@ const uploadProfileImage = async (file) => {
     formData.append("profilePic", file);
 
     try {
-        const response = await fetch("/users/uploadProfilePic", {
+        const response = await fetch(`${BASE_URL}/users/uploadProfilePic`, {
             method: "POST",
             body: formData,
         });
@@ -226,7 +231,7 @@ const changeProfileImage = async ( id, image ) => {
             image: image
         };
 
-        const response = await fetch(`/users/${id}`, {
+        const response = await fetch(`${BASE_URL}/users/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -246,7 +251,7 @@ const changeProfileImage = async ( id, image ) => {
 //Middleware for games
 const findGame = async (gameId) => {
     try {
-        const response = await fetch(`/game/${gameId}`, {
+        const response = await fetch(`${BASE_URL}/game/${gameId}`, {
             method: 'GET'
         });
 
@@ -265,7 +270,7 @@ const findGame = async (gameId) => {
 
 const findAllGames = async (gameId) => {
     try {
-        const response = await fetch(`/game/all`, {
+        const response = await fetch(`${BASE_URL}/game/all`, {
             method: 'GET'
         });
 
@@ -284,7 +289,7 @@ const findAllGames = async (gameId) => {
 
 const findGamesByUser = async (userId) => {
     try {
-        const response = await fetch(`/game/user/${userId}`, {
+        const response = await fetch(`${BASE_URL}/game/user/${userId}`, {
             method: 'GET'
         });
 
@@ -311,7 +316,7 @@ const postGame = async ( name, description, price, date, seller ) => {
             seller: seller
         };
 
-        const response = await fetch('/game', {
+        const response = await fetch(`${BASE_URL}/game`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -341,7 +346,7 @@ const patchGame = async ( name, description, price, date, seller, gameId) => {
             seller: seller
         };
 
-        const response = await fetch(`/game/${gameId}`, {
+        const response = await fetch(`${BASE_URL}/game/${gameId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -363,7 +368,7 @@ const patchGame = async ( name, description, price, date, seller, gameId) => {
 
 const deleteGame = async (gameId) => {
     try {
-        const response = await fetch(`/game/${gameId}`,{
+        const response = await fetch(`${BASE_URL}/game/${gameId}`,{
             method: 'DELETE'
         });
 
@@ -380,7 +385,7 @@ const deleteGame = async (gameId) => {
 
 const findGameImage = async (gameImageId) => {
     try {
-        const response = await fetch(`/gameimage/${gameImageId}`, {
+        const response = await fetch(`${BASE_URL}/gameimage/${gameImageId}`, {
             method: 'GET'
         });
 
@@ -399,7 +404,7 @@ const findGameImage = async (gameImageId) => {
 
 const findGameImagesByGame = async (gameId) => {
     try {
-        const response = await fetch(`/gameimage/game/${gameId}`, {
+        const response = await fetch(`${BASE_URL}/gameimage/game/${gameId}`, {
             method: 'GET'
         });
 
@@ -421,7 +426,7 @@ const uploadGameImage = async (file) => {
     formData.append("gameImage", file);
 
     try {
-        const response = await fetch("/gameimage/uploadGameImages", {
+        const response = await fetch(`${BASE_URL}/gameimage/uploadGameImages`, {
             method: "POST",
             body: formData,
         });
@@ -446,7 +451,7 @@ const postGameImage = async ( image, game ) => {
             game : game
         };
 
-        const response = await fetch('/gameimage', {
+        const response = await fetch(`${BASE_URL}/gameimage`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -463,7 +468,7 @@ const postGameImage = async ( image, game ) => {
 
 const deleteGameImage = async (gameImage) => {
     try {
-        const response = await fetch(`/gameimage/${gameImage}`,{
+        const response = await fetch(`${BASE_URL}/gameimage/${gameImage}`,{
             method: 'DELETE'
         });
 
@@ -481,7 +486,7 @@ const deleteGameImage = async (gameImage) => {
 
 const findMessage = async (messageId) => {
     try {
-        const response = await fetch(`/message/${messageId}`, {
+        const response = await fetch(`${BASE_URL}/message/${messageId}`, {
             method: 'GET'
         });
 
@@ -500,7 +505,7 @@ const findMessage = async (messageId) => {
 
 const findAllMessages = async (gameId) => {
     try {
-        const response = await fetch(`/message/all`, {
+        const response = await fetch(`${BASE_URL}/message/all`, {
             method: 'GET'
         });
 
@@ -519,7 +524,7 @@ const findAllMessages = async (gameId) => {
 
 const findMessageBySender = async (senderId) => {
     try {
-        const response = await fetch(`/message/sender/${senderId}`, {
+        const response = await fetch(`${BASE_URL}/message/sender/${senderId}`, {
             method: 'GET'
         });
 
@@ -539,7 +544,7 @@ const findMessageBySender = async (senderId) => {
 
 const findMessageByRecipient = async (recipientId) => {
     try {
-        const response = await fetch(`/message/recipient/${recipientId}`, {
+        const response = await fetch(`${BASE_URL}/message/recipient/${recipientId}`, {
             method: 'GET'
         });
 
@@ -588,7 +593,7 @@ const postMessage = async ( message, date, sender, recipient) => {
             recipient: recipient
         };
 
-        const response = await fetch('/message', {
+        const response = await fetch(`${BASE_URL}/message`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -610,7 +615,7 @@ const postMessage = async ( message, date, sender, recipient) => {
 
 const deleteMessage = async (messageId) => {
     try {
-        const response = await fetch(`/message/${messageId}`,{
+        const response = await fetch(`${BASE_URL}/message/${messageId}`,{
             method: 'DELETE'
         });
 

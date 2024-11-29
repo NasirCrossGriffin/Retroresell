@@ -14,6 +14,8 @@ function Chat( id ) {
     const [recipient, setRecipient] = useState(null);
     const [chats, setChats] = useState(new Map());
     const [profilePictures, setProfilePictures] = useState(new Map()); // Cache for profile pictures
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
 
     const navigate = useNavigate();
 
@@ -172,7 +174,7 @@ useEffect(() => {
                                         <p>{chat.message}</p>
                                     </div>
                                     <div className="MSGProfilePicture">
-                                        <img src={`http://localhost:3001${profilePictures.get(chat.recipient) || "profile pic"}`} alt="profile picture" />
+                                        <img src={`${BASE_URL}${profilePictures.get(chat.recipient) || "profile pic"}`} alt="profile picture" />
                                     </div>
                                 </div>
                             </>
@@ -183,7 +185,7 @@ useEffect(() => {
                                         <p>{chat.message}</p>
                                     </div>
                                     <div className="MSGProfilePicture">
-                                        <img src={`http://localhost:3001${profilePictures.get(chat.sender)}`} alt="profile picture" />
+                                        <img src={`${BASE_URL}${profilePictures.get(chat.sender)}`} alt="profile picture" />
                                     </div>
                                 </div>
                             </>

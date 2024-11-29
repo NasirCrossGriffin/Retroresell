@@ -8,6 +8,7 @@ const cors = require('cors'); // Import cors
 const path = require('path');
 const { Server } = require("socket.io");
 const watchMessages = require("./WatchMessages");
+require('dotenv').config();
 const io = new Server(server,  {
     cors: {
         origin: "http://localhost:3000", // Allow requests from this origin
@@ -21,9 +22,14 @@ app.use(cors({
     credentials: true,              
 }));
 
+const mongoURL = process.env.MONGO_URL;
+
+const session_secret = process.env.SESSION_SECRET; // Fetch from environment variables
+
+
 const mongoose = require('mongoose')
 
-mongoose.connect('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', {useNewUrlParser: true})
+mongoose.connect((mongoURL), {useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
@@ -35,7 +41,7 @@ app.use('/gameImages', express.static(path.join(__dirname, '/gameImages')));
 
 app.use(
     session({
-        secret: 'your_secret_key', // Replace with a secure secret
+        secret: session_secret, // Replace with a secure secret
         resave: false, // Don't save session if it wasn't modified
         saveUninitialized: false, // Don't create a session until something is stored
         cookie: {
@@ -45,7 +51,7 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24, // 1-day expiration
         },
         store: MongoStore.create({
-            mongoUrl: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your MongoDB URI
+            mongoUrl: mongoURL, // Replace with your MongoDB URI
             collectionName: 'sessions',
         }),
     })
@@ -95,7 +101,7 @@ app.get('*', (req, res) => {
 });
 
 // Start the server
-const PORT = 3001;
+const PORT = process.env.PORT || 3001; // Use $PORT in production, 3001 for local dev
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

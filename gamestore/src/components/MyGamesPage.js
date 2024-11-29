@@ -13,6 +13,8 @@ function MyGamesPage( id ) {
     const [gameImage, setGameImage] = useState("");
     const [gamePreviews, setGamePreviews] = useState([]);
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
 
     useEffect(() => {
         const fetchGames = async () => {
@@ -74,7 +76,7 @@ function MyGamesPage( id ) {
                 <div className="gameView">
                     {games.map((game, index) => (
                         <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
-                            <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`http://localhost:3001${gamePreviews[index] || "/placeholder.png"}`}/>
+                            <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${BASE_URL}${gamePreviews[index] || "/placeholder.png"}`}/>
                             <p>{game.name}</p>
                             <p>${game.price}</p>
                             <p>uploaded on {game.date}</p>

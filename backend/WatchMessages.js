@@ -1,7 +1,9 @@
 const { MongoClient } = require("mongodb")
+require('dotenv').config();
+
 
 const watchMessages = async (io) => {
-    const mongoUrl = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+    const mongoUrl = process.env.MONGO_URL;
     
     const mongoClient = new MongoClient(mongoUrl);
 

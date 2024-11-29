@@ -10,6 +10,8 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
     const [logged_in, setLogged_in] = useState( logged_inProp );
     const [optionsVisibility, setOptionsVisibility] = useState(OptionsVisibilityProp);
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
 
     const navigateToProfile = async () => {
         if (logged_in) {
@@ -67,7 +69,7 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
 
                 <div className="profilePic" onClick={navigateToProfile}>
                     {profilePic ? (
-                        <img src={`http://localhost:3001${profilePic}`} alt="" />
+                        <img src={`${profilePic}`} alt="" />
                     ) : (
                         <p></p>
                     )}
@@ -93,7 +95,7 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
 
                     <div className="profilePic" onClick={navigateToProfile}>
                         {profilePic ? (
-                            <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
+                            <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
                         ) : (
                             <p></p>
                         )}

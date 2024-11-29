@@ -17,6 +17,8 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
     const [visibility, setVisibility] = useState(false); // Local state for visibility
     const nodeRef = useRef(null); // Ref for CSSTransition
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
 
     // Fetch the game data when the component mounts
     useEffect(() => {
@@ -49,7 +51,7 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
                     const acquiredImages = await findGameImagesByGame(game._id);
                     if (acquiredImages) {
                         setImages(acquiredImages);
-                        const newPreviews = acquiredImages.map((image) => `http://localhost:3001${image.image}`);
+                        const newPreviews = acquiredImages.map((image) => `${BASE_URL}${image.image}`);
                         setImagePreviews(newPreviews);
                     }
                 } catch (error) {

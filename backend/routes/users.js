@@ -29,16 +29,20 @@ router.get('/name/:name', getUserByName, (req, res) => {
 
 router.post('/authenticate/:name', getUserByName, async (req, res) => {
     try {
-        console.log(res.user.password)
-        console.log(req.body.password)
-        const isMatch = await comparePassword(req.body.password, res.user.password)
-        if ( isMatch == true)
-        {
-            req.session.userID = user._id;
-            res.send(res.user)
-        }
-        else
-        {
+        if (res.user) {
+            console.log(res.user.password)
+            console.log(req.body.password)
+            const isMatch = await comparePassword(req.body.password, res.user.password)
+            if ( isMatch != null && isMatch === true )
+            {
+                req.session.userID = user._id;
+                res.send(res.user)
+            }
+            else
+            {
+                res.status(400).json({ message: "Password authentication failed"})
+            }
+        } else {
             res.status(400).json({ message: "Password authentication failed"})
         }
     } catch (err) {

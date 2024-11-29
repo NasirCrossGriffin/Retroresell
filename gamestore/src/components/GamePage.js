@@ -16,6 +16,8 @@ function GamePage( userId ) {
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
     const { id } = useParams();
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
 
     useEffect(() => {
         console.log(userId.userId)
@@ -134,7 +136,7 @@ function GamePage( userId ) {
                                 <div className="Seller">
                                     <p>{seller.name}</p>
                                     <div className="SellerPicContainer">
-                                        <img className="SellerPic" onClick={() => (navigate(`/Profile/${seller._id}`))} src={`http://localhost:3001${seller.image}`} alt="profile picture" />
+                                        <img className="SellerPic" onClick={() => (navigate(`/Profile/${seller._id}`))} src={`${BASE_URL}${seller.image}`} alt="profile picture" />
                                     </div>
                                 </div>
                                 <div className="GameImages">
@@ -143,7 +145,7 @@ function GamePage( userId ) {
                                         <div className="GameGrid">
                                             <img id="Left" className="Left" onClick={(e) => (scroll(e))} src={"/static/ArrowLeft.png"}/>
                                             <div className="ImageDiv">
-                                                <img className="Image" src={`http://localhost:3001${gameImages[index].image || "/placeholder.png"}`}/>
+                                                <img className="Image" src={`${BASE_URL}${gameImages[index].image || "/placeholder.png"}`}/>
                                             </div>
                                             <img id="Right" className="Right" onClick={(e) => (scroll(e))} src={"/static/ArrowRight.png"}/>
                                         </div> : <p>loading</p>

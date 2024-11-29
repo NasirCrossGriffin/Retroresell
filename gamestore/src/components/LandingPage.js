@@ -8,6 +8,8 @@ function LandingPage( ) {
     const [gameImage, setGameImage] = useState("");
     const [gamePreviews, setGamePreviews] = useState([]);
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
 
 
     const getAllGames = async () => {
@@ -23,6 +25,7 @@ function LandingPage( ) {
         console.log("useEffect triggered");
         loadAll();
         console.log(search);
+        console.log(BASE_URL)
     }, []); 
 
     const searchFunc = async (event) => {
@@ -73,7 +76,7 @@ function LandingPage( ) {
             <div className="gameView">
             {!(search.length === 0) ? search.map((game, index) => (
                 <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
-                    <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`http://localhost:3001${gamePreviews[index] || "/placeholder.png"}`}/>
+                    <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${BASE_URL}${gamePreviews[index] || "/placeholder.png"}`}/>
                     <p>{game.name}</p>
                     <p>${game.price}</p>
                     <p>uploaded on {game.date}</p>

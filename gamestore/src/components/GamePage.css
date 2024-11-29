@@ -174,10 +174,11 @@
         flex-direction: row;
         justify-self: center;
         justify-content: center;
+        width: 100%;
     }
 
     .Seller p {
-        margin-right: 20px;
+        margin-right: 30px;
     }
 
     .SellerPicContainer {
@@ -188,7 +189,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0 auto; /* Ensure the picture is centered in the parent container */
+        margin: 0px 0px 0px 0px /* Ensure the picture is centered in the parent container */
     }
 
     .SellerPic {

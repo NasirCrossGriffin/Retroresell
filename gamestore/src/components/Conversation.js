@@ -14,9 +14,11 @@ function Conversation( id ) {
     const [sender, setSender] = useState(null);
     const [recipient, setRecipient] = useState(null);
     const [text, setText] = useState("");
-    const socket = io("http://localhost:3001");
+    const socket = io("");
     const conversationEndRef = useRef(null);
     const textAreaRef = useRef(null); // Reference for the textare
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
+
 
     const scrollToBottom = () => {
         conversationEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -183,11 +185,11 @@ function Conversation( id ) {
                             <p>{message.message}</p>
                         </div>
                         <div className="MSGProfilePicture">
-                                <img src={`http://localhost:3001${sender.image}`} alt="profile picture" />
+                                <img src={`${BASE_URL}${sender.image}`} alt="profile picture" />
                         </div>
                     </div> : <div key={index} className="messageReceived">
                                 <div className="MSGProfilePicture">
-                                    <img src={`http://localhost:3001${recipient.image}`} alt="profile picture" />
+                                    <img src={`${BASE_URL}${recipient.image}`} alt="profile picture" />
                                 </div>
                                 <div className="Bubble"> 
                                     <p>{message.message}</p>

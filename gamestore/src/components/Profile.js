@@ -14,7 +14,7 @@ function Profile({ id }) {
     const [profile, setProfile] = useState("")
     const [editUserVisibility, setEditUserVisibility] = useState(false)
     const { profileid } = useParams();
-    const BASE_URL = process.env.REACT_APP_API_URL || "";
+    const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
     
     const navigate = useNavigate();

@@ -1,5 +1,10 @@
 const { MongoClient } = require("mongodb")
-require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+    console.log("Loaded .env file for development");
+} else {
+    console.log("Running in production mode");
+}
 
 
 const watchMessages = async (io) => {

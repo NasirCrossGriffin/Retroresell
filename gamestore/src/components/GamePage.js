@@ -16,7 +16,7 @@ function GamePage( userId ) {
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
     const { id } = useParams();
-    const BASE_URL = process.env.REACT_APP_API_URL || "";
+    const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
 
     useEffect(() => {

@@ -10,7 +10,7 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
     const [logged_in, setLogged_in] = useState( logged_inProp );
     const [optionsVisibility, setOptionsVisibility] = useState(OptionsVisibilityProp);
     const navigate = useNavigate();
-    const BASE_URL = process.env.REACT_APP_API_URL || "";
+    const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
 
     const navigateToProfile = async () => {

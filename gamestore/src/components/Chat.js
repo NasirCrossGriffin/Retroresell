@@ -14,7 +14,7 @@ function Chat( id ) {
     const [recipient, setRecipient] = useState(null);
     const [chats, setChats] = useState(new Map());
     const [profilePictures, setProfilePictures] = useState(new Map()); // Cache for profile pictures
-    const BASE_URL = process.env.REACT_APP_API_URL || "";
+    const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
 
     const navigate = useNavigate();

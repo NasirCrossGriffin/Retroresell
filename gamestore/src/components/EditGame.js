@@ -17,7 +17,7 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
     const [visibility, setVisibility] = useState(false); // Local state for visibility
     const nodeRef = useRef(null); // Ref for CSSTransition
     const navigate = useNavigate();
-    const BASE_URL = process.env.REACT_APP_API_URL || "";
+    const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
 
     // Fetch the game data when the component mounts

@@ -8,8 +8,14 @@ const cors = require('cors'); // Import cors
 const path = require('path');
 const { Server } = require("socket.io");
 const watchMessages = require("./WatchMessages");
-require('dotenv').config();
-const io = new Server(server,  {
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+    console.log("Loaded .env file for development");
+} else {
+    console.log("Running in production mode");
+}
+
+const io = process.env.PORT ? new Server(server) : new Server(server,  {
     cors: {
         origin: "http://localhost:3000", // Allow requests from this origin
         methods: ["GET", "POST"], // Allow these HTTP methods
@@ -17,10 +23,13 @@ const io = new Server(server,  {
     },
 });
 
-app.use(cors({
-    origin: 'http://localhost:3000', 
-    credentials: true,              
-}));
+if (process.env.NODE_ENV !== "production") {
+    console.log("cors accepted for port 3000")
+    app.use(cors({
+        origin: 'http://localhost:3000', 
+        credentials: true,              
+    }));
+}
 
 const mongoURL = process.env.MONGO_URL;
 
@@ -60,18 +69,13 @@ app.use(
 io.on("connection", (socket) => {
     console.log("A user connected");
 
-    // Emit an event to the connected client
-    socket.emit("welcome", { message: "Welcome to the real-time server!" });
-
-    // Handle incoming messages
     socket.on("message", (data) => {
         console.log("Message received:", data);
-        io.emit("broadcast", data); // Broadcast the message to all connected clients
+        io.emit("broadcast", data); // Broadcast to all clients
     });
 
-    // Handle disconnect
-    socket.on("disconnect", () => {
-        console.log("A user disconnected");
+    socket.on("disconnect", (reason) => {
+        console.log("User disconnected:", reason);
     });
 });
 

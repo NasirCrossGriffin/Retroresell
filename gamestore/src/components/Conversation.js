@@ -3,6 +3,7 @@ import { findMessageByConversation, findUser, postMessage } from "./middleware";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
+import socket from "./Socket"; // Import singleton instance
 import "./Conversation.css"
 
 
@@ -14,10 +15,9 @@ function Conversation( id ) {
     const [sender, setSender] = useState(null);
     const [recipient, setRecipient] = useState(null);
     const [text, setText] = useState("");
-    const socket = io("");
     const conversationEndRef = useRef(null);
     const textAreaRef = useRef(null); // Reference for the textare
-    const BASE_URL = process.env.REACT_APP_API_URL || "";
+    const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
 
     const scrollToBottom = () => {

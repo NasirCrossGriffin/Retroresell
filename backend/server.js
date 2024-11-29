@@ -23,7 +23,7 @@ app.use(cors({
 
 const mongoose = require('mongoose')
 
-mongoose.connect('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', {useNewUrlParser: true})
+mongoose.connect('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', {useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
@@ -45,7 +45,7 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24, // 1-day expiration
         },
         store: MongoStore.create({
-            mongoUrl: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your MongoDB URI
+            mongoUrl: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your MongoDB URI
             collectionName: 'sessions',
         }),
     })
@@ -82,6 +82,17 @@ app.use('/users', userRouter);
 app.use('/game', gameRouter);
 app.use('/gameimage', gameImageRouter);
 app.use('/message', messagesRouter);
+
+app.get('/', (req, res) => {
+    res.redirect('/retroresell');
+});
+
+app.use(express.static(path.join(__dirname, "build")));
+
+// Serve React for all non-API routes
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
 
 // Start the server
 const PORT = 3001;

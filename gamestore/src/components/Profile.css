@@ -1,136 +1,273 @@
-.Profile {
-    border-radius: 25px;
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    display: flex;
-    justify-self: center;
-    width: 80%;
-    height: 90%;
+@media (min-width : 390px) {
+    .Profile {
+        border-radius: 25px;
+        border-color: black;
+        border-width: 1px;
+        display: flex;
+        justify-self: center;
+        width: 100%;
+        height: 90%;
+    }
+
+    .ProfileCont {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 90px;
+        padding: 5%; 
+        width: 100%;  /* Allow ProfileCont to fill available width */
+        height: 100%; /* Allow ProfileCont to fill available height */
+        max-width: 100%;  /* Prevent overflow */
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 15px;
+    }
+
+    .info .info-item{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .Profilepicture {
+        width: 100px;
+        height: 100px;
+        margin-right: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .Profilepicture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .EditUserBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .EditUserBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: rgb(65, 0, 0);
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .ChngPrflBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(255, 251, 251);
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .ChngPrflBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(79, 79, 79);
+        background-color: rgb(65, 0, 0);
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .SendMessageBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .SendMessageBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: rgb(65, 0, 0);
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
 }
 
-.ProfileCont {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 90px;
-    padding: 5%; 
-    width: 100%;  /* Allow ProfileCont to fill available width */
-    height: 100%; /* Allow ProfileCont to fill available height */
-    max-width: 100%;  /* Prevent overflow */
-}
+@media (min-width : 768px) {
+    .Profile {
+        border-radius: 25px;
+        border-color: black;
+        border-width: 1px;
+        display: flex;
+        justify-self: center;
+        width: 80%;
+        height: 90%;
+    }
 
-.info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 20px;
-    font-size: 30px;
-}
+    .ProfileCont {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 90px;
+        padding: 5%; 
+        width: 100%;  /* Allow ProfileCont to fill available width */
+        height: 100%; /* Allow ProfileCont to fill available height */
+        max-width: 100%;  /* Prevent overflow */
+    }
 
-.info .info-item{
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 20px;
+        font-size: 30px;
+    }
 
-.picture {
-    width: 150px; 
-    height: 150px; 
-    overflow: hidden;  /* Prevent image from overflowing */
-    border-radius: 50%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; /* Ensure the picture is centered in the parent container */
-}
+    .info .info-item{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
 
-.picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center; /* Ensure the image stays centered */
-}
+    .Profilepicture {
+        width: 150px; 
+        height: 150px; 
+        overflow: hidden;  /* Prevent image from overflowing */
+        border-radius: 50%; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto; /* Ensure the picture is centered in the parent container */
+    }
 
-.EditUserBTN {
-    border-radius: 25px;
-    border-color: transparent;
-    color: white;
-    background-color: red;
-    padding: 15px 30px 15px 30px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 25px;
-}
+    .Profilepicture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* Ensure the image stays centered */
+    }
 
-.EditUserBTN:hover {
-    border-radius: 25px;
-    border-color: transparent;
-    color: white;
-    background-color: rgb(65, 0, 0);
-    padding: 15px 30px 15px 30px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 25px;
-}
+    .EditUserBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
-.ChngPrflBTN {
-    border-radius: 25px;
-    border-color: transparent;
-    color: rgb(255, 251, 251);
-    background-color: red;
-    padding: 15px 30px 15px 30px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 25px;
-}
+    .EditUserBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: rgb(65, 0, 0);
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
-.ChngPrflBTN:hover {
-    border-radius: 25px;
-    border-color: transparent;
-    color: rgb(79, 79, 79);
-    background-color: rgb(65, 0, 0);
-    padding: 15px 30px 15px 30px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 25px;
-}
+    .ChngPrflBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(255, 251, 251);
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
-.SendMessageBTN {
-    border-radius: 25px;
-    border-color: transparent;
-    color: white;
-    background-color: red;
-    padding: 15px 30px 15px 30px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 25px;
-}
+    .ChngPrflBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(79, 79, 79);
+        background-color: rgb(65, 0, 0);
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
 
-.SendMessageBTN:hover {
-    border-radius: 25px;
-    border-color: transparent;
-    color: white;
-    background-color: rgb(65, 0, 0);
-    padding: 15px 30px 15px 30px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 25px;
+    .SendMessageBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .SendMessageBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: rgb(65, 0, 0);
+        padding: 15px 30px 15px 30px;
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        font-size: 25px;
+    }
 }

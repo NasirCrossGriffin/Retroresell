@@ -114,7 +114,7 @@ function EditUser({ userId, editUserVisibilityProp, setEditUserVisibilityProp })
                     </>
                     <div className="EditUserBTNS">
                         <button onClick={saveUserHandler}>Save Changes</button>
-                        <button onClick={alterDeleteVisibility}>delete</button>
+                        <button onClick={alterDeleteVisibility}>Delete</button>
                         <button onClick={alterPasswordVisibility}>Change Password</button>
                     </div>
                     <>

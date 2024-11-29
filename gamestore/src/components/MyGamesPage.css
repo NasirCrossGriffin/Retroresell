@@ -1,15 +1,9 @@
 /* Style for the grid container */
-.MyGames {
-    width : 100%;
-    height: 100%;
-    overflow-y: auto;
-}
-
 .gameView {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
-    gap: 16px; /* Space between grid items */
-    padding: 16px; /* Padding around the grid */
+    row-gap: 16px; /* Space between grid items */
+    padding: 3vw; /* Padding around the grid */
     justify-content: center; /* Center the grid horizontally if it's smaller than the container */
     align-items: start; /* Align items to the top of the row */
 }
@@ -21,11 +15,13 @@
     justify-content: flex-start; /* Align items at the top */
     align-items: center; /* Center items horizontally */
     background-color: #f9f9f9; /* Light background for the item */
-    padding: 16px; /* Padding inside each grid cell */
+    padding: 3vw; /* Padding inside each grid cell */
     border: 1px solid #ddd; /* Light border */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Optional shadow */
     text-align: center; /* Center text inside the item */
+    width: 20vw;
+    height : auto;
 }
 
 /* Style for images in the grid */
@@ -39,43 +35,59 @@
 
 /* Style for text inside the grid item */
 .singleGame p {
-    margin: 8px 0; /* Space between text elements */
-    font-size: 16px; /* Font size for readability */
+    margin: 0.1vw 0; /* Space between text elements */
+    font-size: 2vw; /* Font size for readability */
     color: #333; /* Text color */
 }
 
-.NewGameBTN {
-    border-radius: 25px;
-    border-color: transparent;
-    color: white;
-    background-color: red;
-    padding: 15px 30px 15px 30px;
-    font-size: 15px;
-    margin-top: 1%;
-    font-weight: bold;
-}
+@media (min-width : 390px) {
+    .NewGameBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 5px 20px 5px 20px;
+        font-size: 10px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
+    }
 
-.NewGameBTN:hover {
-    border-radius: 25px;
-    border-color: transparent;
-    color: rgb(119, 119, 119);
-    background-color: rgb(65, 0, 0);
-    padding: 15px 30px 15px 30px;
-    font-size: 15px;
-    margin-top: 1%;
-    font-weight: bold;
-}
-
-
-/* Responsive Design for smaller screens */
-@media (max-width: 768px) {
-    .gameView {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    .NewGameBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(104, 104, 104);
+        background-color: rgb(64, 1, 1);
+        padding: 5px 20px 5px 20px;
+        font-size: 10px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
     }
 }
 
-@media (max-width: 480px) {
-    .gameView {
-        grid-template-columns: 1fr; /* 1 column on very small screens */
+@media (min-width : 768px) {
+    .NewGameBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        font-size: 15px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
+    }
+
+    .NewGameBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(104, 104, 104);
+        background-color: rgb(64, 1, 1);
+        padding: 15px 30px 15px 30px;
+        font-size: 15px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
     }
 }

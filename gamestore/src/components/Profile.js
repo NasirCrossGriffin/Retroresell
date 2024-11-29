@@ -88,7 +88,7 @@ function Profile({ id }) {
                             <input type="file" accept="image/*" className="setImage" onChange={setImage} />
                             <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
                         </div>
-                        <div className="picture">
+                        <div className="Profilepicture">
                             <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
                         </div>
                     </div>
@@ -102,7 +102,7 @@ function Profile({ id }) {
                         <p className="info-item">{email}</p>
                         <button className="SendMessageBTN" onClick={() => navigateToConversation(profileid)}>Send Message</button>
                     </div>
-                    <div className="picture">
+                    <div className="Profilepicture">
                         <img src={`http://localhost:3001${profilePic}`} alt="profile picture" />
                     </div>
                 </div>

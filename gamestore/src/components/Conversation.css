@@ -1,92 +1,193 @@
-.FullConversation{
-    display: flex;
-    width : 100%;
-    height : 100%;
-    padding-bottom: 100px; 
-    flex-direction: column;
+@media (min-width: 390px) {
+    .FullConversation{
+        display: flex;
+        width : 100%;
+        height : 100%;
+        padding-bottom: 100px; 
+        flex-direction: column;
+    }
+
+    .messageSent, .messageReceived {
+        display: flex;  
+        align-items: flex-start; /* Align items at the start vertically */
+        width: 100%; /* Take full width for alignment purposes */
+        margin-top: 10px; /* Space between messages */
+    }
+
+    .messageSent {
+        justify-content: flex-end; /* Align sent messages to the right */
+    }
+
+    .messageReceived {
+        justify-content: flex-start; /* Align received messages to the left */
+    }
+
+    .messageReceived .Bubble {
+        border-color: black;
+        border-radius: 25px;
+        border-width: 1px;
+        border-style: solid;
+        background-color: lightgrey;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+        text-align: center;
+        padding: 5px 5px 5px 5px;
+        max-width: 30%;
+        height: fit-content;
+        font-size: 12px;
+    }
+
+    .messageSent .Bubble {
+        border-color: black;
+        border-radius: 25px;
+        border-width: 1px;
+        border-style: solid;
+        background-color: rgb(255, 0, 0);
+        color: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+        text-align: center;
+        padding: 5px 5px 5px 5px;
+        max-width: 30%;
+        height: fit-content;
+        font-size: 12px;
+    }
+
+    .MSGProfilePicture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* Ensure the image stays centered */
+    }
+
+    .MSGProfilePicture {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-left : 10px;
+        margin-right : 10px
+    }
+
+    .NewMessage {
+        display: flex;
+        flex-direction: row;
+        float : right;
+        margin-right: 0;
+        width: 80%;
+    }
+
+    .NewMessageContainer {
+        position : fixed;
+        bottom : 0;
+        width : 100%;
+    }
+
+    .NewMessage textarea {
+        resize: none;
+        overflow: hidden;
+        min-height: 50px;
+        width: 80%;
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 12px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
 }
 
-.messageSent, .messageReceived {
-    display: flex;  
-    align-items: flex-start; /* Align items at the start vertically */
-    width: 100%; /* Take full width for alignment purposes */
-    margin-top: 10px; /* Space between messages */
-}
+@media (min-width: 768px) {
+    .FullConversation{
+        display: flex;
+        width : 100%;
+        height : 100%;
+        padding-bottom: 100px; 
+        flex-direction: column;
+    }
 
-.messageSent {
-    justify-content: flex-end; /* Align sent messages to the right */
-}
+    .messageSent, .messageReceived {
+        display: flex;  
+        align-items: flex-start; /* Align items at the start vertically */
+        width: 100%; /* Take full width for alignment purposes */
+        margin-top: 10px; /* Space between messages */
+    }
 
-.messageReceived {
-    justify-content: flex-start; /* Align received messages to the left */
-}
+    .messageSent {
+        justify-content: flex-end; /* Align sent messages to the right */
+    }
 
-.messageReceived .Bubble {
-    border-color: black;
-    border-radius: 25px;
-    border-width: 1px;
-    border-style: solid;
-    background-color: lightgrey;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
-    text-align: center;
-    padding: 5px 5px 5px 5px;
-    max-width: 30%;
-    height: fit-content;
-}
+    .messageReceived {
+        justify-content: flex-start; /* Align received messages to the left */
+    }
 
-.messageSent .Bubble {
-    border-color: black;
-    border-radius: 25px;
-    border-width: 1px;
-    border-style: solid;
-    background-color: rgb(255, 0, 0);
-    color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
-    text-align: center;
-    padding: 5px 5px 5px 5px;
-    max-width: 30%;
-    height: fit-content;
-}
+    .messageReceived .Bubble {
+        border-color: black;
+        border-radius: 25px;
+        border-width: 1px;
+        border-style: solid;
+        background-color: lightgrey;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+        text-align: center;
+        padding: 5px 5px 5px 5px;
+        max-width: 30%;
+        height: fit-content;
+        font-size: 20px;
+    }
 
-.MSGProfilePicture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center; /* Ensure the image stays centered */
-}
+    .messageSent .Bubble {
+        border-color: black;
+        border-radius: 25px;
+        border-width: 1px;
+        border-style: solid;
+        background-color: rgb(255, 0, 0);
+        color: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+        text-align: center;
+        padding: 5px 5px 5px 5px;
+        max-width: 30%;
+        height: fit-content;
+        font-size: 20px;
+    }
 
-.MSGProfilePicture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-left : 10px;
-    margin-right : 10px
-}
+    .MSGProfilePicture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* Ensure the image stays centered */
+    }
 
-.NewMessage {
-    display: flex;
-    flex-direction: row;
-    float : right;
-    margin-right: 0;
-    width: 80%;
-}
+    .MSGProfilePicture {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-left : 10px;
+        margin-right : 10px
+    }
 
-.NewMessageContainer {
-    position : fixed;
-    bottom : 0;
-    width : 100%;
-}
+    .NewMessage {
+        display: flex;
+        flex-direction: row;
+        float : right;
+        margin-right: 0;
+        width: 80%;
+    }
 
-.NewMessage textarea {
-    resize: none;
-    overflow: hidden;
-    min-height: 50px;
-    width: 80%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    box-sizing: border-box;
+    .NewMessageContainer {
+        position : fixed;
+        bottom : 0;
+        width : 100%;
+    }
+
+    .NewMessage textarea {
+        resize: none;
+        overflow: hidden;
+        min-height: 50px;
+        width: 80%;
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
 }

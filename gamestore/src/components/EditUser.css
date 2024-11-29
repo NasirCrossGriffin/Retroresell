@@ -1,3 +1,4 @@
+/* Common Styles for the Modal */
 .EditUserBackground {
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.5);
@@ -8,16 +9,6 @@
     left: 0;
 }
 
-.UserForm {
-    width: 100%;
-    height: 20%;
-}
-
-.ChangePasswords {
-    width: 100%;
-    height: 20%;
-}
-
 .EditUser {
     z-index: 2000;
     display: flex;
@@ -26,70 +17,115 @@
     align-items: center;
     color: black;
     background-color: white;
-    height: 75%;
-    width: 75%;
-    text-align: center;
-    font-size: 25px;
+    height: 75%; /* Same size for all screens */
+    width: 75%;  /* Same size for all screens */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 10px; /* Optional: Rounded corners for modal */
+    border-radius: 10px; /* Rounded corners for modal */
     overflow-y: auto;
+    text-align: center;
+    padding: 20px; /* Padding for content spacing */
 }
 
+/* Form Container */
+.UserForm,
+.ChangePasswords {
+    width: 100%; /* Full width within modal */
+    margin-bottom: 20px; /* Space between sections */
+    display: flex;
+    flex-direction: column; /* Default column layout */
+    gap: 15px; /* Space between elements */
+}
+
+/* Labels and Inputs */
+.UserForm label, .ChangePasswords label {
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.UserForm input[type="text"],
+.ChangePasswords input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 16px;
+}
+
+/* Buttons */
 .DelAccBTNS,
 .EditUserBTNS {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between buttons */
     justify-content: center;
+    width: 100%;
 }
 
 .DelAccBTNS button,
 .EditUserBTNS button {
-    border-radius: 25px;
-    border-color: transparent;
+    border-radius: 20px;
+    border: none;
     color: white;
     background-color: red;
-    padding: 25px 30px 25px 30px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
+    padding: 15px 30px;
+    font-size: 16px;
     font-weight: bold;
-    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .DelAccBTNS button:hover,
 .EditUserBTNS button:hover {
-    border-radius: 25px;
-    border-color: transparent;
-    color: white;
     background-color: rgb(65, 0, 0);
-    padding: 25px 30px 25px 30px;
-    margin-top: 25px;
-    font-weight: bold;
-    margin-left: 25px;
-    margin-right: 25px;
-    font-size: 25px;
 }
 
-.UserForm input[type="text"] {
-    width : 80%;
-    height: 40%;
-    border-radius: 10px;
-    border-color: black;
-    border-width: 1px;
-    font-size: 25px;
+/* Responsive Styles */
+
+/* Small Screen: Column layout for buttons, labels above inputs */
+@media (max-width: 767px) {
+    .DelAccBTNS,
+    .EditUserBTNS {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
+
+    .UserForm,
+    .ChangePasswords {
+        align-items: center;
+    }
+
+    .UserForm label, .ChangePasswords label {
+        text-align: center; /* Center align labels */
+    }
 }
 
-.ChangePasswords input[type="password"] {
-    width : 80%;
-    height: 40%;
-    border-radius: 10px;
-    border-color: black;
-    border-width: 1px;
-    font-size: 25px;
-    margin-bottom: 25px;
+/* Large Screen: Row layout for buttons, labels side by side with inputs */
+@media (min-width: 768px) {
+    .DelAccBTNS,
+    .EditUserBTNS {
+        flex-direction: row; /* Buttons side by side */
+    }
 
+    .UserForm,
+    .ChangePasswords {
+        flex-direction: row; /* Side-by-side layout for labels and inputs */
+        align-items: center;
+        gap: 10px; /* Space between label and input */
+    }
+
+    .UserForm label, .ChangePasswords label {
+        width: 30%; /* Allocate space for labels */
+        text-align: right;
+        margin-right: 10px; /* Space between label and input */
+    }
+
+    .UserForm input[type="text"],
+    .ChangePasswords input[type="password"] {
+        width: 70%; /* Allocate space for inputs */
+    }
 }

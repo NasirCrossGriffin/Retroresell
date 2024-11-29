@@ -8,18 +8,34 @@
     left: 0;
 }
 
+@media (min-width: 390px) {
+  .modal {
+      z-index: 2000;
+      color: black;
+      background-color: white;
+      height: 100%; /* Full vertical height */
+      width: 45%; /* 25% horizontal width */
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0; /* Align to the far left */
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+  }
+}
 
-.modal {
-    z-index: 2000;
-    color: black;
-    background-color: white;
-    height: 100%; /* Full vertical height */
-    width: 25%; /* 25% horizontal width */
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0; /* Align to the far left */
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+@media (min-width: 768px) {
+  .modal {
+      z-index: 2000;
+      color: black;
+      background-color: white;
+      height: 100%; /* Full vertical height */
+      width: 25%; /* 25% horizontal width */
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0; /* Align to the far left */
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+  }
 }
 
 

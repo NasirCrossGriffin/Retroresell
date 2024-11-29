@@ -98,14 +98,14 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
         }
     };
 
+    if (!visibility) {
+        return null; // Do not render if not visible
+    }
+
     function autoResizeTextarea(event) {
         const textarea = event.target;
         textarea.style.height = 'auto'; // Reset height to auto to recalculate
         textarea.style.height = `${textarea.scrollHeight}px`; // Set height to scrollHeight
-    }
-
-    if (!visibility) {
-        return null; // Do not render if not visible
     }
 
     return ReactDOM.createPortal(

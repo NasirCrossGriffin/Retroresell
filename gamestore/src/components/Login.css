@@ -1,129 +1,262 @@
-.WelcomeDiv {
-    width : 100%;
-    height: fit-content;
-    display : flex;
-    flex-direction: row;
-    justify-content: center;
+@media (min-width : 390px) {
+    .WelcomeDiv {
+        width : 100%;
+        height: fit-content;
+        display : flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .WelcomeDiv p {
+        font-size: 20px;
+        font-weight: bold;
+        color: red;
+
+    }
+
+    .LoginPage {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .Login {
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+        border-radius: 25px;
+        height : fit-content;
+        width : fit-content;
+        display : flex;
+        width : 50%;
+        height : 40%;
+        padding: 25px 25px 25px 25px;
+    }
+
+    .LoginCont {
+        width : 100%;
+        height : 100%;
+    }
+
+    .LoginCont form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width : 100%;
+        height : 100%
+    }
+
+    .LoginCont h1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .LoginCont label {
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .LoginCont input[type="text"] {
+        margin-bottom : 15px;
+        border-radius: 5px;
+        font-size: 12px;
+        width : 100%;
+        height : 25px;
+    }
+
+    .LoginCont input[type="password"] {
+        margin-bottom : 15px;
+        border-radius: 5px;
+        font-size: 12px;
+        width : 100%;
+        height : 25px;
+    }
+
+    .LoginCont input[type="submit"]:hover {
+        border-style: none;
+        color : rgb(67, 67, 67);
+        background-color: rgb(65, 0, 0);
+        border-width: 1px;
+        border-radius: 10px;
+        margin : 5px 0 5px 0;
+        padding : 15px 20px 15px 20px
+    }
+
+    .LoginCont input[type="submit"] {
+        border-style: none;
+        color : white;
+        background-color: rgb(255, 0, 0);
+        border-width: 1px;
+        border-radius: 10px;
+        margin : 5px 0 5px 0;
+        padding : 15px 20px 15px 20px;
+        width : 50%;
+    }
+
+    form p {
+        color: red;
+    }
+
+    .SignupPrompt {
+        display: grid;
+        text-align: center;
+        justify-self: center;
+        border: none;
+        font-size: 20px;
+    }
+
+    .gamePreviews {
+        width: 200px;
+        height: 200px;
+        display : flex;
+        justify-self: flex-end;
+        overflow: hidden;
+    }
+
+    .imagepreview {
+        object-position: center;
+        object-fit: contain;
+        width: 100%; 
+        height: 100%; 
+        margin: 0; 
+    }
 }
 
-.WelcomeDiv p {
-    font-size: 40px;
-    font-weight: bold;
-    color: red;
+@media (min-width : 768px) {
+    .WelcomeDiv {
+        width : 100%;
+        height: fit-content;
+        display : flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 
-}
+    .WelcomeDiv p {
+        font-size: 40px;
+        font-weight: bold;
+        color: red;
 
-.LoginPage {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-}
+    }
 
-.Login {
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 25px;
-    height : fit-content;
-    width : fit-content;
-    display : flex;
-    width : 40%;
-    height : 90%;
-    padding: 25px 25px 25px 25px;
-}
+    .LoginPage {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+    }
 
-.LoginCont {
-    width : 100%;
-    height : 100%;
-}
+    .Login {
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+        border-radius: 25px;
+        height : fit-content;
+        width : fit-content;
+        display : flex;
+        width : 40%;
+        height : 90%;
+        padding: 25px 25px 25px 25px;
+    }
 
-.LoginCont form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width : 100%;
-    height : 100%
-}
+    .LoginCont {
+        width : 100%;
+        height : 100%;
+    }
 
-.LoginCont h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    .LoginCont form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width : 100%;
+        height : 100%
+    }
 
-.LoginCont label {
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 50px;
-}
+    .LoginCont h1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-.LoginCont input[type="text"] {
-    margin-bottom : 50px;
-    border-radius: 5px;
-    font-size: 25px;
-    width : 100%;
-    height : 50px;
-}
+    .LoginCont label {
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 50px;
+    }
 
-.LoginCont input[type="password"] {
-    margin-bottom : 50px;
-    border-radius: 5px;
-    font-size: 25px;
-    width : 100%;
-    height : 50px;
-}
+    .LoginCont input[type="text"] {
+        margin-bottom : 50px;
+        border-radius: 5px;
+        font-size: 25px;
+        width : 100%;
+        height : 50px;
+    }
 
-.LoginCont input[type="submit"]:hover {
-    border-style: none;
-    color : rgb(67, 67, 67);
-    background-color: rgb(65, 0, 0);
-    border-width: 1px;
-    border-radius: 10px;
-    margin : 5px 0 5px 0;
-    padding : 15px 20px 15px 20px
-}
+    .LoginCont input[type="password"] {
+        margin-bottom : 50px;
+        border-radius: 5px;
+        font-size: 25px;
+        width : 100%;
+        height : 50px;
+    }
 
-.LoginCont input[type="submit"] {
-    border-style: none;
-    color : white;
-    background-color: rgb(255, 0, 0);
-    border-width: 1px;
-    border-radius: 10px;
-    margin : 5px 0 5px 0;
-    padding : 15px 20px 15px 20px;
-    width : 20%;
-}
+    .LoginCont input[type="submit"]:hover {
+        border-style: none;
+        color : rgb(67, 67, 67);
+        background-color: rgb(65, 0, 0);
+        border-width: 1px;
+        border-radius: 10px;
+        margin : 5px 0 5px 0;
+        padding : 15px 20px 15px 20px
+    }
 
-form p {
-    color: red;
-}
+    .LoginCont input[type="submit"] {
+        border-style: none;
+        color : white;
+        background-color: rgb(255, 0, 0);
+        border-width: 1px;
+        border-radius: 10px;
+        margin : 5px 0 5px 0;
+        padding : 15px 20px 15px 20px;
+        width : 20%;
+    }
 
-.SignupPrompt {
-    display: grid;
-    text-align: center;
-    justify-self: center;
-    border: none;
-    font-size: 20px;
-}
+    form p {
+        color: red;
+    }
 
-.gamePreviews {
-    width: 500px;
-    height: 500px;
-    display : flex;
-    justify-self: flex-end;
-    overflow: hidden;
-}
+    .SignupPrompt {
+        display: grid;
+        text-align: center;
+        justify-self: center;
+        border: none;
+        font-size: 20px;
+    }
 
-.imagepreview {
-    object-position: center;
-    object-fit: contain;
-    width: 100%; 
-    height: 100%; 
-    margin: 0; 
+    .gamePreviews {
+        width: 500px;
+        height: 500px;
+        display : flex;
+        justify-self: flex-end;
+        overflow: hidden;
+    }
+
+    .imagepreview {
+        object-position: center;
+        object-fit: contain;
+        width: 100%; 
+        height: 100%; 
+        margin: 0; 
+    }
 }
 
 .imagepreview-enter {

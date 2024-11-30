@@ -34,6 +34,7 @@ function App() {
           }
           setLoading(false); // Mark session check as complete
       };
+      console.log(process.env.NODE_ENV === "development")
       verifySession();
   }, []);
 

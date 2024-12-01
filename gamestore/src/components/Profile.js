@@ -15,6 +15,7 @@ function Profile({ id }) {
     const [profile, setProfile] = useState("")
     const [editUserVisibility, setEditUserVisibility] = useState(false)
     const [visibility, setVisibility] = useState(false)
+    const [croppedImage, setCroppedImage] = useState(false);
     const { profileid } = useParams();
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
@@ -54,15 +55,20 @@ function Profile({ id }) {
 
     const setImage = async (event) => {
         setFile(event.target.files[0]);
+        setVisibility(true);
     };
 
     const changeProfilePic = async () => {
-        if (file) {
+        if (file && !croppedImage) {
             const newImage = await uploadProfileImage(file);
             await changeProfileImage(id, newImage);
             const user = await findUser(id);
             setProfilePic(user.image)
             window.location.reload();
+        }
+
+        if (croppedImage) {
+
         }
     }
 
@@ -96,7 +102,12 @@ function Profile({ id }) {
                             <div className="Profilepicture">
                                 <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
                             </div>
-                            <CropImage image={URL.createObjectURL(file)} visibility={visibility}/>
+                            {file ? <>
+                                    <CropImage file={file} visibility={visibility} setVisibility={setVisibility} setFile={setFile}/>
+                                    <div className="previewContainer">
+                                        <img className="profilePicturePreview" src={URL.createObjectURL(file)} />
+                                    </div>
+                                    </> : <></>}
                         </div>
                     </div>
                 </div> 

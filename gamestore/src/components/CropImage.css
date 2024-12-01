@@ -1,0 +1,45 @@
+.imageCropper {
+    width: 80%;
+    height: 80%;
+    max-width: auto;
+    max-height: 500;
+    align-items: center;
+    align-self: center;
+}
+
+
+.CropContainer button {
+    margin-top: 10%;
+    align-self: center;
+}
+
+.cropImageBackground {
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.CropContainer {
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    color: black;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;  /* Same size for all screens */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px; /* Rounded corners for modal */
+    overflow-y: auto;
+    text-align: center;
+}

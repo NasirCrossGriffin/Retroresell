@@ -3,6 +3,7 @@ import "./Profile.css";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import EditUser from "./EditUser"
+import CropImage from "./CropImage"
 import { findUser, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage } from "./middleware";
 
 function Profile({ id }) {
@@ -13,6 +14,7 @@ function Profile({ id }) {
     const [viewer, setViewer] = useState("")
     const [profile, setProfile] = useState("")
     const [editUserVisibility, setEditUserVisibility] = useState(false)
+    const [visibility, setVisibility] = useState(false)
     const { profileid } = useParams();
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
@@ -90,8 +92,11 @@ function Profile({ id }) {
                             <input type="file" accept="image/*" className="setImage" onChange={setImage} />
                             <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
                         </div>
-                        <div className="Profilepicture">
-                            <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
+                        <div className="profilePictureContainer">
+                            <div className="Profilepicture">
+                                <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
+                            </div>
+                            <CropImage image={URL.createObjectURL(file)} visibility={visibility}/>
                         </div>
                     </div>
                 </div> 

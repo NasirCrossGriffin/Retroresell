@@ -81,7 +81,7 @@ function Login({ setUserIDProp, setLogged_InProp }) {
       }, [appear]);
 
     const incrementIndex = () => {
-        if (index < gamePreviews.length) {
+        if (index < gamePreviews.length - 1) {
             setIndex((prev) => prev + 1)
         } else {
             setIndex(0)
@@ -112,7 +112,7 @@ function Login({ setUserIDProp, setLogged_InProp }) {
                 timeout={300}
                 classNames="imagepreview"
                 unmountOnExit
-                onEnter={() => incrementIndex()}
+                onExited={() => incrementIndex()}
             >
                 { games.length > 0 ? 
                 <img 

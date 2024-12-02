@@ -72,10 +72,18 @@ function CropImage({ file, setVisibility, visibility, setFile }) {
     setVisibility(false);
   };
 
+  const hideCropper = (e) => { 
+    if (visibility === true) {
+        if (e.target.classList.contains('cropImageBackground')) {
+            setVisibility(false);
+        }
+    }
+}
+
   return ReactDOM.createPortal(
     visibility && image ? (
       <>
-        <div className='cropImageBackground'></div>
+        <div className='cropImageBackground' onClick={(e) => hideCropper(e)}></div>
         <div className="CropContainer">
           <ReactCrop
             className='imageCropper'
@@ -91,7 +99,9 @@ function CropImage({ file, setVisibility, visibility, setFile }) {
               alt="Crop"
             />
           </ReactCrop>
-          <button onClick={buttonHandler}>Done</button>
+          <div className="finishCrop">
+            <button onClick={buttonHandler}>Done</button>
+          </div>
         </div>
       </>
     ) : null, // Render null instead of <></>

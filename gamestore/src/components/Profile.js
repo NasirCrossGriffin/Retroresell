@@ -95,7 +95,7 @@ function Profile({ id }) {
                             <p className="info-item">{email}</p>
                             <button className="EditUserBTN" onClick={editUserHandler}>Edit User</button>
                             <p className="info-item">Change Profile Picture</p>
-                            <input type="file" accept="image/*" className="setImage" onChange={setImage} />
+                            <input type="file" accept="image/*" className="setImage" onInput={setImage} />
                             <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
                         </div>
                         <div className="profilePictureContainer">

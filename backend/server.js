@@ -7,6 +7,7 @@ const server = http.createServer(app);
 const cors = require('cors'); // Import cors
 const path = require('path');
 const { Server } = require("socket.io");
+const AWS = require('aws-sdk');
 const watchMessages = require("./WatchMessages");
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
@@ -14,6 +15,10 @@ if (process.env.NODE_ENV !== "production") {
 } else {
     console.log("Running in production mode");
 }
+console.log(process.env.AWS_SECRET)
+console.log(process.env.AWS_ACCESS)
+
+
 
 const io = process.env.PORT ? new Server(server) : new Server(server,  {
     cors: {
@@ -43,6 +48,16 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
+
+// Configure AWS SDK
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS,       // Correct variable for access key
+    secretAccessKey: process.env.AWS_SECRET,  // Correct variable for secret key
+    region: 'us-east-2',                      // Your bucket region
+});
+  
+  // Create S3 instance
+  const s3 = new AWS.S3();
 
 app.use('/profilePics', express.static(path.join(__dirname, '/profilePics')));
 
@@ -93,9 +108,19 @@ app.use('/game', gameRouter);
 app.use('/gameimage', gameImageRouter);
 app.use('/message', messagesRouter);
 
+
 app.get('/', (req, res) => {
     res.redirect('/retroresell');
 });
+
+const uploadRoute = require('./routes/upload'); // Adjust the path as needed
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.use('/aws', uploadRoute);
 
 app.use(express.static(path.join(__dirname, "build")));
 
@@ -109,5 +134,6 @@ const PORT = process.env.PORT || 3001; // Use $PORT in production, 3001 for loca
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import EditUser from "./EditUser"
 import CropImage from "./CropImage"
-import { findUser, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage } from "./middleware";
+import { findUser, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage, uploadToAWS } from "./middleware";
 
 function Profile({ id }) {
     const [email, setEmail] = useState("");
@@ -60,11 +60,12 @@ function Profile({ id }) {
 
     const changeProfilePic = async () => {
         if (file && !croppedImage) {
-            const newImage = await uploadProfileImage(file);
+            const newImage = await uploadToAWS(file);
+            console.log(newImage);
             await changeProfileImage(id, newImage);
             const user = await findUser(id);
             setProfilePic(user.image)
-            window.location.reload();
+            //window.location.reload();
         }
 
         if (croppedImage) {
@@ -100,7 +101,7 @@ function Profile({ id }) {
                         </div>
                         <div className="profilePictureContainer">
                             <div className="Profilepicture">
-                                <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
+                                <img src={`${profilePic}`} alt="profile picture" />
                             </div>
                             {file ? <>
                                     <CropImage file={file} visibility={visibility} setVisibility={setVisibility} setFile={setFile}/>
@@ -121,7 +122,7 @@ function Profile({ id }) {
                         <button className="SendMessageBTN" onClick={() => navigateToConversation(profileid)}>Send Message</button>
                     </div>
                     <div className="Profilepicture">
-                        <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
+                        <img src={`${profilePic}`} alt="profile picture" />
                     </div>
                 </div>
             </div>

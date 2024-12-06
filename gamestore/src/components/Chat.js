@@ -7,7 +7,7 @@ import socket from "./Socket"; // Import singleton instance
 import "./Chat.css"
 
 
-function Chat( id ) {
+function Chat( id, logged_in_prop ) {
     const [messagesSent, setMessagesSent] = useState([]);
     const [messagesReceived, setMessagesReceived] = useState([]);
     const [activeUser, setActiveUser] = useState(null);
@@ -18,6 +18,11 @@ function Chat( id ) {
 
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!logged_in_prop)
+            navigate(`/Login`);
+    }, [logged_in_prop]); 
 
     //Logic for gettin logged in user
     useEffect(() => {
@@ -164,7 +169,7 @@ useEffect(() => {
 
     return (
         <>
-            {(sortedChats.length > 0) ? (
+            {(id && sortedChats.length > 0) ? (
                 <div className="allChats"> 
                     {sortedChats.map((chat, index) => (
                         (chat.sender === activeUser._id) ? (
@@ -174,7 +179,7 @@ useEffect(() => {
                                         <p>{chat.message}</p>
                                     </div>
                                     <div className="MSGProfilePicture">
-                                        <img src={`${BASE_URL}${profilePictures.get(chat.recipient) || "profile pic"}`} alt="profile picture" />
+                                        <img src={`${profilePictures.get(chat.recipient) || "profile pic"}`} alt="profile picture" />
                                     </div>
                                 </div>
                             </>
@@ -185,7 +190,7 @@ useEffect(() => {
                                         <p>{chat.message}</p>
                                     </div>
                                     <div className="MSGProfilePicture">
-                                        <img src={`${BASE_URL}${profilePictures.get(chat.sender)}`} alt="profile picture" />
+                                        <img src={`${profilePictures.get(chat.sender)}`} alt="profile picture" />
                                     </div>
                                 </div>
                             </>

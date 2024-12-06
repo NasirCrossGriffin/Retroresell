@@ -259,6 +259,20 @@
     }
 }
 
+.guest {
+    display: flex;
+    justify-self: center;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.guest:hover {
+    cursor: pointer;
+}
+
+
 .imagepreview-enter {
     transform: translateX(100%);
   }

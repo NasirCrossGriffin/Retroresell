@@ -7,7 +7,7 @@ import socket from "./Socket"; // Import singleton instance
 import "./Conversation.css"
 
 
-function Conversation( id ) {
+function Conversation( id, logged_in_prop ) {
     const { recipientid } = useParams();
     const [messagesSent, setMessagesSent] = useState([]);
     const [messagesReceived, setMessagesReceived] = useState([]);
@@ -19,6 +19,13 @@ function Conversation( id ) {
     const textAreaRef = useRef(null); // Reference for the textare
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!logged_in_prop)
+            console.log("user logged in: ", logged_in_prop)
+            navigate(`/Login`);
+    }, [logged_in_prop]); 
 
     const scrollToBottom = () => {
         conversationEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -175,7 +182,7 @@ function Conversation( id ) {
     
     return (
         <>
-            {(conversation && conversation.length !== 0) ? 
+            {(id && conversation && conversation.length !== 0) ? 
             
             <div className="FullConversation"> 
                 {

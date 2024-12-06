@@ -120,12 +120,13 @@ function Login({ setUserIDProp, setLogged_InProp }) {
                     ref={nodeRef}
                     variant="primary"
                     dismissible 
-                    src={`${BASE_URL}${gamePreviews[index]}`} 
+                    src={`${gamePreviews[index]}`} 
                 /> : <p>loading</p>}
             </CSSTransition>
         </div>
     </div>
     <Link to="/Signup" className="SignupPrompt">Need an account? Sign up now!</Link>
+    <button className="guest" onClick={() => navigate("/Home")}>Continue as a guest</button>
     </>
   );
 }

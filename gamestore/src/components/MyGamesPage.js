@@ -7,13 +7,18 @@ import NewGame from './NewGame';
 import { useNavigate} from "react-router-dom"
 
 
-function MyGamesPage( id ) {
+function MyGamesPage( id, logged_in_prop ) {
     const [games, setGames] = useState([]);
     const [newGameVisibility, setNewGameVisibility] = useState(false)
     const [gameImage, setGameImage] = useState("");
     const [gamePreviews, setGamePreviews] = useState([]);
     const navigate = useNavigate();
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
+
+    useEffect(() => {
+        if (!logged_in_prop)
+            navigate(`/Login`);
+    }, [logged_in_prop]); 
 
     useEffect(() => {
         const fetchGames = async () => {
@@ -75,7 +80,7 @@ function MyGamesPage( id ) {
                 <div className="gameView">
                     {games.map((game, index) => (
                         <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
-                            <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${BASE_URL}${gamePreviews[index] || "/placeholder.png"}`}/>
+                            <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${gamePreviews[index] || "/placeholder.png"}`}/>
                             <p>{game.name}</p>
                             <p>${game.price}</p>
                             <p>uploaded on {game.date}</p>

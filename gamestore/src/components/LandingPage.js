@@ -76,7 +76,7 @@ function LandingPage( ) {
             <div className="gameView">
             {!(search.length === 0) ? search.map((game, index) => (
                 <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
-                    <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${BASE_URL}${gamePreviews[index] || "/placeholder.png"}`}/>
+                    <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${gamePreviews[index] || "/placeholder.png"}`}/>
                     <p>{game.name}</p>
                     <p>${game.price}</p>
                     <p>uploaded on {game.date}</p>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from 'react-dom';
 import "./NewGame.css"
-import { postGame, uploadGameImage, postGameImage } from "./middleware";
+import { postGame, uploadGameImage, postGameImage, uploadToAWS } from "./middleware";
 
 function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
     const [name, setName] = useState("");
@@ -20,7 +20,7 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
         if (newGame) {
             for (const image of images) {
                 console.log(image);
-                const uploadedImage = await uploadGameImage(image);
+                const uploadedImage = await uploadToAWS(image);
                 console.log(newGame._id);
                 const response = await postGameImage(uploadedImage, newGame._id);
                 window.location.reload();

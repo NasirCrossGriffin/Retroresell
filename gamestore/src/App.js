@@ -17,6 +17,7 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false); // Tracks if the user is logged in
     const [optionsVisibility, setOptionsVisibility] = useState(false);
     const [loading, setLoading] = useState(true); // Tracks if session check is ongoing
+    const [guest, setGuest] = useState(false);
 
     useEffect(() => {
       const verifySession = async () => {
@@ -59,24 +60,19 @@ function App() {
                     setLogged_InProp={setLoggedIn}
                 />
                 <Routes>
-                    {loggedIn ? (
                         <>
                             <Route path="/" element={<Navigate to="/Home" />} />
                             <Route path="/Profile/:profileid" element={<Profile id={userID} />} />
                             <Route path="/MyGames" element={<MyGamesPage id={userID} />} />
                             <Route path="/GameView/:id" element={<GamePage userId={userID}/>} />
-                            <Route path="/Conversation/:recipientid" element={<Conversation id={userID} />} />
-                            <Route path="/Chat" element={<Chat id={userID} />} />
+                            <Route path="/Conversation/:recipientid" element={<Conversation id={userID} logged_in_prop={loggedIn} />} />
+                            <Route path="/Chat" element={<Chat id={userID} logged_in_prop={loggedIn}/>} />
                             <Route path="/Home" element={<LandingPage />} />
-                        </>
-                    ) : (
-                        <>
                             <Route path="/" element={<Navigate to="/Login" />} />
                             <Route path="/Login" element={<Login setUserIDProp={setUserID} setLogged_InProp={setLoggedIn} />}/>
                             <Route path="/Signup" element={<Signup setUserIDProp={setUserID} setLogged_InProp={setLoggedIn} />}
                             />
                         </>
-                    )}
                 </Routes>
             </BrowserRouter>
         </>

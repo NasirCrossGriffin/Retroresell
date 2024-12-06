@@ -628,9 +628,38 @@ const deleteMessage = async (messageId) => {
     }
 }
 
+//AWS
+const uploadToAWS = async (file) => {
+    try {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch(`${BASE_URL}/aws/upload`,{
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok)
+            throw new Error('Failed to upload image');
+
+        console.log("image uploaded successfully")
+
+        console.log(response)
+        const responsejson = await response.json();
+        console.log(responsejson)
+        const url = responsejson.fileUrl
+        console.log(url)
+
+
+        return url;
+    } catch (err) {
+        console.error('Error:', err.message)
+    }
+}
+
 module.exports = { findUser, findGame, findGameImage, postUser, 
     authenticate, Logout, uploadProfileImage, changeProfileImage, findGamesByUser, patchUser,
     findGameImagesByGame, uploadGameImage, postGame, deleteGame, postGameImage, deleteGameImage, checkSession,
-    findAllGames, findMessage, findMessageBySender, findMessageByRecipient, 
+    findAllGames, findMessage, findMessageBySender, findMessageByRecipient, uploadToAWS,
     findMessageByConversation, findAllMessages, postMessage, findAllUsers,
     findUserByName, patchGame, deleteUser, deleteMessage};

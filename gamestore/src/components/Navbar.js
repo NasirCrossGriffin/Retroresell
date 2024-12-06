@@ -83,6 +83,8 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
 
     return (
         <>
+            {
+            (logged_inProp === true) ?
             <div className="Navbar">
                 <div className="NavbarContainer">
                     <button className="navmodaltrigger" onClick={showOptionsMenu}>
@@ -95,13 +97,28 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
 
                     <div className="profilePic" onClick={navigateToProfile}>
                         {profilePic ? (
-                            <img src={`${BASE_URL}${profilePic}`} alt="profile picture" />
+                            <img src={`${profilePic}`} alt="profile picture" />
                         ) : (
                             <p></p>
                         )}
                     </div>
                 </div>
+            </div> : <div className="Navbar">
+                <div className="NavbarContainer">
+                    <button className="navmodaltrigger" onClick={showOptionsMenu}>
+                    <span />
+                    <span />
+                    <span />
+                    </button>
+
+                    <h1>Retroresell</h1>
+
+                    <div className="profilePic" onClick={navigateToProfile}>
+                            <img src={`${BASE_URL}/profilePics/guest.jpg`} alt="profile picture" />
+                    </div>
+                </div>
             </div>
+        }
         </>
     );
 }

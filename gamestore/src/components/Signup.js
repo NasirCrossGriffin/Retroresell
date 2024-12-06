@@ -1,7 +1,7 @@
 import "./Signup.css";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { findUser, findUserByName, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage } from "./middleware";
+import { findUser, findUserByName, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage, uploadToAWS } from "./middleware";
 
 function Signup({ setUserIDProp, setLogged_InProp }) {
     const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ function Signup({ setUserIDProp, setLogged_InProp }) {
         e.preventDefault(); // Prevents default form submission behavior
 
         if (emailValid && usernameValid && passwordValid && fileValid) {    
-            const newUser = await postUser(username, email, password, await uploadProfileImage(file))
+            const newUser = await postUser(username, email, password, await uploadToAWS(file))
 
             if (newUser) {
                 console.log('User created:', newUser);

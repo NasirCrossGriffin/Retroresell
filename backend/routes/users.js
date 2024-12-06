@@ -153,6 +153,8 @@ router.post("/uploadProfilePic", upload.single("profilePic"), (req, res) => {
     }
 });
 
+
+
 //Middleware
 
 async function getUser(req, res, next) {

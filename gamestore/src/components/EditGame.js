@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./EditGame.css";
 import { useNavigate } from "react-router-dom";
-import { patchGame, uploadGameImage, postGameImage, findGame, findGameImagesByGame } from "./middleware";
+import { patchGame, uploadGameImage, postGameImage, findGame, findGameImagesByGame, uploadToAWS } from "./middleware";
 import { CSSTransition } from "react-transition-group";
 
 function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp }) {
@@ -78,7 +78,7 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
             const patchedGame = await patchGame(name, description, price, date, seller, gameId);
             if (patchedGame) {
                 for (const image of images) {
-                    const uploadedImage = await uploadGameImage(image);
+                    const uploadedImage = await uploadToAWS(image);
                     await postGameImage(uploadedImage, patchedGame._id);
                 }
                 setEditGameVisibilityProp(false);

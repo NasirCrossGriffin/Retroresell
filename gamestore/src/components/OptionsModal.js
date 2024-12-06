@@ -44,7 +44,7 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
                 <CSSTransition in={isVisible} nodeRef={nodeRef} timeout={300} classNames="modal" unmountOnExit>
                     <div className="modal" ref={nodeRef} variant="primary" dismissible onClose={() => setIsVisible(false)}>
                         <div className="container">
-                            {logged_inProp ? <Link to="/Home" className="OptionsLink">Home</Link> : <></>}
+                            <Link to="/Home" className="OptionsLink">Home</Link> 
                             {logged_inProp ? <button className="LogOut" onClick={logout}>Log Out</button> : <Link to="/Login" className="OptionsLink">Login</Link>}
                             {logged_inProp ? <Link to="/Chat" className="OptionsLink">Chat</Link> : <></>}
                             {logged_inProp ? <Link to="/MyGames" className="OptionsLink">My Games</Link> : <></>}

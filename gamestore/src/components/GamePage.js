@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EditGame from "./EditGame"
 import DeleteGame from "./DeleteGame"
-import { findGame, findGameImagesByGame, findUser } from "./middleware";
+import { findGame, findGameImagesByGame, findUser, uploadToAWS } from "./middleware";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import "./GamePage.css"
@@ -136,7 +136,7 @@ function GamePage( userId ) {
                                 <div className="Seller">
                                     <p>{seller.name}</p>
                                     <div className="SellerPicContainer">
-                                        <img className="SellerPic" onClick={() => (navigate(`/Profile/${seller._id}`))} src={`${BASE_URL}${seller.image}`} alt="profile picture" />
+                                        <img className="SellerPic" onClick={() => (navigate(`/Profile/${seller._id}`))} src={`${seller.image}`} alt="profile picture" />
                                     </div>
                                 </div>
                                 <div className="GameImages">
@@ -145,7 +145,7 @@ function GamePage( userId ) {
                                         <div className="GameGrid">
                                             <img id="Left" className="Left" onClick={(e) => (scroll(e))} src={"/static/ArrowLeft.png"}/>
                                             <div className="ImageDiv">
-                                                <img className="Image" src={`${BASE_URL}${gameImages[index].image || "/placeholder.png"}`}/>
+                                                <img className="Image" src={`${gameImages[index].image || "/placeholder.png"}`}/>
                                             </div>
                                             <img id="Right" className="Right" onClick={(e) => (scroll(e))} src={"/static/ArrowRight.png"}/>
                                         </div> : <p>loading</p>

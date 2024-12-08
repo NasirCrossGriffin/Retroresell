@@ -20,7 +20,7 @@ function GamePage({ userId }) {
 
 
     useEffect(() => {
-        console.log(userId.userId)
+        console.log(userId)
     }, [])
 
     useEffect(() => {
@@ -123,7 +123,7 @@ function GamePage({ userId }) {
             </>
             <>
                 {
-                    userId.userId === seller._id ? <div className="ButtonsDiv">
+                    userId === seller._id ? <div className="ButtonsDiv">
                                                         <button onClick={(e) => alterVisibility(e)} id="EditGameBTN" className="EditGameBTN">Edit Game</button>
                                                         <button onClick={(e) => alterVisibility(e)} id="RemoveGameBTN" className="RemoveGameBTN">Remove Game</button>
                                                    </div> : <></>

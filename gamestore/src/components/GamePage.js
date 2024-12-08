@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "./GamePage.css"
 
 
-function GamePage( userId ) {
+function GamePage({ userId }) {
     const [game, setGame] = useState([]);
     const [seller, setSeller] = useState("");
     const [gameImages, setGameImages] = useState([]);
@@ -35,8 +35,10 @@ function GamePage( userId ) {
                 const gameData = await findGame(id);
                 if (isMounted && gameData) {
                     setGame(gameData);
+                    console.log(gameData.seller)
                     const user = await findUser(gameData.seller);
                     if (user) {
+                        console.log(user)
                         setSeller(user);
                     }
                     const TheGameImages = await findGameImagesByGame(id)

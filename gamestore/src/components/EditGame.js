@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./EditGame.css";
+import "./DeleteGameImage"
 import { useNavigate } from "react-router-dom";
-import { patchGame, uploadGameImage, postGameImage, findGame, findGameImagesByGame, uploadToAWS } from "./middleware";
+import { patchGame, postGameImage, findGame, findGameImagesByGame, uploadToAWS } from "./middleware";
 import { CSSTransition } from "react-transition-group";
+import DeleteGameImage from "./DeleteGameImage";
 
 function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp }) {
     const [game, setGame] = useState("");
@@ -12,13 +14,15 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0);
     const [images, setImages] = useState([]);
-    const [imagePreviews, setImagePreviews] = useState([]);
+    const [existingImagePreviews, setExistingImagePreviews] = useState([]);
+    const [newImagePreviews, setNewImagePreviews] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
     const [visibility, setVisibility] = useState(false); // Local state for visibility
+    const [deleteGameImageVisibility, setDeleteGameImageVisibility] = useState(false)
     const nodeRef = useRef(null); // Ref for CSSTransition
     const navigate = useNavigate();
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
-
+    const [imageToDelete, setImageToDelete] = useState(null); // Track the image to delete
 
     // Fetch the game data when the component mounts
     useEffect(() => {
@@ -50,9 +54,9 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
                 try {
                     const acquiredImages = await findGameImagesByGame(game._id);
                     if (acquiredImages) {
-                        setImages(acquiredImages);
-                        const newPreviews = acquiredImages.map((image) => `${BASE_URL}${image.image}`);
-                        setImagePreviews(newPreviews);
+                        const existingPreviews = acquiredImages.map((image) => ({key: image._id, value: `${image.image}`}));
+                        console.log(existingPreviews);
+                        setExistingImagePreviews(existingPreviews);
                     }
                 } catch (error) {
                     console.error("Error fetching images:", error);
@@ -110,7 +114,28 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
         textarea.style.height = `${textarea.scrollHeight}px`; // Set height to scrollHeight
     }
 
-    return ReactDOM.createPortal(
+    const handleDeleteGameImage = (newImage, gameImage) => {
+        console.log("clicked");
+        setDeleteGameImageVisibility(true);
+        setImageToDelete({ newImage, gameImage });
+        setDeleteGameImageVisibility(true); // Show the modal
+        console.log(deleteGameImageVisibility);
+    }
+
+    return ReactDOM.createPortal(<>
+        {deleteGameImageVisibility && (
+            <DeleteGameImage
+                gameImage={imageToDelete.gameImage}
+                imageList={imageToDelete.newImage ? images : []}
+                setImageList={imageToDelete.newImage ? setImages : null}
+                previewList={imageToDelete.newImage ? newImagePreviews : existingImagePreviews}
+                setPreviewList={imageToDelete.newImage ? setNewImagePreviews : setExistingImagePreviews}
+                newImage={imageToDelete.newImage}
+                modalVisibility={deleteGameImageVisibility}
+                setModalVisibility={setDeleteGameImageVisibility}
+            />
+        )}
+        
         <div className="NewGame">
             <div className="NewGameBackground" onClick={hideModal}></div>
             <CSSTransition
@@ -154,23 +179,26 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
                                     const files = e.target.files;
                                     if (files.length > 0) {
                                         setImages([...images, files[0]]);
-                                        setImagePreviews((prev) => [...prev, URL.createObjectURL(files[0])]);
+                                        setNewImagePreviews((prev) => [...prev, ({key: files[0] ,value: URL.createObjectURL(files[0])})]);
                                     }
                                 }}
                             />
                             <button type="submit">Edit Game</button>
                             {isVisible && <p style={{ color: "red" }}>Invalid Game</p>}
                             <div className="previews">
-                                {imagePreviews.map((src, index) => (
-                                    <img key={index} className="preview" src={src} alt={`Preview ${index}`} />
+                                {existingImagePreviews.map((gameImage, index) => (
+                                    <img key={index} className="preview" onClick={() => handleDeleteGameImage(false, gameImage)} src={gameImage.value} alt={`Preview ${index}`} />
+                                ))}
+                                {newImagePreviews.map((gameImage, index) => (
+                                    <img key={index} className="preview" onClick={() => handleDeleteGameImage(true, gameImage)} src={gameImage.value} alt={`Preview ${index}`} />
                                 ))}
                             </div>
                         </form>
                     </div>
                 </div>
             </CSSTransition>
-        </div>,
-        document.getElementById("EditGame")
+        </div>
+        </>, document.getElementById("EditGame")
     );
 }
 

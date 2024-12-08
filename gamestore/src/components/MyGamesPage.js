@@ -7,7 +7,7 @@ import NewGame from './NewGame';
 import { useNavigate} from "react-router-dom"
 
 
-function MyGamesPage( id, logged_in_prop ) {
+function MyGamesPage({ id, logged_in_prop }) {
     const [games, setGames] = useState([]);
     const [newGameVisibility, setNewGameVisibility] = useState(false)
     const [gameImage, setGameImage] = useState("");

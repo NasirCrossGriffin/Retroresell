@@ -7,7 +7,7 @@ import socket from "./Socket"; // Import singleton instance
 import "./Chat.css"
 
 
-function Chat( id, logged_in_prop ) {
+function Chat({ id, logged_in_prop }) {
     const [messagesSent, setMessagesSent] = useState([]);
     const [messagesReceived, setMessagesReceived] = useState([]);
     const [activeUser, setActiveUser] = useState(null);

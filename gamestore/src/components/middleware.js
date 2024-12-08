@@ -1,7 +1,7 @@
 const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
 //Middleware for users
-const findUser = async (userId) => {
+const findUser = async ( userId ) => {
     try {
         const response = await fetch(`${BASE_URL}/users/${userId}`, {
             method: 'GET'

@@ -7,7 +7,7 @@ import socket from "./Socket"; // Import singleton instance
 import "./Conversation.css"
 
 
-function Conversation( id, logged_in_prop ) {
+function Conversation({ id, logged_in_prop }) {
     const { recipientid } = useParams();
     const [messagesSent, setMessagesSent] = useState([]);
     const [messagesReceived, setMessagesReceived] = useState([]);

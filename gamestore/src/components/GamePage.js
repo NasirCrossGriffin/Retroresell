@@ -133,7 +133,7 @@ function GamePage({ userId }) {
                 {
                     game ? <div className="View">
                                 <p>{game.name}</p>
-                                <p>{game.date}</p>
+                                <p>{new Date(game.date).toLocaleDateString()}</p>
                                 <p>${game.price}</p>
                                 <div className="Seller">
                                     <p>{seller.name}</p>

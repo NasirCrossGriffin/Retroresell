@@ -21,16 +21,7 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Optional shadow */
     text-align: center; /* Center text inside the item */
     width: 20vw;
-    height : auto;
-}
-
-/* Style for images in the grid */
-.singleGame img {
-    width: 100%; /* Make the image fill the width of the container */
-    max-width: 200px; /* Optional max-width for larger images */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 4px; /* Optional rounded corners */
-    margin-bottom: 8px; /* Space below the image */
+    height : 20vw;
 }
 
 /* Style for text inside the grid item */
@@ -90,4 +81,16 @@
         margin-left: 25px;
         font-weight: bold;
     }
+}
+
+/* Style for images in the grid */
+.gamePreviewImage img {
+    width: 100%; /* Make the image fill the width of the container */
+    height: 100%;
+    object-fit: contain;
+}
+
+.gamePreviewImage {
+    width : 80%;
+    height : 50%;
 }

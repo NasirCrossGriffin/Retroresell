@@ -28,6 +28,7 @@ function App() {
                   setUserID(sessionData.userID); // Extract and store the userID
               } else {
                   setLoggedIn(false);
+                  setUserID(null);
               }
           } catch (error) {
               console.error('Error verifying session:', error);
@@ -58,6 +59,7 @@ function App() {
                     setOptionsVisibilityProp={setOptionsVisibility}
                     logged_inProp={loggedIn}
                     setLogged_InProp={setLoggedIn}
+                    setUserIDProp={setUserID}
                 />
                 <Routes>
                         <>

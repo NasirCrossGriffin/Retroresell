@@ -65,7 +65,7 @@ function Profile({ id }) {
             await changeProfileImage(id, newImage);
             const user = await findUser(id);
             setProfilePic(user.image)
-            //window.location.reload();
+            window.location.reload();
         }
 
         if (croppedImage) {

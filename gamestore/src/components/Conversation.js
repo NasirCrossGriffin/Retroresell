@@ -22,9 +22,10 @@ function Conversation({ id, logged_in_prop }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!logged_in_prop)
+        if (!logged_in_prop) {
             console.log("user logged in: ", logged_in_prop)
             navigate(`/Login`);
+        }
     }, [logged_in_prop]); 
 
     const scrollToBottom = () => {
@@ -39,7 +40,7 @@ function Conversation({ id, logged_in_prop }) {
     useEffect(() => {
         const fetchSender = async () => {
             try {
-                const user = await findUser(id.id);
+                const user = await findUser(id);
                 if (user) {
                     setSender(user);
                     console.log("Sender is:", user.name); // Log directly after fetching
@@ -50,7 +51,7 @@ function Conversation({ id, logged_in_prop }) {
         };
     
         fetchSender();
-    }, [id.id]); // Ensure you're using `id.id` instead of just `id`
+    }, [id]); // Ensure you're using `id.id` instead of just `id`
     
     useEffect(() => {
         const fetchRecipient = async () => {
@@ -192,11 +193,11 @@ function Conversation({ id, logged_in_prop }) {
                             <p>{message.message}</p>
                         </div>
                         <div className="MSGProfilePicture">
-                                <img src={`${BASE_URL}${sender.image}`} alt="profile picture" />
+                                <img src={`${sender.image}`} alt="profile picture" />
                         </div>
                     </div> : <div key={index} className="messageReceived">
                                 <div className="MSGProfilePicture">
-                                    <img src={`${BASE_URL}${recipient.image}`} alt="profile picture" />
+                                    <img src={`${recipient.image}`} alt="profile picture" />
                                 </div>
                                 <div className="Bubble"> 
                                     <p>{message.message}</p>

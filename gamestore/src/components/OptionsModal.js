@@ -7,7 +7,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import "./OptionsModal.css"
 
-function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, setLogged_InProp }) {
+function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, setLogged_InProp, setUserIDProp }) {
     const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
     const nodeRef = useRef(null);
@@ -29,7 +29,8 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
     const logout = async () => {
         const response = await Logout()
         if (response.ok) {
-            setLogged_InProp(false)
+            setUserIDProp(null);
+            setLogged_InProp(false);
             navigate("/Login");  
         }
     }

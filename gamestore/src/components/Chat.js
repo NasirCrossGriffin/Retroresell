@@ -20,15 +20,17 @@ function Chat({ id, logged_in_prop }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!logged_in_prop)
+        if (!logged_in_prop) {
+            console.log("user logged in: ", logged_in_prop)
             navigate(`/Login`);
+        }
     }, [logged_in_prop]); 
 
     //Logic for gettin logged in user
     useEffect(() => {
         const fetchActiveUser = async () => {
             try {
-                const user = await findUser(id.id);
+                const user = await findUser(id);
                 if (user) {
                     setActiveUser(user);
                     console.log("Active user is:", user.name); 
@@ -39,7 +41,7 @@ function Chat({ id, logged_in_prop }) {
         };
     
         fetchActiveUser();
-    }, [id.id]); 
+    }, [id]); 
 
     useEffect(() => {
         if (activeUser) {

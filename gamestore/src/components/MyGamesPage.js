@@ -80,10 +80,12 @@ function MyGamesPage({ id, logged_in_prop }) {
                 <div className="gameView">
                     {games.map((game, index) => (
                         <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
-                            <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${gamePreviews[index] || "/placeholder.png"}`}/>
+                            <div className="gamePreviewImage">
+                                <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${gamePreviews[index] || "/placeholder.png"}`}/>
+                            </div>
                             <p>{game.name}</p>
                             <p>${game.price}</p>
-                            <p>uploaded on {game.date}</p>
+                            <p>uploaded on {new Date(game.date).toLocaleDateString()}</p>
                         </div>
                     ))}
                 </div>

@@ -138,8 +138,14 @@
 }
 
 @media (min-width : 768px) {
-    .View p {
+    .gameName {
         font-size: 50px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .View p {
+        font-size: 30px;
         text-align: center;
     }
 
@@ -274,4 +280,10 @@
         justify-self: center;
         justify-content: center;
     }
+
+    .price {
+        color: red;
+    }
+
+    
 }

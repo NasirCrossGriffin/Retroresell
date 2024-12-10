@@ -104,7 +104,7 @@ function Profile({ id }) {
                                 <img src={`${profilePic}`} alt="profile picture" />
                             </div>
                             {file ? <>
-                                    <CropImage file={file} visibility={visibility} setVisibility={setVisibility} setFile={setFile}/>
+                                    <CropImage file={file} visibility={visibility} setVisibility={setVisibility} setFile={setFile} userId={id}/>
                                     <div className="previewContainer">
                                         <img className="profilePicturePreview" src={URL.createObjectURL(file)} />
                                     </div>

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import 'react-image-crop/dist/ReactCrop.css';
 import "./CropImage.css"
 
-function CropImage({ file, setVisibility, visibility, setFile }) {
+function CropImage({ file, setVisibility, visibility, setFile, userId }) {
   const [image, setImage] = useState(null);
   const [original, setOriginal] = useState(null);
   const [imageRef, setImageRef] = useState(null);
@@ -52,7 +52,7 @@ function CropImage({ file, setVisibility, visibility, setFile }) {
     return new Promise((resolve, reject) => {
       canvas.toBlob((blob) => {
         if (blob) {
-          const croppedFile = new File([blob], 'cropped-image.jpg', { type: 'image/jpeg' });
+          const croppedFile = new File([blob], `${userId}-${new Date}-cropped-image.jpg`, { type: 'image/jpeg' });
           resolve(croppedFile);
         } else {
           reject(new Error('Canvas is empty'));

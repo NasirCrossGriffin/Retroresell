@@ -1,3 +1,8 @@
+@font-face {
+  font-family: ZeldaFont;
+  src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
+}
+
 .background {
     z-index: 1000; /* Below modal's z-index */
     background-color: rgba(0, 0, 0, 0.3); /* Add background-color */
@@ -52,17 +57,31 @@
 
 
 .OptionsLink {
+    font-family: ZeldaFont;
     border: none;
     color: black;
     width:fit-content;
     height:fit-content;
+    text-decoration: none;
+    transition: color 300ms ease-in-out;
+}
+
+.OptionsLink:hover {
+  transform: scale(1.2);
+  color: red;
 }
 
 .LogOut{
     background-color: transparent;
     border-color: transparent;
     font-size: 20px;
-    text-decoration: underline;
+    font-family: ZeldaFont;
+    transition: color 300ms ease-in-out;
+}
+
+.LogOut:hover {
+  transform: scale(1.2);
+  color: red;
 }
 
 .modal-enter {

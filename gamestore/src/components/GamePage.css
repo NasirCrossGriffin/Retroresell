@@ -1,6 +1,13 @@
+@font-face {
+    font-family: ZeldaFont;
+    src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
+}
+
 @media (min-width : 390px) {
     .View p {
-        font-size: 25px;
+        color: white;
+        font-family: ZeldaFont;
+        font-size: 15px;
         text-align: center;
     }
 
@@ -91,6 +98,7 @@
         margin-left: 25px;
         margin-right: 25px;
         font-weight: bold;
+        font-family: ZeldaFont;
     }
 
     .EditGameBTN:hover {
@@ -115,6 +123,7 @@
         margin-top: 1%;
         margin-left: 25px;
         font-weight: bold;
+        font-family: ZeldaFont;
     }
 
     .RemoveGameBTN:hover {

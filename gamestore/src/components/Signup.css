@@ -1,14 +1,27 @@
+@font-face {
+    font-family: ZeldaFont;
+    src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
+}
+
 .Signup {
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 25px;
-    height : fit-content;
-    width : fit-content;
     display : flex;
     justify-content : center;
     justify-self: center;
     padding: 25px 25px 25px 25px;
+    height : fit-content
+}
+
+
+@media (min-width : 390px) {
+    .Signup {
+        width : 250px;
+    }
+}
+
+@media (min-width : 768px) {
+    .Signup {
+        width : 500px;
+    }
 }
 
 .SignupCont form {
@@ -16,9 +29,17 @@
     flex-direction: column;
 }
 
+
 .SignupCont input[type="text"] {
     margin : 5px 0 5px 0;
     border-radius: 5px;
+    padding: 15px 15px 15px 15px;
+}
+
+.SignupCont input[type="password"] {
+    margin : 5px 0 5px 0;
+    border-radius: 5px;
+    padding: 15px 15px 15px 15px;
 }
 
 .SignupCont input[type="submit"]:hover {
@@ -38,7 +59,8 @@
     border-width: 1px;
     border-radius: 10px;
     margin : 5px 0 5px 0;
-    padding : 15px 20px 15px 20px
+    padding : 15px 20px 15px 20px;
+    font-family : ZeldaFont;
 }
 
 .LoginPrompt {
@@ -46,9 +68,40 @@
     text-align: center;
     justify-self: center;
     border: none;
-    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-family: ZeldaFont;
+    transition: color 300ms ease-in-out;
+    margin-bottom: 10px;
+}
+
+@media (min-width : 390px) {
+    .LoginPrompt {
+        font-size: 10px;
+    }
+}
+
+@media (min-width : 768px) {
+    .LoginPrompt {
+        font-size: 20px;
+
+    }
+}
+
+.LoginPrompt:hover {
+    color : red;
 }
 
 .validator {
+    font-family: ZeldaFont;
     color: red;
+}
+
+.SignupForm {
+    font-family: ZeldaFont;
+}
+
+.SignupCont h1 {
+    font-family: ZeldaFont;
+    color: white;
 }

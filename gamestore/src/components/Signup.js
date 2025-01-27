@@ -92,20 +92,23 @@ function Signup({ setUserIDProp, setLogged_InProp }) {
         <div className="Signup">
             <div className="SignupCont">
                 <h1>Signup</h1>
-                <form onSubmit={submitHandler}>
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" value={email} onChange={(e) => emailHandler(e)}/>
-                    <p style={{ display: !(emailValid) ? 'block' : 'none' }} className="validator">Please enter a valid email</p>
-                    <label htmlFor="username">Username</label>
-                    <input type="text" name="username" id="username" value={username} onChange={(e) => usernameHandler(e)}/>
-                    <p style={{ display: !(usernameValid) ? 'block' : 'none' }} className="validator">Please enter a valid username</p>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" value={password} onChange={(e) => passwordHandler(e)}/>
-                    <p style={{ display: !(passwordValid) ? 'block' : 'none' }} className="validator">Please enter a valid password</p>
-                    <input type="file" accept="image/*" className="setImage" onChange={(e) => fileHandler(e)} />
-                    <p style={{ display: !(fileValid) ? 'block' : 'none' }} className="validator">Please input a profile picture</p>
-                    <input type="submit" name="submit" id="submit" />
-                </form>
+                <div className="LoginSeparator"></div>
+                <div className="FormContainer">
+                    <form className="SignupForm" onSubmit={submitHandler}>
+                        <label htmlFor="email">Email</label>
+                        <input type="text" name="email" id="email" value={email} onChange={(e) => emailHandler(e)}/>
+                        <p style={{ display: !(emailValid) ? 'block' : 'none' }} className="validator">Please enter a valid email</p>
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" id="username" value={username} onChange={(e) => usernameHandler(e)}/>
+                        <p style={{ display: !(usernameValid) ? 'block' : 'none' }} className="validator">Please enter a valid username</p>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" id="password" value={password} onChange={(e) => passwordHandler(e)}/>
+                        <p style={{ display: !(passwordValid) ? 'block' : 'none' }} className="validator">Please enter a valid password</p>
+                        <input type="file" accept="image/*" className="setImage" onChange={(e) => fileHandler(e)} />
+                        <p style={{ display: !(fileValid) ? 'block' : 'none' }} className="validator">Please input a profile picture</p>
+                        <input type="submit" name="submit" id="submit" />
+                    </form>
+                </div>
             </div>
         </div>
         <Link to="/Login" className="LoginPrompt">Already have an account? Log in.</Link>

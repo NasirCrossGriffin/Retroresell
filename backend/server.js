@@ -110,7 +110,7 @@ app.use('/message', messagesRouter);
 
 
 app.get('/', (req, res) => {
-    res.redirect('/retroresell');
+    res.redirect('/storefront');
 });
 
 const uploadRoute = require('./routes/upload'); // Adjust the path as needed

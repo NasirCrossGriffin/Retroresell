@@ -16,13 +16,13 @@ function MyGamesPage({ id, logged_in_prop }) {
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
     useEffect(() => {
-        if (!logged_in_prop)
+        if (!(logged_in_prop === true))
             navigate(`/Login`);
     }, [logged_in_prop]); 
 
     useEffect(() => {
         const fetchGames = async () => {
-            const myGames = await findGamesByUser(id.id); 
+            const myGames = await findGamesByUser(id); 
             setGames(myGames);
         };
         fetchGames();

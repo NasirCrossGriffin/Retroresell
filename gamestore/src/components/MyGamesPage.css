@@ -17,19 +17,22 @@
     background-color: #f9f9f9; /* Light background for the item */
     padding: 3vw; /* Padding inside each grid cell */
     border: 1px solid #ddd; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Optional shadow */
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.300);
     text-align: center; /* Center text inside the item */
     width: 20vw;
     height : 20vw;
+    color: #333; /* Text color */
+    transition: color 300ms ease-in-out;
+}
+
+.singleGame:hover {
+    color: red;
 }
 
 /* Style for text inside the grid item */
 .singleGame p {
     margin: 0.1vw 0; /* Space between text elements */
-    font-size: 2vw; /* Font size for readability */
-    color: #333; /* Text color */
-}
+    font-size: 1.5vw; /* Font size for readability */}
 
 @media (min-width : 390px) {
     .NewGameBTN {
@@ -42,6 +45,7 @@
         margin-top: 1%;
         margin-left: 25px;
         font-weight: bold;
+        font-family: ZeldaFont;
     }
 
     .NewGameBTN:hover {

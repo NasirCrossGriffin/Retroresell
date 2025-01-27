@@ -10,6 +10,7 @@ import MyGamesPage from './components/MyGamesPage';
 import GamePage from './components/GamePage';
 import Conversation from './components/Conversation';
 import Chat from './components/Chat';
+import "./App.css"
 import { checkSession } from './components/middleware'; // Import your middleware
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
 
     return (
         <>
-            <BrowserRouter basename="/retroresell">
+            <BrowserRouter basename="/storefront">
                 <Navbar
                     logged_inProp={loggedIn}
                     id={userID}
@@ -65,7 +66,7 @@ function App() {
                         <>
                             <Route path="/" element={<Navigate to="/Home" />} />
                             <Route path="/Profile/:profileid" element={<Profile id={userID} />} />
-                            <Route path="/MyGames" element={<MyGamesPage id={userID} />} />
+                            <Route path="/MyGames" element={<MyGamesPage id={userID} logged_in_prop={loggedIn} />} />
                             <Route path="/GameView/:id" element={<GamePage userId={userID}/>} />
                             <Route path="/Conversation/:recipientid" element={<Conversation id={userID} logged_in_prop={loggedIn} />} />
                             <Route path="/Chat" element={<Chat id={userID} logged_in_prop={loggedIn}/>} />

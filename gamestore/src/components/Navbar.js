@@ -84,41 +84,44 @@ function Navbar({ logged_inProp, id, OptionsVisibilityProp, setOptionsVisibility
     return (
         <>
             {
-            (logged_inProp === true) ?
-            <div className="Navbar">
-                <div className="NavbarContainer">
-                    <button className="navmodaltrigger" onClick={showOptionsMenu}>
-                    <span />
-                    <span />
-                    <span />
-                    </button>
+                (logged_inProp === true) ?
+                <div className="Navbar">
+                    <div className="NavbarContainer">
+                        <button className="navmodaltrigger" onClick={showOptionsMenu}>
+                        <span />
+                        <span />
+                        <span />
+                        </button>
 
-                    <h1>Retroresell</h1>
+                        <h1>Retroresell</h1>
 
-                    <div className="profilePic" onClick={navigateToProfile}>
-                        {profilePic ? (
-                            <img src={`${profilePic}`} alt="profile picture" />
-                        ) : (
-                            <p></p>
-                        )}
+                        <div className="profilePic" onClick={navigateToProfile}>
+                            {profilePic ? (
+                                <img src={`${profilePic}`} alt="profile picture" />
+                            ) : (
+                                <p></p>
+                            )}
+                        </div>
+                        
                     </div>
-                </div>
-            </div> : <div className="Navbar">
-                <div className="NavbarContainer">
-                    <button className="navmodaltrigger" onClick={showOptionsMenu}>
-                    <span />
-                    <span />
-                    <span />
-                    </button>
+                    <div className="NavSeparator"></div>
+                </div> : <div className="Navbar">
+                    <div className="NavbarContainer">
+                        <button className="navmodaltrigger" onClick={showOptionsMenu}>
+                        <span />
+                        <span />
+                        <span />
+                        </button>
 
-                    <h1>Retroresell</h1>
+                        <h1>Retroresell</h1>
 
-                    <div className="profilePic" onClick={navigateToProfile}>
-                            <img src={`${BASE_URL}/profilePics/guest.jpg`} alt="profile picture" />
+                        <div className="profilePic" onClick={navigateToProfile}>
+                                <img src={`${BASE_URL}/profilePics/guest.jpg`} alt="profile picture" />
+                        </div>
                     </div>
+                    <div className="NavSeparator"></div>
                 </div>
-            </div>
-        }
+            }
         </>
     );
 }

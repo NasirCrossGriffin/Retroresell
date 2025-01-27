@@ -95,14 +95,17 @@ function Login({ setUserIDProp, setLogged_InProp }) {
         <div className="Login">
             <div className="LoginCont">
                 <h1>Login</h1>
-                <form onSubmit={submitHandler}>
-                    <label htmlFor="username">Username</label>
-                    <input type="text" name="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                    <label htmlFor="username">Password</label>
-                    <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    <input type="submit" name="submit" id="submit"/>
-                    <p style={{ display: isVisible ? 'block' : 'none' }}>Wrong username or password</p>
-                </form>
+                <div className="LoginSeparator"></div>
+                <div className="FormContainer">
+                    <form onSubmit={submitHandler}>
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <label htmlFor="username">Password</label>
+                        <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="submit" name="submit" id="submit"/>
+                        <p style={{ display: isVisible ? 'block' : 'none' }}>Wrong username or password</p>
+                    </form>
+                </div>
             </div>
         </div>
         <div className="gamePreviews">

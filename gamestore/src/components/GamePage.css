@@ -12,6 +12,21 @@
     animation: fade-in 1.2s both;
 }
 
+.Description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+@media (max-width: 1439px) {
+    .GamePage {
+        margin-top: 70px;
+    }
+}
+
+
 @keyframes fade-in {
     0% {
         opacity : 0%;
@@ -112,6 +127,13 @@
     color: red;
 }
 
+.Details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width: 1439px) {
     .View p {
         font-size: 15px;
@@ -128,13 +150,23 @@
     }
 
     .SellerPicContainer {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
+        margin-left: 10px;
     }
 
     .EditGameBTN, .RemoveGameBTN {
         margin-left: 25px;
         margin-right: 25px;
+    }
+
+    .Description {
+        width: 90%;
+        height: 20%;
+    }
+
+    .Details{
+        width: 100%;
     }
 }
 
@@ -156,10 +188,6 @@
 
     .Details{
         font-size: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         width: 50%;
     }
 
@@ -169,11 +197,6 @@
 
     .Description {
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        overflow-y: scroll;
         height: 20%;
     }
 

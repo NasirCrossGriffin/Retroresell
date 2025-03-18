@@ -36,6 +36,10 @@
         align-items: center;
     }
 
+    .MyProfile {
+        margin-top: 70px;
+    }
+
     .ProfileCont {
         width: 80%;
         height: fit-content;
@@ -198,6 +202,7 @@
         align-items: center;
         width: 100%;
         height: 100vh;
+        
     }
 
     .MyProfile {

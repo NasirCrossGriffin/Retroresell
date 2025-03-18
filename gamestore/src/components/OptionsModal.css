@@ -26,6 +26,14 @@
       left: 0; /* Align to the far left */
       box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
   }
+
+  .container {
+    font-size: 15px;
+  }
+
+  .LogOut{
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -41,6 +49,14 @@
       left: 0; /* Align to the far left */
       box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
   }
+
+  .container {
+    font-size: 20px;
+  }
+
+  .LogOut{
+    font-size: 20px;
+  }
 }
 
 
@@ -51,7 +67,6 @@
     align-items: center; /* Center horizontally */
     gap: 20px; /* Add spacing between links */
     color: black;
-    font-size: 20px;
     height: 100%; /* Ensure it takes full height of the modal */
 }
 
@@ -74,7 +89,6 @@
 .LogOut{
     background-color: transparent;
     border-color: transparent;
-    font-size: 20px;
     font-family: ZeldaFont;
     transition: color 300ms ease-in-out;
 }

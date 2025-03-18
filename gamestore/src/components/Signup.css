@@ -4,24 +4,33 @@
 }
 
 .Signup {
-    display : flex;
-    justify-content : center;
-    justify-self: center;
-    padding: 25px 25px 25px 25px;
-    height : fit-content
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    height: fit-content;
 }
 
-
-@media (min-width : 390px) {
-    .Signup {
-        width : 250px;
-    }
+.LoginPrompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-family: ZeldaFont;
+    transition: color 300ms ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-@media (min-width : 768px) {
-    .Signup {
-        width : 500px;
-    }
+.SignupCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .SignupCont form {
@@ -29,79 +38,71 @@
     flex-direction: column;
 }
 
-
-.SignupCont input[type="text"] {
-    margin : 5px 0 5px 0;
-    border-radius: 5px;
-    padding: 15px 15px 15px 15px;
-}
-
+.SignupCont input[type="text"],
 .SignupCont input[type="password"] {
-    margin : 5px 0 5px 0;
+    margin: 5px 0;
     border-radius: 5px;
-    padding: 15px 15px 15px 15px;
-}
-
-.SignupCont input[type="submit"]:hover {
-    border-style: none;
-    color : rgb(67, 67, 67);
-    background-color: rgb(65, 0, 0);
-    border-width: 1px;
-    border-radius: 10px;
-    margin : 5px 0 5px 0;
-    padding : 15px 20px 15px 20px
+    padding: 15px;
 }
 
 .SignupCont input[type="submit"] {
     border-style: none;
-    color : white;
+    color: white;
     background-color: red;
     border-width: 1px;
     border-radius: 10px;
-    margin : 5px 0 5px 0;
-    padding : 15px 20px 15px 20px;
-    font-family : ZeldaFont;
-}
-
-.LoginPrompt {
-    display: flex;
-    text-align: center;
-    justify-self: center;
-    border: none;
-    color: white;
-    text-decoration: none;
+    margin: 5px 0;
+    padding: 15px 20px;
     font-family: ZeldaFont;
-    transition: color 300ms ease-in-out;
-    margin-bottom: 10px;
 }
 
-@media (min-width : 390px) {
+.SignupCont input[type="submit"]:hover {
+    color: rgb(67, 67, 67);
+    background-color: rgb(65, 0, 0);
+}
+
+.LoginPrompt:hover {
+    color: red;
+}
+
+.validator, .SignupForm, .SignupCont h1 {
+    font-family: ZeldaFont;
+}
+
+.validator {
+    color: red;
+}
+
+.SignupCont h1 {
+    color: white;
+}
+
+@media (max-width: 1439px) {
+    .Signup {
+        margin-top: 70px;
+        width : 100%;
+    }
+
+    .SignupCont {
+        width : 80%;
+    }
+
     .LoginPrompt {
         font-size: 10px;
     }
 }
 
-@media (min-width : 768px) {
+@media (min-width: 1440px) {
+    .Signup {
+        margin-top: 110px;
+        width: 100%;
+    }
+
     .LoginPrompt {
         font-size: 20px;
-
     }
-}
 
-.LoginPrompt:hover {
-    color : red;
-}
-
-.validator {
-    font-family: ZeldaFont;
-    color: red;
-}
-
-.SignupForm {
-    font-family: ZeldaFont;
-}
-
-.SignupCont h1 {
-    font-family: ZeldaFont;
-    color: white;
+    .SignupCont {
+        width : 30%;
+    }
 }

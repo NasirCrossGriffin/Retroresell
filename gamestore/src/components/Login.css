@@ -1,319 +1,152 @@
 @font-face {
     font-family: ZeldaFont;
     src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
-  }
-
-@media (min-width : 390px) {
-    .WelcomeDiv {
-        width : 100%;
-        height: fit-content;
-        display : flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .WelcomeDiv p {
-        font-size: 20px;
-        font-weight: bold;
-        color: rgb(255, 255, 255);
-        font-family: ZeldaFont;
-
-    }
-
-    .LoginPage {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    .Login {
-        height : fit-content;
-        width : fit-content;
-        display : flex;
-        width : 50%;
-        height : 40%;
-    }
-
-    .LoginCont {
-        width : 100%;
-        height : 100%;
-    }
-
-    .LoginCont form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width : 100%;
-        height : 100%
-    }
-
-    .LoginCont h1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: ZeldaFont;
-        color: white;
-    }
-
-    .LoginCont label {
-        font-size: 12px;
-        font-weight: bold;
-        margin-top: 20px;
-        font-family: ZeldaFont;
-    }
-
-    .LoginCont input[type="text"] {
-        margin-bottom : 15px;
-        border-radius: 5px;
-        font-size: 12px;
-        width : 100%;
-        height : 25px;
-    }
-
-    .LoginCont input[type="password"] {
-        margin-bottom : 15px;
-        border-radius: 5px;
-        font-size: 12px;
-        width : 100%;
-        height : 25px;
-    }
-
-    .LoginCont input[type="submit"]:hover {
-        border-style: none;
-        color : rgb(67, 67, 67);
-        background-color: rgb(65, 0, 0);
-        border-width: 1px;
-        border-radius: 10px;
-        margin : 5px 0 5px 0;
-        padding : 15px 20px 15px 20px
-    }
-
-    .LoginCont input[type="submit"] {
-        border-style: none;
-        color : white;
-        background-color: rgb(255, 0, 0);
-        border-width: 1px;
-        border-radius: 10px;
-        margin : 5px 0 5px 0;
-        padding : 15px 20px 15px 20px;
-        width : 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family: ZeldaFont;
-        font-size: 10px;
-    }
-
-    .FormContainer {
-        width: 100%;
-        height: fit-content;
-        padding: 25px 25px 25px 25px;
-        background-color: white;
-        box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.300);
-    }
-
-    .LoginSeparator {
-        width : 100%;
-        height : 15px;
-        background-color : white;
-        padding-left: 25px;
-        padding-right: 25px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.300);
-
-    }
-
-    form p {
-        color: red;
-    }
-
-    .SignupPrompt {
-        display: grid;
-        text-align: center;
-        justify-self: center;
-        border: none;
-        font-size: 10px;
-        font-family: ZeldaFont;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        color: white;
-        transition: color 300ms ease-in-out;
-        text-decoration: none;
-    }
-
-    .SignupPrompt:hover {
-        color: red;
-    }
-
-    .gamePreviews {
-        width: 200px;
-        height: 200px;
-        display : flex;
-        justify-self: flex-end;
-        overflow: hidden;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .imagepreview {
-        object-position: center;
-        object-fit: contain;
-        width: 100%; 
-        height: 100%; 
-        margin: 0; 
-    }
 }
 
-@media (min-width : 768px) {
-    .WelcomeDiv {
-        width : 100%;
-        height: fit-content;
-        display : flex;
-        flex-direction: row;
-        justify-content: center;
-    }
+/* General Styles */
+.WelcomeDiv {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    animation: slide-down 1.2s both;
+}
 
-    .WelcomeDiv p {
-        font-size: 40px;
-        font-weight: bold;
-        color: red;
+.WelcomeDiv p {
+    font-weight: bold;
+    font-family: ZeldaFont;
+}
 
-    }
+.LoginPage {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    animation: fade-in 1.2s both;
+}
 
-    .LoginPage {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        height: 100%;
-    }
+.Login {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+}
 
-    .Login {
-        height : fit-content;
-        width : fit-content;
-        display : flex;
-        width : 40%;
-        height : 90%;
-        padding: 25px 25px 25px 25px;
-    }
+.LoginCont {
+    width: 100%;
+    height: 100%;
+}
 
-    .LoginCont {
-        width : 100%;
-        height : 100%;
-    }
+.LoginCont form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
 
-    .LoginCont form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width : 100%;
-        height : 100%
-    }
+.LoginCont h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: ZeldaFont;
+    color: white;
+}
 
-    .LoginCont h1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.LoginCont label {
+    font-weight: bold;
+    font-family: ZeldaFont;
+}
 
-    .LoginCont label {
-        font-size: 30px;
-        font-weight: bold;
-        margin-top: 50px;
-    }
+.LoginCont input[type="text"],
+.LoginCont input[type="password"] {
+    border-radius: 5px;
+    width: 100%;
+}
 
-    .LoginCont input[type="text"] {
-        margin-bottom : 50px;
-        border-radius: 5px;
-        font-size: 25px;
-        width : 100%;
-        height : 50px;
-    }
+.LoginCont input[type="submit"] {
+    border-style: none;
+    color: white;
+    background-color: rgb(255, 0, 0);
+    border-width: 1px;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 15px 20px;
+    font-family: ZeldaFont;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .LoginCont input[type="password"] {
-        margin-bottom : 50px;
-        border-radius: 5px;
-        font-size: 25px;
-        width : 100%;
-        height : 50px;
-    }
+.LoginCont input[type="submit"]:hover {
+    color: rgb(67, 67, 67);
+    background-color: rgb(65, 0, 0);
+}
 
-    .LoginCont input[type="submit"]:hover {
-        border-style: none;
-        color : rgb(67, 67, 67);
-        background-color: rgb(65, 0, 0);
-        border-width: 1px;
-        border-radius: 10px;
-        margin : 5px 0 5px 0;
-        padding : 15px 20px 15px 20px
-    }
+.FormContainer {
+    width: 100%;
+    height: fit-content;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.3);
+}
 
-    .LoginCont input[type="submit"] {
-        border-style: none;
-        color : white;
-        background-color: rgb(255, 0, 0);
-        border-width: 1px;
-        border-radius: 10px;
-        margin : 5px 0 5px 0;
-        padding : 15px 20px 15px 20px;
-        width : 20%;
-    }
+.LoginSeparator {
+    width: 100%;
+    height: 15px;
+    background-color: white;
+    margin: 15px 0;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.3);
+    padding-left: 25px;
+    padding-right: 25px;
+}
 
-    form p {
-        color: red;
-    }
+form p {
+    color: red;
+}
 
-    .SignupPrompt {
-        display: grid;
-        text-align: center;
-        justify-self: center;
-        border: none;
-        font-size: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        text-decoration: none;
+.SignupPrompt {
+    display: grid;
+    text-align: center;
+    justify-self: center;
+    font-family: ZeldaFont;
+    text-decoration: none;
+    transition: color 300ms ease-in-out;
+}
 
-    }
+.SignupPrompt:hover {
+    color: red;
+}
 
-    .gamePreviews {
-        width: 500px;
-        height: 500px;
-        display : flex;
-        justify-self: flex-end;
-        overflow: hidden;
-    }
+.gamePreviews {
+    display: flex;
+    justify-self: flex-end;
+    overflow: hidden;
+}
 
-    .imagepreview {
-        object-position: center;
-        object-fit: contain;
-        width: 100%; 
-        height: 100%; 
-        margin: 0; 
-    }
+.imagepreview {
+    object-position: center;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 .guest {
     display: flex;
-    justify-self: center;
-    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width : 100%;
     background-color: transparent;
     border-color: transparent;
-    font-size: 10px;
-    text-decoration: underline;
     font-family: ZeldaFont;
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    text-decoration: underline;
     transition: color 300ms ease-in-out;
     text-decoration: none;
+    color: white;
 }
 
 .guest:hover {
@@ -321,19 +154,133 @@
     color: red;
 }
 
-
+/* Animation */
 .imagepreview-enter {
     transform: translateX(100%);
-  }
-  .imagepreview-enter-active {
-    opacity: 1;
-    transform: translateX(0); /* Slide in to the center */
-    transition: transform 300ms; /* Smooth transition */
-  }
-  .imagepreview-exit {
-    transform: translateX(0); /* Start from the center */
-  }
-  .imagepreview-exit-active {
-    transform: translateX(-100%); /* Slide out off-screen to the left */
-    transition: transform 300ms; /* Smooth transition */
-  }
+}
+.imagepreview-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms;
+}
+.imagepreview-exit {
+    transform: translateX(0);
+}
+.imagepreview-exit-active {
+    transform: translateX(-100%);
+    transition: transform 300ms;
+}
+
+/* Styles for screens up to 1439px */
+@media (max-width: 1439px) {
+    .WelcomeDiv {
+        margin-top: 70px;
+    }
+
+    .WelcomeDiv p {
+        font-size: 15px;
+        color: white;
+    }
+
+    .Login {
+        width: 50%;
+        height: 40%;
+    }
+
+    .LoginCont label {
+        font-size: 12px;
+    }
+
+    .LoginCont input[type="text"],
+    .LoginCont input[type="password"] {
+        font-size: 12px;
+        height: 25px;
+    }
+
+    .LoginCont input[type="submit"] {
+        width: 50%;
+        font-size: 10px;
+    }
+
+    .gamePreviews {
+        width: 200px;
+        height: 200px;
+        margin: 10px 0;
+    }
+    
+    .LoginPage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .LoginCont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+    .guest {
+
+    }
+}
+
+/* Styles for screens 1440px and above */
+@media (min-width: 1440px) {
+    .WelcomeDiv {
+        margin-top: 110px;
+    }
+
+    .WelcomeDiv p {
+        font-size: 40px;
+        color: red;
+    }
+
+    .Login {
+        width: 40%;
+        height: 90%;
+        padding: 25px;
+    }
+
+    .LoginCont label {
+        font-size: 30px;
+        margin-top: 50px;
+    }
+
+    .LoginCont input[type="text"],
+    .LoginCont input[type="password"] {
+        font-size: 25px;
+        height: 50px;
+        margin-bottom: 50px;
+    }
+
+    .LoginCont input[type="submit"] {
+        width: 20%;
+    }
+
+    .gamePreviews {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-1000px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;;
+    }
+    100% {
+        opacity: 100%;;
+    }
+}

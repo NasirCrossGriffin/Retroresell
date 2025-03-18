@@ -82,51 +82,65 @@ function Profile({ id }) {
     }
 
     return (
-        viewer._id === profile._id ? (
-            <>
-                <EditUser 
-                    userId={id} 
-                    editUserVisibilityProp={editUserVisibility} 
-                    setEditUserVisibilityProp={setEditUserVisibility} 
-                />
+        <div className="ProfilePage"> {
+            viewer._id === profile._id ? (
+                <>
+                    <EditUser 
+                        userId={id} 
+                        editUserVisibilityProp={editUserVisibility} 
+                        setEditUserVisibilityProp={setEditUserVisibility} 
+                    />
+                    <div className="MyProfile">
+                        <div className="ProfileCont">
+                            <div className="info">
+                                <div className="UsernameAndPic">
+                                    <h1 className="info-item">{username}</h1>
+                                    <div className="profilePictureContainer">
+                                    <div className="Profilepicture">
+                                        <img src={`${profilePic}`} alt="profile picture" />
+                                    </div>
+                                    {file ? <>
+                                            <CropImage file={file} visibility={visibility} setVisibility={setVisibility} setFile={setFile} userId={id}/>
+                                            <div className="previewContainer">
+                                                <img className="profilePicturePreview" src={URL.createObjectURL(file)} />
+                                            </div>
+                                            </> : <></>}
+                                    </div>
+                                </div> 
+                                <p className="info-item">{email}</p>
+                                <button className="EditUserBTN" onClick={editUserHandler}>Edit User</button>
+                                <p className="info-item">Change Profile Picture</p>
+                                <input type="file" accept="image/*" className="setImage" onInput={setImage} />
+                                <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
+                            </div>
+                        </div>
+                    </div> 
+                </>
+            ) : (
                 <div className="Profile">
                     <div className="ProfileCont">
                         <div className="info"> 
-                            <h1 className="info-item">{username}</h1>
+                            <div className="UsernameAndPic">
+                                <h1 className="info-item">{username}</h1>
+                                <div className="profilePictureContainer">
+                                <div className="Profilepicture">
+                                    <img src={`${profilePic}`} alt="profile picture" />
+                                </div>
+                                {file ? <>
+                                        <CropImage file={file} visibility={visibility} setVisibility={setVisibility} setFile={setFile} userId={id}/>
+                                        <div className="previewContainer">
+                                            <img className="profilePicturePreview" src={URL.createObjectURL(file)} />
+                                        </div>
+                                        </> : <></>}
+                                </div>
+                            </div> 
                             <p className="info-item">{email}</p>
-                            <button className="EditUserBTN" onClick={editUserHandler}>Edit User</button>
-                            <p className="info-item">Change Profile Picture</p>
-                            <input type="file" accept="image/*" className="setImage" onInput={setImage} />
-                            <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
+                            <button className="SendMessageBTN" onClick={() => navigateToConversation(profileid)}>Send Message</button>
                         </div>
-                        <div className="profilePictureContainer">
-                            <div className="Profilepicture">
-                                <img src={`${profilePic}`} alt="profile picture" />
-                            </div>
-                            {file ? <>
-                                    <CropImage file={file} visibility={visibility} setVisibility={setVisibility} setFile={setFile} userId={id}/>
-                                    <div className="previewContainer">
-                                        <img className="profilePicturePreview" src={URL.createObjectURL(file)} />
-                                    </div>
-                                    </> : <></>}
-                        </div>
-                    </div>
-                </div> 
-            </>
-        ) : (
-            <div className="Profile">
-                <div className="ProfileCont">
-                    <div className="info"> 
-                        <h1 className="info-item">{username}</h1>
-                        <p className="info-item">{email}</p>
-                        <button className="SendMessageBTN" onClick={() => navigateToConversation(profileid)}>Send Message</button>
-                    </div>
-                    <div className="Profilepicture">
-                        <img src={`${profilePic}`} alt="profile picture" />
                     </div>
                 </div>
-            </div>
-        )
+            )}
+        </div>
     );
 }
     

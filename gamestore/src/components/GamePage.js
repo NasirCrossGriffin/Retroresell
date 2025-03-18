@@ -121,24 +121,30 @@ function GamePage({ userId }) {
                     <EditGame gameId={id} editGameVisibilityProp={editGameVisibility} setEditGameVisibilityProp={setEditGameVisibility}/>
                 }
             </>
-            <>
-                {
-                    userId === seller._id ? <div className="ButtonsDiv">
-                                                        <button onClick={(e) => alterVisibility(e)} id="EditGameBTN" className="EditGameBTN">Edit Game</button>
-                                                        <button onClick={(e) => alterVisibility(e)} id="RemoveGameBTN" className="RemoveGameBTN">Remove Game</button>
-                                                   </div> : <></>
-                }
-            </>
+           
             <div className="GamePage">
                 {
                     game ? <div className="View">
-                                <p className="gameName">{game.name}</p>
-                                <p>{new Date(game.date).toLocaleDateString()}</p>
-                                <p className="price">${game.price}</p>
-                                <div className="Seller">
-                                    <p>{seller.name}</p>
-                                    <div className="SellerPicContainer">
-                                        <img className="SellerPic" onClick={() => (navigate(`/Profile/${seller._id}`))} src={`${seller.image}`} alt="profile picture" />
+                                <div className="Details">
+                                    <>
+                                        {
+                                            userId === seller._id ? <div className="ButtonsDiv">
+                                                                                <button onClick={(e) => alterVisibility(e)} id="EditGameBTN" className="EditGameBTN">Edit Game</button>
+                                                                                <button onClick={(e) => alterVisibility(e)} id="RemoveGameBTN" className="RemoveGameBTN">Remove Game</button>
+                                                                        </div> : <></>
+                                        }
+                                    </>
+                                    <p className="gameName">{game.name}</p>
+                                    <p>{new Date(game.date).toLocaleDateString()}</p>
+                                    <p className="price">${game.price}</p>
+                                    <div className="Seller">
+                                        <p>{seller.name}</p>
+                                        <div className="SellerPicContainer">
+                                            <img className="SellerPic" onClick={() => (navigate(`/Profile/${seller._id}`))} src={`${seller.image}`} alt="profile picture" />
+                                        </div>
+                                    </div>
+                                    <div className="Description">
+                                        <p>{game.description}</p>
                                     </div>
                                 </div>
                                 <div className="GameImages">
@@ -152,9 +158,7 @@ function GamePage({ userId }) {
                                             <img id="Right" className="Right" onClick={(e) => (scroll(e))} src={"/static/ArrowRight.png"}/>
                                         </div> : <p>loading</p>
                                     }
-                                </div>
-                                    
-                                <p>{game.description}</p> 
+                                </div> 
                             </div> 
                         :
                         <div>

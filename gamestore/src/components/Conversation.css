@@ -5,6 +5,7 @@
         height : 100%;
         padding-bottom: 100px; 
         flex-direction: column;
+        margin-top: 70px;
     }
 
     .messageSent, .messageReceived {
@@ -102,6 +103,7 @@
         height : 100%;
         padding-bottom: 100px; 
         flex-direction: column;
+        margin-top: 100px;
     }
 
     .messageSent, .messageReceived {

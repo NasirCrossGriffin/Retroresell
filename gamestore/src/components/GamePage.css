@@ -3,46 +3,124 @@
     src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
 }
 
-@media (min-width : 390px) {
-    .View p {
-        color: white;
-        font-family: ZeldaFont;
-        font-size: 15px;
-        text-align: center;
-    }
+.GamePage {
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: fade-in 1.2s both;
+}
 
-    .GameGrid {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        justify-self: center;
-        justify-items: center;
-        align-items: center;
+@keyframes fade-in {
+    0% {
+        opacity : 0%;
+    }
+    100% {
+        opacity : 100%;
+    }
+}
+
+
+.View p {
+    color: white;
+    font-family: ZeldaFont;
+    text-align: center;
+}
+
+.GameGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-items: center;
+    margin: 0px 0px 0px 0px;
+}
+
+.ImageDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.Image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.Seller {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.SellerPicContainer {
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SellerPic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.Left, .Right {
+    width: 5%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+}
+
+.EditGameBTN, .RemoveGameBTN {
+    border-radius: 25px;
+    border-color: transparent;
+    color: white;
+    background-color: red;
+    padding: 15px 30px;
+    font-size: 15px;
+    margin-top: 1%;
+    font-weight: bold;
+    font-family: ZeldaFont;
+}
+
+.EditGameBTN:hover, .RemoveGameBTN:hover {
+    color: rgb(104, 104, 104);
+    background-color: rgb(64, 1, 1);
+}
+
+.ButtonsDiv {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    justify-content: center;
+}
+
+.price {
+    color: red;
+}
+
+@media (max-width: 1439px) {
+    .View p {
+        font-size: 15px;
     }
 
     .ImageDiv {
         width: 250px;
         height: 250px;
         padding-top: 20px;
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        overflow: hidden; 
-        position: relative; 
-    }
-
-    .Image {
-        object-fit: contain; 
-        width: 100%; 
-        height: 100%; 
-        margin: 0; 
-    }
-
-    .Seller {
-        display: flex;
-        flex-direction: row;
-        justify-self: center;
-        justify-content: center;
     }
 
     .Seller p {
@@ -50,145 +128,61 @@
     }
 
     .SellerPicContainer {
-        width: 100px; 
-        height: 100px; 
-        overflow: hidden;  /* Prevent image from overflowing */
-        border-radius: 50%; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto; /* Ensure the picture is centered in the parent container */
+        width: 100px;
+        height: 100px;
     }
 
-    .SellerPic {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center; /* Ensure the image stays centered */
-    }
-
-    .Left {
-        margin-right: 20px;
-        width : 5%;
-        height : auto;
-        display : flex;
-        justify-content: center;
-        justify-self: center;
-        align-self: center;
-    }
-
-    .Right {
-        margin-left: 20px;
-        width : 5%;
-        height : auto;
-        display : flex;
-        justify-content: center;
-        justify-self: center;
-        align-self: center;
-    }
-
-    .EditGameBTN {
-        border-radius: 25px;
-        border-color: transparent;
-        color: white;
-        background-color: red;
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
+    .EditGameBTN, .RemoveGameBTN {
         margin-left: 25px;
         margin-right: 25px;
-        font-weight: bold;
-        font-family: ZeldaFont;
-    }
-
-    .EditGameBTN:hover {
-        border-radius: 25px;
-        border-color: transparent;
-        color: rgb(104, 104, 104);
-        background-color: rgb(64, 1, 1);
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
-        margin-right: 25px;
-        font-weight: bold;
-    }
-
-    .RemoveGameBTN {
-        border-radius: 25px;
-        border-color: transparent;
-        color: white;
-        background-color: red;
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
-        margin-left: 25px;
-        font-weight: bold;
-        font-family: ZeldaFont;
-    }
-
-    .RemoveGameBTN:hover {
-        border-radius: 25px;
-        border-color: transparent;
-        color: rgb(104, 104, 104);
-        background-color: rgb(64, 1, 1);
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
-        margin-left: 25px;
-        font-weight: bold;
-    }
-
-    .ButtonsDiv {
-        display: flex;
-        flex-direction: row;
-        justify-self: center;
-        justify-content: center;
     }
 }
 
-@media (min-width : 768px) {
+@media (min-width: 1440px) {
     .gameName {
         font-size: 50px;
         font-weight: bold;
         text-align: center;
     }
 
-    .View p {
-        font-size: 30px;
-        text-align: center;
-    }
-
-    .GameGrid {
+    .View {
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        justify-self: center;
-        justify-items: center;
+        justify-content: space-between;
         align-items: center;
+        width: 90%;
+        height: 100%;
+    }
+
+    .Details{
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+
+    .GameImages {
+        width: 450px;
+    }
+
+    .Description {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: scroll;
+        height: 20%;
     }
 
     .ImageDiv {
-        width: 500px;
-        height: 500px;
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        overflow: hidden; 
-        position: relative; 
-    }
-
-    .Image {
-        object-fit: contain; 
-        width: 100%; 
-        height: 100%; 
-        margin: 0; 
+        width: 400px;
+        height: 400px;
     }
 
     .Seller {
-        display: flex;
-        flex-direction: row;
-        justify-self: center;
-        justify-content: center;
         width: 100%;
     }
 
@@ -197,102 +191,12 @@
     }
 
     .SellerPicContainer {
-        width: 150px; 
-        height: 150px; 
-        overflow: hidden;  /* Prevent image from overflowing */
-        border-radius: 50%; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0px 0px 0px 0px /* Ensure the picture is centered in the parent container */
+        width: 100px;
+        height: 100px;
+        margin: 0;
     }
 
-    .SellerPic {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center; /* Ensure the image stays centered */
-    }
-
-    .Left {
-        margin-right: 20px;
-        width : 5%;
-        height : auto;
-        display : flex;
-        justify-content: center;
-        justify-self: center;
-        align-self: center;
-    }
-
-    .Right {
-        margin-left: 20px;
-        width : 5%;
-        height : auto;
-        display : flex;
-        justify-content: center;
-        justify-self: center;
-        align-self: center;
-    }
-
-    .EditGameBTN {
-        border-radius: 25px;
-        border-color: transparent;
-        color: white;
-        background-color: red;
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
+    .EditGameBTN, .RemoveGameBTN {
         margin-left: 25px;
-        margin-right: 25px;
-        font-weight: bold;
     }
-
-    .EditGameBTN:hover {
-        border-radius: 25px;
-        border-color: transparent;
-        color: rgb(104, 104, 104);
-        background-color: rgb(64, 1, 1);
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
-        margin-right: 25px;
-        font-weight: bold;
-    }
-
-    .RemoveGameBTN {
-        border-radius: 25px;
-        border-color: transparent;
-        color: white;
-        background-color: red;
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
-        margin-left: 25px;
-        font-weight: bold;
-    }
-
-    .RemoveGameBTN:hover {
-        border-radius: 25px;
-        border-color: transparent;
-        color: rgb(104, 104, 104);
-        background-color: rgb(64, 1, 1);
-        padding: 15px 30px 15px 30px;
-        font-size: 15px;
-        margin-top: 1%;
-        margin-left: 25px;
-        font-weight: bold;
-    }
-
-    .ButtonsDiv {
-        display: flex;
-        flex-direction: row;
-        justify-self: center;
-        justify-content: center;
-    }
-
-    .price {
-        color: red;
-    }
-
-    
 }

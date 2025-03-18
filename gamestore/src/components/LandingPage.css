@@ -3,10 +3,25 @@
     src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
 }
 
-.LandingPage {
+.LandingPage, .MyGames {
     width : 100%;
     height: 100%;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@keyframes slide-fade {
+    0% {
+        transform : translateY(1000px);
+        opacity : 0%;
+    }
+    100% {
+        transform : translateY(0);
+        opacity : 100%;
+    }
 }
 
 .SearchBar {
@@ -80,11 +95,33 @@
 /* Style for the grid container */
 .gameView {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
-    row-gap: 16px; /* Space between grid items */
-    padding: 3vw; /* Padding around the grid */
+    gap: 16px; /* Space between grid items */
+    padding-top: 20px;
     justify-content: center; /* Center the grid horizontally if it's smaller than the container */
-    align-items: start; /* Align items to the top of the row */
+    align-items: center; /* Align items to the top of the row */
+    width: 80%;
+    animation: slide-fade 1.2s both;
+}
+
+@media (max-width: 1439px) {
+    .gameView {
+        grid-template-columns: repeat(2, 1fr); /* 3 columns of equal width */
+
+    }
+
+    .LandingPage {
+        margin-top: 70px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .gameView {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+    }
+
+    .LandingPage {
+        margin-top: 110px;
+    }
 }
 
 /* Style for individual grid items */
@@ -98,11 +135,23 @@
     border: 1px solid #ddd; /* Light border */
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.300);
     text-align: center; /* Center text inside the item */
-    width: 20vw;
-    height : 20vw;
     font-family: ZeldaFont;
     color: #333; /* Text color */
     transition: color 300ms ease-in-out;
+}
+
+@media (max-width: 1439px) {
+    .singleGame {
+        width: 150px;
+        height : 150px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .singleGame {
+        width: 350px;
+        height : 350px;
+    }
 }
 
 .singleGame:hover {
@@ -112,7 +161,22 @@
 /* Style for text inside the grid item */
 .singleGame p {
     margin: 0.1vw 0; /* Space between text elements */
-    font-size: 1.5vw; /* Font size for readability */}
+    font-size: 1.5vw; /* Font size for readability */
+}
+
+@media (max-width: 1439px) {
+    .singleGame p {
+        margin-top: 10px;
+        font-size: 10px; /* Font size for readability */
+    }
+}
+
+@media (min-width: 1440px) {
+    .singleGame p {
+        margin-top: 10px;
+        font-size: 25px; /* Font size for readability */
+    }
+}
 
 /* Style for images in the grid */
 .gamePreviewImage img {

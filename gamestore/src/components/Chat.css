@@ -6,6 +6,18 @@
     flex-direction: column;
 }
 
+@media (max-width : 1439px) {
+    .allChats {
+        margin-top: 70px;
+    }
+}
+
+@media (min-width : 1440px) {
+    .allChats {
+        margin-top: 110px;
+    }
+}
+
 .chat{
     display: flex;  
     align-items: flex-start; /* Align items at the start vertically */

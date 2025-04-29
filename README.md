@@ -29,7 +29,6 @@ Retroresell is a game sharing and trading site. Users can upload photos of the g
 * **User Games Page:** The user can view all the games of a chosen user.
 
 * **Live Chat:** When logged in, a user can choose to message other users to arrange trades and sales.
-* 
 
 ## Stretch Goals:
 

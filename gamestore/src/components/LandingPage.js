@@ -35,8 +35,12 @@ function LandingPage( ) {
             setSearch(await getAllGames());
         } else {
             const games = await getAllGames();
-            const filteredGames = games.filter(game => game.name.toLowerCase().includes(query));
-            setSearch(filteredGames);
+            if (games.length > 0) {
+                const filteredGames = games.filter(game => game.name.toLowerCase().includes(query));
+                setSearch(filteredGames);
+            } else {
+                setSearch([])
+            }
         }
         console.log(search);
     }
@@ -68,14 +72,14 @@ function LandingPage( ) {
     return (
         <>
         <div className="LandingPage">
-            <form className="SearchBar">
+            <form data-testid="search-bar" className="SearchBar">
                 <label htmlFor="Search" className="SearchLabel">Search</label>
                 <input type="text" className="Search" id="Search" onChange={(e) => {searchFunc(e)}}/>
             </form>
 
             <div className="gameView">
             {!(search.length === 0) ? search.map((game, index) => (
-                <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
+                <div data-testid="single-game" className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>
                     <div className="gamePreviewImage">
                         <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${gamePreviews[index] || "/placeholder.png"}`}/>
                     </div>
@@ -83,7 +87,7 @@ function LandingPage( ) {
                     <p onClick={(e) => (accessGamePage(e))}> ${game.price}</p>
                     <p onClick={(e) => (accessGamePage(e))}>uploaded on {new Date(game.date).toLocaleDateString()}</p>
                 </div>
-            )) : <p>There are no games for this search</p>}
+            )) : <p data-testid="no-games">There are no games for this search</p>}
             </div>
         </div>
         </>

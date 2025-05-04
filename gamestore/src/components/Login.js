@@ -97,10 +97,10 @@ function Login({ setUserIDProp, setLogged_InProp }) {
                 <h1>Login</h1>
                 <div className="LoginSeparator"></div>
                 <div className="FormContainer">
-                    <form onSubmit={submitHandler}>
+                    <form data-testid="login-form" name="LoginForm" onSubmit={submitHandler}>
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                        <label htmlFor="username">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <input type="submit" name="submit" id="submit"/>
                         <p style={{ display: isVisible ? 'block' : 'none' }}>Wrong username or password</p>

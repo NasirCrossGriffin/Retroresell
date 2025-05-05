@@ -1,7 +1,7 @@
 import "./Signup.css";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { findUser, findUserByName, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage, uploadToAWS } from "./middleware";
+import { findUserByName, postUser, uploadToAWS } from "./middleware";
 
 function Signup({ setUserIDProp, setLogged_InProp }) {
     const [email, setEmail] = useState("");
@@ -29,6 +29,8 @@ function Signup({ setUserIDProp, setLogged_InProp }) {
             } else {
                 throw new Error('Failed to create user');
             }
+        } else {
+            console.log("invalid credentials")
         }
     };
 
@@ -96,17 +98,17 @@ function Signup({ setUserIDProp, setLogged_InProp }) {
                 <div className="FormContainer">
                     <form className="SignupForm" onSubmit={submitHandler}>
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" id="email" value={email} onChange={(e) => emailHandler(e)}/>
+                        <input data-testid="email-input" type="text" name="email" id="email" value={email} onChange={(e) => emailHandler(e)}/>
                         <p style={{ display: !(emailValid) ? 'block' : 'none' }} className="validator">Please enter a valid email</p>
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username" value={username} onChange={(e) => usernameHandler(e)}/>
+                        <input data-testid="username-input" type="text" name="username" id="username" value={username} onChange={(e) => usernameHandler(e)}/>
                         <p style={{ display: !(usernameValid) ? 'block' : 'none' }} className="validator">Please enter a valid username</p>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" value={password} onChange={(e) => passwordHandler(e)}/>
+                        <label  htmlFor="password">Password</label>
+                        <input data-testid="password-input" type="password" name="password" id="password" value={password} onChange={(e) => passwordHandler(e)}/>
                         <p style={{ display: !(passwordValid) ? 'block' : 'none' }} className="validator">Please enter a valid password</p>
-                        <input type="file" accept="image/*" className="setImage" onChange={(e) => fileHandler(e)} />
+                        <input data-testid="file-input" type="file" accept="image/*" className="setImage" onChange={(e) => fileHandler(e)} />
                         <p style={{ display: !(fileValid) ? 'block' : 'none' }} className="validator">Please input a profile picture</p>
-                        <input type="submit" name="submit" id="submit" />
+                        <input data-testid="submit-input" type="submit" name="submit" id="submit" />
                     </form>
                 </div>
             </div>

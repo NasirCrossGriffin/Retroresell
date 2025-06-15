@@ -1,5 +1,3 @@
 .env
 node_modules
 backend/.git
-backend/build
-build

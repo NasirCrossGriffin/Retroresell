@@ -270,6 +270,7 @@ const findGame = async (gameId) => {
 
 const findAllGames = async () => {
     try {
+        console.log(BASE_URL)
         const response = await fetch(`${BASE_URL}/game/all`, {
             method: 'GET'
         });

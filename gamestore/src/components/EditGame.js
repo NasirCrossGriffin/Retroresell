@@ -81,7 +81,7 @@ function EditGame({ gameId, editGameVisibilityProp, setEditGameVisibilityProp })
         try {
             const patchedGame = await patchGame(name, description, price, date, seller, gameId);
             if (patchedGame) {
-                for (const image of images) {
+                for (let image of images) {
                     const uploadedImage = await uploadToAWS(image);
                     await postGameImage(uploadedImage, patchedGame._id);
                 }

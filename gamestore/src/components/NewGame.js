@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 import "./NewGame.css"
-import { postGame, uploadGameImage, postGameImage, uploadToAWS } from "./middleware";
+import { postGame, uploadGameImage, postGameImage, uploadToAWS, checkSession, findUser } from "./middleware";
 
 function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
     const [name, setName] = useState("");
@@ -9,26 +9,46 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
     const [price, setPrice] = useState(0);
     const [images, setImages] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        async function checkLoggedIn() {
+            const session = await checkSession();
+
+            setLoggedIn(session.loggedIn);
+
+            if (session.loggedIn && session.userID) {
+            const retrievedUser = await findUser(session.userID);
+            setUser(retrievedUser);
+            }
+        }
+
+        checkLoggedIn();
+    }, []); 
+
 
     const createNewGame = async (e) => {
         e.preventDefault(); // Prevent form submission reload
         const date = new Date();
-        const seller = id.id;
+        const seller = user._id;
         console.log(seller);
 
         const newGame = await postGame(name, description, price, date, seller);
         if (newGame) {
+            console.log(images)
             for (const image of images) {
                 console.log(image);
                 const uploadedImage = await uploadToAWS(image);
                 console.log(newGame._id);
                 const response = await postGameImage(uploadedImage, newGame._id);
-                window.location.reload();
                 if (!response.ok) {
                     console.error("Failed to upload game image.");
                 }
             }
             setNewGameVisibilityProp(false);
+            window.location.reload();
+
         } else {
             setIsVisible(true);
             console.error("Game creation failed.");

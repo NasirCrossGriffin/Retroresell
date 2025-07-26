@@ -317,6 +317,8 @@ const postGame = async ( name, description, price, date, seller ) => {
             seller: seller
         };
 
+        console.log(userData)
+
         const response = await fetch(`${BASE_URL}/game`, {
             method: 'POST',
             headers: {

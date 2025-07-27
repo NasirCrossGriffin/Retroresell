@@ -108,7 +108,10 @@ function Profile({ id }) {
                                     </div>
                                 </div> 
                                 <p className="info-item">{email}</p>
-                                <button className="EditUserBTN" onClick={editUserHandler}>Edit User</button>
+                                <div>
+                                    <button className="EditUserBTN" onClick={editUserHandler}>Edit User</button>
+                                    <a href={`/storefront/MyGames/${profileid}`}><button className="ViewCollection">View Collection</button></a>
+                                </div>
                                 <p className="info-item">Change Profile Picture</p>
                                 <input type="file" accept="image/*" className="setImage" onInput={setImage} />
                                 <button className="ChngPrflBTN" onClick={changeProfilePic}>Submit Profile Picture</button>
@@ -122,6 +125,7 @@ function Profile({ id }) {
                         <div className="info"> 
                             <div className="UsernameAndPic">
                                 <h1 className="info-item">{username}</h1>
+                                
                                 <div className="profilePictureContainer">
                                 <div className="Profilepicture">
                                     <img src={`${profilePic}`} alt="profile picture" />
@@ -133,6 +137,9 @@ function Profile({ id }) {
                                         </div>
                                         </> : <></>}
                                 </div>
+                            </div>
+                            <div>
+                                <a href={`/storefront/MyGames/${profileid}`}><button className="ViewCollection">View Collection</button></a>
                             </div> 
                             <p className="info-item">{email}</p>
                             <button className="SendMessageBTN" onClick={() => navigateToConversation(profileid)}>Send Message</button>

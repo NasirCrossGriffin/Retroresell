@@ -10,7 +10,7 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
     const [images, setImages] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         async function checkLoggedIn() {

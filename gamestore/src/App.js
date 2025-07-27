@@ -66,7 +66,7 @@ function App() {
                         <>
                             <Route path="/" element={<Navigate to="/Home" />} />
                             <Route path="/Profile/:profileid" element={<Profile id={userID} />} />
-                            <Route path="/MyGames" element={<MyGamesPage id={userID} logged_in_prop={loggedIn} />} />
+                            <Route path="/MyGames/:userid" element={<MyGamesPage id={userID}/>} />
                             <Route path="/GameView/:id" element={<GamePage userId={userID}/>} />
                             <Route path="/Conversation/:recipientid" element={<Conversation id={userID} logged_in_prop={loggedIn} />} />
                             <Route path="/Chat" element={<Chat id={userID} logged_in_prop={loggedIn}/>} />

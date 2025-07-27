@@ -5,28 +5,54 @@ import { findUser, findGame, findGameImage, postUser,
     findGameImagesByGame, uploadGameImage, postGame, postGameImage, checkSession } from "./middleware"
 import NewGame from './NewGame';
 import { useNavigate} from "react-router-dom"
+import { useParams } from 'react-router-dom';
 
 
-function MyGamesPage({ id, logged_in_prop }) {
+function MyGamesPage( ) {
     const [games, setGames] = useState([]);
     const [newGameVisibility, setNewGameVisibility] = useState(false)
     const [gameImage, setGameImage] = useState("");
     const [gamePreviews, setGamePreviews] = useState([]);
+    const [sessionUser, setSessionUser] = useState({});
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [thisUser, setThisUser] = useState({});
     const navigate = useNavigate();
+    const { userid } = useParams();
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
     useEffect(() => {
-        if (!(logged_in_prop === true))
-            navigate(`/Login`);
-    }, [logged_in_prop]); 
+        async function checkLoggedIn() {
+            const session = await checkSession();
+
+            setLoggedIn(session.loggedIn);
+
+            if (session.loggedIn && session.userID) {
+                const retrievedUser = await findUser(session.userID);
+                console.log(retrievedUser)
+                setSessionUser(retrievedUser);
+            }
+        }
+
+        checkLoggedIn();
+    }, [sessionUser, loggedIn]);
 
     useEffect(() => {
         const fetchGames = async () => {
-            const myGames = await findGamesByUser(id); 
+            const myGames = await findGamesByUser(userid); 
             setGames(myGames);
         };
+
+        const retrieveThisUser = async () => {
+            const user = await findUser(userid);
+
+            console.log(user)
+
+            setThisUser(user);
+        };
+
         fetchGames();
-    }, [id]);
+        retrieveThisUser();
+    }, [userid]);
 
     useEffect(() => {
         const fetchGamePreviews = async () => {
@@ -67,7 +93,7 @@ function MyGamesPage({ id, logged_in_prop }) {
 
     if (!games) {
         return (<>
-            <NewGame id={id} newGameVisibilityProp={newGameVisibility} setNewGameVisibilityProp={setNewGameVisibility}/>
+            <NewGame id={userid} newGameVisibilityProp={newGameVisibility} setNewGameVisibilityProp={setNewGameVisibility}/>
             <button onClick={alterVisibility}>New Game</button>
         </>)
     }
@@ -75,8 +101,17 @@ function MyGamesPage({ id, logged_in_prop }) {
     return (
         <>  
             <div className="MyGames">
-                <NewGame id={id} newGameVisibilityProp={newGameVisibility} setNewGameVisibilityProp={setNewGameVisibility}/>
-                <button onClick={alterVisibility} className="NewGameBTN">New Game</button>
+                <NewGame id={userid} newGameVisibilityProp={newGameVisibility} setNewGameVisibilityProp={setNewGameVisibility}/>
+                <a href={`/storefront/Profile/${thisUser._id}`}>
+                    <div className="ProfileAndName">
+                        <div className="UserProfilePic">
+                            <img src={thisUser.image} />
+                        </div>
+                        <p>{thisUser.name}</p>
+                    </div>
+                </a>
+
+                {loggedIn === true ? sessionUser._id === thisUser._id ? <button onClick={alterVisibility} className="NewGameBTN">New Game</button> : <></> : <></> }
                 <div className="gameView">
                     {games.map((game, index) => (
                         <div className="singleGame" id={game._id} onClick={(e) => (accessGamePage(e))}>

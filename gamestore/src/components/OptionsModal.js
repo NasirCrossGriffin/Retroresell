@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactDom from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
-import { Logout } from "./middleware";
+import { Logout, checkSession, findUser } from "./middleware";
 import { CSSTransition } from 'react-transition-group';
 
 
@@ -11,8 +11,24 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
     const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
     const nodeRef = useRef(null);
+    const [sessionUser, setSessionUser] = useState({});
+    const [loggedIn, setLoggedIn] = useState({});
 
+    useEffect(() => {
+        async function checkLoggedIn() {
+            const session = await checkSession();
 
+            setLoggedIn(session.loggedIn);
+
+            if (session.loggedIn && session.userID) {
+                const retrievedUser = await findUser(session.userID);
+                console.log(retrievedUser)
+                setSessionUser(retrievedUser);
+            }
+        }
+
+        checkLoggedIn();
+    }, [sessionUser, loggedIn]);
 
     useEffect(() => {
         setIsVisible(visibility)
@@ -46,9 +62,9 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
                     <div className="modal" ref={nodeRef} variant="primary" dismissible onClose={() => setIsVisible(false)}>
                         <div className="container">
                             <Link to="/Home" className="OptionsLink">Home</Link> 
-                            {logged_inProp ? <button className="LogOut" onClick={logout}>Log Out</button> : <Link to="/Login" className="OptionsLink">Login</Link>}
-                            {logged_inProp ? <Link to="/Chat" className="OptionsLink">Chat</Link> : <></>}
-                            {logged_inProp ? <Link to="/MyGames" className="OptionsLink">My Games</Link> : <></>}
+                            {loggedIn ? <button className="LogOut" onClick={logout}>Log Out</button> : <Link to="/Login" className="OptionsLink">Login</Link>}
+                            {loggedIn ? <Link to="/Chat" className="OptionsLink">Chat</Link> : <></>}
+                            {loggedIn ? <Link to={`/MyGames/${sessionUser._id}`} className="OptionsLink">My Games</Link> : <></>}
                         </div>
                     </div>
                 </CSSTransition>

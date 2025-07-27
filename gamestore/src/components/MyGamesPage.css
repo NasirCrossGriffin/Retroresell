@@ -1,5 +1,8 @@
 /* Style for individual grid items */
-
+@font-face {
+    font-family: ZeldaFont;
+    src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
+}
 
 .singleGame:hover {
     color: red;
@@ -64,4 +67,63 @@
     .MyGames {
         margin-top: 110px;
     }
+
+    .ProfileAndName {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ProfileAndName p {
+        color: white;
+        font-family: ZeldaFont;
+        margin-left: 12px;
+    }
+
+    .UserProfilePic {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .UserProfilePic img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width : 1439px) {
+    .ProfileAndName {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        left: 20px;
+        top : 50px;
+        margin-bottom: 50px;
+    }
+
+    .ProfileAndName p {
+        color: white;
+        font-family: ZeldaFont;
+        margin-left: 12px;
+        font-size: 10px;
+    }
+
+    .UserProfilePic {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .UserProfilePic img {
+        width: 100%;
+        height: 100%;
+    }
+
 }

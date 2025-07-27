@@ -29,6 +29,7 @@ function Login({ setUserIDProp, setLogged_InProp }) {
             setUserIDProp(user._id);
             setLogged_InProp(true);
             navigate("/Home");
+            window.location.reload();
         }
         else
         {

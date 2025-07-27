@@ -20,21 +20,26 @@ function MyGamesPage( ) {
     const { userid } = useParams();
     const BASE_URL = (process.env.NODE_ENV === "development" ? process.env.REACT_APP_REQ_URL : "")
 
-    useEffect(() => {
-        async function checkLoggedIn() {
-            const session = await checkSession();
-
-            setLoggedIn(session.loggedIn);
-
-            if (session.loggedIn && session.userID) {
-                const retrievedUser = await findUser(session.userID);
-                console.log(retrievedUser)
-                setSessionUser(retrievedUser);
+        useEffect(() => {
+            async function checkLoggedIn() {
+                const session = await checkSession();
+    
+                if (!session) {
+                    setLoggedIn(false)
+                    return;
+                }
+    
+                setLoggedIn(session.loggedIn);
+    
+                if (session.loggedIn && session.userID) {
+                    const retrievedUser = await findUser(session.userID);
+                    console.log(retrievedUser)
+                    setSessionUser(retrievedUser);
+                }
             }
-        }
-
-        checkLoggedIn();
-    }, [sessionUser, loggedIn]);
+    
+            checkLoggedIn();
+        }, []);
 
     useEffect(() => {
         const fetchGames = async () => {

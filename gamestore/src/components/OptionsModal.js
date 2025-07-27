@@ -12,11 +12,16 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
     const navigate = useNavigate();
     const nodeRef = useRef(null);
     const [sessionUser, setSessionUser] = useState({});
-    const [loggedIn, setLoggedIn] = useState({});
+    const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
         async function checkLoggedIn() {
             const session = await checkSession();
+
+            if (!session) {
+                setLoggedIn(false)
+                return;
+            }
 
             setLoggedIn(session.loggedIn);
 
@@ -28,7 +33,7 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
         }
 
         checkLoggedIn();
-    }, [sessionUser, loggedIn]);
+    }, []);
 
     useEffect(() => {
         setIsVisible(visibility)
@@ -48,6 +53,7 @@ function OptionsModal ({ visibility, setOptionsVisibilityProp, logged_inProp, se
             setUserIDProp(null);
             setLogged_InProp(false);
             navigate("/Login");  
+            window.location.reload();
         }
     }
 

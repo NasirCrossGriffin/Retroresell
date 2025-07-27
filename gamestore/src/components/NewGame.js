@@ -48,7 +48,6 @@ function NewGame({ id, newGameVisibilityProp, setNewGameVisibilityProp }) {
             }
             setNewGameVisibilityProp(false);
             window.location.reload();
-
         } else {
             setIsVisible(true);
             console.error("Game creation failed.");

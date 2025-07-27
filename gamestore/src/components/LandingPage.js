@@ -84,7 +84,7 @@ function LandingPage( ) {
                         <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${gamePreviews[index] || "/placeholder.png"}`}/>
                     </div>
                     <p onClick={(e) => (accessGamePage(e))}>{game.name}</p>
-                    <p onClick={(e) => (accessGamePage(e))}> ${game.price}</p>
+                    <p onClick={(e) => (accessGamePage(e))}> {game.price > 0 ? game.price : "NOT FOR SALE"}</p>
                     <p onClick={(e) => (accessGamePage(e))}>uploaded on {new Date(game.date).toLocaleDateString()}</p>
                 </div>
             )) : <p data-testid="no-games">There are no games for this search</p>}

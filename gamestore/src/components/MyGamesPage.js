@@ -84,7 +84,7 @@ function MyGamesPage({ id, logged_in_prop }) {
                                 <img id={game._id} onClick={(e) => (accessGamePage(e))} src={`${gamePreviews[index] || "/placeholder.png"}`}/>
                             </div>
                             <p>{game.name}</p>
-                            <p>${game.price}</p>
+                            <p>{game.price > 0 ? game.price : "NOT FOR SALE"}</p>
                             <p>uploaded on {new Date(game.date).toLocaleDateString()}</p>
                         </div>
                     ))}

@@ -136,7 +136,7 @@ function GamePage({ userId }) {
                                     </>
                                     <p data-testid="game-name" className="gameName">{game.name}</p>
                                     <p>{new Date(game.date).toLocaleDateString()}</p>
-                                    <p data-testid="game-price" className="price">${game.price}</p>
+                                    <p data-testid="game-price" className="price">{game.price > 0 ? game.price : "NOT FOR SALE"}</p>
                                     <div className="Seller">
                                         <p data-testid="seller-name">{seller.name}</p>
                                         <div className="SellerPicContainer">

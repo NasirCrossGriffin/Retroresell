@@ -65,7 +65,7 @@ router.post('/local', uploadMemoryStorage.single('file'), async (req, res) => {
   try {
     const datetime = new Date();
     const fileName = file.originalname + '_' + datetime.toISOString();
-    const destinationDirectory = ASSETS_DIR;
+    const destinationDirectory = process.env.ASSETS_DIR;
     const destinationPath = path.join(destinationDirectory, fileName);
 
     await fs.writeFile(destinationPath, file.buffer);

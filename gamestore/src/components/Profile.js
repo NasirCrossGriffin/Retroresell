@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import EditUser from "./EditUser"
 import CropImage from "./CropImage"
-import { findUser, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage, uploadToAWS } from "./middleware";
+import { findUser, findGame, findGameImage, postUser, authenticate, uploadProfileImage, changeProfileImage, uploadToServer} from "./middleware";
 
 function Profile({ id }) {
     const [email, setEmail] = useState("");
@@ -60,7 +60,7 @@ function Profile({ id }) {
 
     const changeProfilePic = async () => {
         if (file && !croppedImage) {
-            const newImage = await uploadToAWS(file);
+            const newImage = await uploadToServer(file);
             console.log(newImage);
             await changeProfileImage(id, newImage);
             const user = await findUser(id);

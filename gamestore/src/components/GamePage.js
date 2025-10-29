@@ -113,7 +113,7 @@ function GamePage({ userId }) {
         <>
             <>
                 {
-                    <DeleteGame gameId={id} deleteGameVisibilityProp={deleteGameVisibility} setDeleteGameVisibilityProp={setDeleteGameVisibility}/>
+                    <DeleteGame gameId={id} userId={seller._id} deleteGameVisibilityProp={deleteGameVisibility} setDeleteGameVisibilityProp={setDeleteGameVisibility}/>
                 }
             </>
             <>

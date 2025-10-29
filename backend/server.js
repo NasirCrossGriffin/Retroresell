@@ -102,25 +102,26 @@ const userRouter = require('./routes/users');
 const gameRouter = require('./routes/games');
 const gameImageRouter = require('./routes/gameimages');
 const messagesRouter = require('./routes/messages');
+const uploadRoute = require('./routes/upload'); // Adjust the path as needed
 
 app.use('/users', userRouter);
 app.use('/game', gameRouter);
 app.use('/gameimage', gameImageRouter);
 app.use('/message', messagesRouter);
-
+app.use('/upload', uploadRoute);
 
 app.get('/', (req, res) => {
     res.redirect('/storefront');
 });
 
-const uploadRoute = require('./routes/upload'); // Adjust the path as needed
+
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/aws', uploadRoute);
+
 
 app.use(express.static(path.join(__dirname, "build")));
 

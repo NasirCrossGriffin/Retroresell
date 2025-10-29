@@ -10,7 +10,7 @@ import {
 } from "./middleware";
 import { CSSTransition } from "react-transition-group";
 
-function DeleteGame({ gameId, deleteGameVisibilityProp, setDeleteGameVisibilityProp }) {
+function DeleteGame({ gameId, userId, deleteGameVisibilityProp, setDeleteGameVisibilityProp }) {
     const [game, setGame] = useState(null);
     const [gameImages, setGameImages] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +53,7 @@ function DeleteGame({ gameId, deleteGameVisibilityProp, setDeleteGameVisibilityP
             }
             await deleteGame(game._id);
             setDeleteGameVisibilityProp(false);
-            navigate("/MyGames");
+            navigate(`/MyGames/${userId}`);
         }
     };
 

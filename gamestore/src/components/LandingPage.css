@@ -101,6 +101,7 @@
     align-items: center; /* Align items to the top of the row */
     width: 80%;
     animation: slide-fade 1.2s both;
+    margin-bottom: 50px;
 }
 
 @media (max-width: 1439px) {

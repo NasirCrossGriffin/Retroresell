@@ -1,0 +1,129 @@
+/* Style for individual grid items */
+@font-face {
+    font-family: ZeldaFont;
+    src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
+}
+
+.singleGame:hover {
+    color: red;
+}
+
+@media (max-width : 1439px) {
+    .NewGameBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 5px 20px 5px 20px;
+        font-size: 10px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
+        font-family: ZeldaFont;
+    }
+
+    .NewGameBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(104, 104, 104);
+        background-color: rgb(64, 1, 1);
+        padding: 5px 20px 5px 20px;
+        font-size: 10px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
+    }
+
+    .MyGames {
+        margin-top: 70px;
+    }
+}
+
+@media (min-width : 1440px) {
+    .NewGameBTN {
+        border-radius: 25px;
+        border-color: transparent;
+        color: white;
+        background-color: red;
+        padding: 15px 30px 15px 30px;
+        font-size: 15px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
+    }
+
+    .NewGameBTN:hover {
+        border-radius: 25px;
+        border-color: transparent;
+        color: rgb(104, 104, 104);
+        background-color: rgb(64, 1, 1);
+        padding: 15px 30px 15px 30px;
+        font-size: 15px;
+        margin-top: 1%;
+        margin-left: 25px;
+        font-weight: bold;
+    }
+
+    .MyGames {
+        margin-top: 110px;
+    }
+
+    .ProfileAndName {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ProfileAndName p {
+        color: white;
+        font-family: ZeldaFont;
+        margin-left: 12px;
+    }
+
+    .UserProfilePic {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .UserProfilePic img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width : 1439px) {
+    .ProfileAndName {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        left: 20px;
+        top : 50px;
+        margin-bottom: 50px;
+    }
+
+    .ProfileAndName p {
+        color: white;
+        font-family: ZeldaFont;
+        margin-left: 12px;
+        font-size: 10px;
+    }
+
+    .UserProfilePic {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .UserProfilePic img {
+        width: 100%;
+        height: 100%;
+    }
+
+}

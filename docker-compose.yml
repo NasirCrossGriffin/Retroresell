@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    build: ./backend
+    env_file:
+      - .env  
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - /portfolio/Retroresell/assets:/app/assets

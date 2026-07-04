@@ -1,0 +1,192 @@
+@font-face {
+    font-family: ZeldaFont;
+    src: url('../assets/fonts/the-legend-of-zelda-nes.ttf');
+}
+
+.LandingPage, .MyGames {
+    width : 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@keyframes slide-fade {
+    0% {
+        transform : translateY(1000px);
+        opacity : 0%;
+    }
+    100% {
+        transform : translateY(0);
+        opacity : 100%;
+    }
+}
+
+.SearchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Vertically centers content */
+    width: 100%;
+    height: auto; /* Let the height be determined by the content */
+    margin-top: 10px;
+}
+
+@media (min-width: 390px) {
+    .Search {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; /* Centers content horizontally inside .Search */
+        align-items: center; /* Centers content vertically inside .Search */
+        font-size: 12px;
+        width: 70%;
+        height: 2vw;
+        padding: 10px;
+        box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.300);
+        
+    }
+}
+
+@media (min-width: 768px) {
+    .Search {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; /* Centers content horizontally inside .Search */
+        align-items: center; /* Centers content vertically inside .Search */
+        font-size: 25px;
+        width: 70%;
+        height: 2vw;
+        padding: 10px;
+    }
+}
+
+
+.SearchSubmit {
+    border-radius: 25px;
+    border-color: transparent;
+    padding: 25px 25px 25px 25px;
+    margin-left: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: red;
+    color : white;
+}
+
+.SearchSubmit:hover {
+    border-radius: 25px;
+    border-color: transparent;
+    padding: 25px 25px 25px 25px;
+    margin-left: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: rgb(65, 0, 0);
+    color : grey;
+}
+
+.SearchLabel {
+    margin-right: 2vw;
+    font-size: 2vw;
+    color: white;
+    font-family: ZeldaFont;
+}
+
+/* Style for the grid container */
+.gameView {
+    display: grid;
+    gap: 16px; /* Space between grid items */
+    padding-top: 20px;
+    justify-content: center; /* Center the grid horizontally if it's smaller than the container */
+    align-items: center; /* Align items to the top of the row */
+    width: 80%;
+    animation: slide-fade 1.2s both;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 1439px) {
+    .gameView {
+        grid-template-columns: repeat(2, 1fr); /* 3 columns of equal width */
+
+    }
+
+    .LandingPage {
+        margin-top: 70px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .gameView {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+    }
+
+    .LandingPage {
+        margin-top: 110px;
+    }
+}
+
+/* Style for individual grid items */
+.singleGame {
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: flex-start; /* Align items at the top */
+    align-items: center; /* Center items horizontally */
+    background-color: #f9f9f9; /* Light background for the item */
+    padding: 3vw; /* Padding inside each grid cell */
+    border: 1px solid #ddd; /* Light border */
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.300);
+    text-align: center; /* Center text inside the item */
+    font-family: ZeldaFont;
+    color: #333; /* Text color */
+    transition: color 300ms ease-in-out;
+}
+
+@media (max-width: 1439px) {
+    .singleGame {
+        width: 150px;
+        height : 150px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .singleGame {
+        width: 350px;
+        height : 350px;
+    }
+}
+
+.singleGame:hover {
+    color: red;
+}
+
+/* Style for text inside the grid item */
+.singleGame p {
+    margin: 0.1vw 0; /* Space between text elements */
+    font-size: 1.5vw; /* Font size for readability */
+}
+
+@media (max-width: 1439px) {
+    .singleGame p {
+        margin-top: 10px;
+        font-size: 10px; /* Font size for readability */
+    }
+}
+
+@media (min-width: 1440px) {
+    .singleGame p {
+        margin-top: 10px;
+        font-size: 25px; /* Font size for readability */
+    }
+}
+
+/* Style for images in the grid */
+.gamePreviewImage img {
+    width: 100%; /* Make the image fill the width of the container */
+    height: 100%;
+    object-fit: contain;
+}
+
+.gamePreviewImage {
+    width : 80%;
+    height : 50%;
+}

@@ -12,6 +12,12 @@ import Conversation from './components/Conversation';
 import Chat from './components/Chat';
 import "./App.css"
 import { checkSession } from './components/middleware'; // Import your middleware
+import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfUse from './components/TermsOfUse';
+import WebsiteDisclaimer from './components/WebsiteDisclaimer';
+import AccessibilityStatement from './components/AccessibilityStatement';
+import ContactPage from './components/ContactFooter';
 
 function App() {
     const [userID, setUserID] = useState(null); // Tracks the logged-in user's ID
@@ -73,10 +79,15 @@ function App() {
                             <Route path="/Home" element={<LandingPage />} />
                             <Route path="/" element={<Navigate to="/Login" />} />
                             <Route path="/Login" element={<Login setUserIDProp={setUserID} setLogged_InProp={setLoggedIn} />}/>
-                            <Route path="/Signup" element={<Signup setUserIDProp={setUserID} setLogged_InProp={setLoggedIn} />}
-                            />
+                            <Route path="/Signup" element={<Signup setUserIDProp={setUserID} setLogged_InProp={setLoggedIn} />} />
+                            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                            <Route path="/terms-of-use" element={<TermsOfUse />} />
+                            <Route path="/website-disclaimer" element={<WebsiteDisclaimer />} />
+                            <Route path="/accessibility" element={<AccessibilityStatement />} />
+                            <Route path="/contact-footer" element={<ContactPage />} />        
                         </>
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </>
     );

@@ -1,0 +1,431 @@
+@media(orientation: landscape) {
+    .Footer {
+      position: relative;
+      z-index: 6;
+      background-color: black;
+      width: 100%;
+      height: 100vh;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+    }
+
+    .FooterHeading {
+      position: absolute;
+      width: fit-content;
+      height: fit-content;
+      left : 5%;
+      top : 5%;
+      transform: translate(-5%, -5%);
+      color: white;
+    }
+
+    .FooterHeading span {
+      margin: 0 0 0 0;
+      font-family: 'Montserrat';
+      font-size: 3vw;
+      font-weight: bolder;
+      color : white
+    }
+
+    .FooterLogo {
+      position: absolute;
+      width: 20vw;
+      height: fit-content;
+
+      top: 99%;
+      left: 1%;
+      transform: translate(-1%, -99%)
+    }
+
+    .FooterLogo img {
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+    }
+
+    .FooterNav {
+      position: absolute;
+      height: 20vh;
+      top : 5%;
+      left: 95%;
+      transform: translate(-80%, -5%);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .FooterNav a {
+      font-size: 1.5vw;
+      color: white;
+      font-family: 'Montserrat';
+      font-weight: bold;
+      margin-bottom: 1vw;;
+    }
+
+    Footer .SocialsNav {
+      position: absolute;
+      width: 8%;
+      height: fit-content;
+      top : 5%;
+      left: 99%;
+      transform: translate(-99%, -5%);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    Footer .SocialsNav a img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+
+    Footer .SocialsNav a {
+      font-size: 1vw;
+      color: white;
+      font-family: 'Montserrat';
+      font-weight: bold;
+      margin-bottom: 1vw;
+    }
+
+    .ApexContact {
+    position: absolute;
+    width: 70%;
+    height: 5%;
+    left: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+    .ApexContact .Contact {
+      width : 20%;
+      height : 90%;
+
+      display : flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 0;
+    }
+
+    .ContactField {
+        width: 100%;
+        font-family: 'Montserrat';
+        color: darkgray;
+        font-size: 1.5vw;
+        margin: 0 0 0 0;
+    }
+
+    .ContactValue {
+        width: 100%;
+        font-family: 'Montserrat';
+        color: white;
+        font-size: 1.2vw;
+        text-wrap: nowrap;
+        margin: 0 0 0 0;
+    }
+
+    .Operator {
+      font-size: clamp(6px, .8vw, 12px);
+      width: 100%;
+    }
+
+    .LegalProtections {
+      position: absolute;
+      right : 2.5%;
+      bottom : 0;
+      width : 70%;
+      height: 40%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .Divider {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 1px;
+      min-height: 1px;
+      background-color: rgb(64, 64, 64);
+    }
+
+    .LegalNav {
+        position: absolute;
+        right: 1%;
+        bottom : 1%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-bottom: 1.5rem;
+
+        width: 60%;
+    }
+
+    .LegalNav a {
+      font-family: 'Montserrat';
+      color: darkgrey;
+      font-size: clamp(12px, 1.2vw, 24px);
+    }
+
+    .LegalDisclaimers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .LegalDisclaimers span {
+      font-size: clamp(6px, .8vw, 12px);
+      width: 100%;
+      font-weight: normal;
+
+      color : white;
+      margin-bottom: 5px;
+    }
+
+    .LegalDisclaimers span span {
+      font-size: clamp(6px, .8vw, 12px);
+      font-weight: bold;
+      color : white;
+    }
+
+    .Rights {
+      width: 100%;
+      font-size: clamp(6px, .8vw, 12px);
+      color : white;
+    }
+}
+
+@media(orientation: portrait) {
+    .Footer {
+      position: relative;
+      z-index: 6;
+      background-color: black;
+      width: 100vw;
+      height: 100vh;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+      overflow-x: hidden;
+    }
+
+    .FooterHeading {
+      position: absolute;
+      width: fit-content;
+      height: fit-content;
+      left : 5%;
+      top : 5%;
+      transform: translate(-5%, -5%);
+      color: white;
+    }
+
+    .FooterHeading span {
+      margin: 0 0 0 0;
+      font-family: 'Montserrat';
+      font-size: 3vw;
+      font-weight: bolder;
+      color: white;
+    }
+
+    .FooterLogo {
+      position: absolute;
+      width: 20vw;
+      height: 20vw;
+
+      top: 99%;
+      left: 1%;
+      transform: translate(-1%, -99%)
+    }
+
+    .FooterLogo img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+
+    .FooterNav {
+      position: absolute;
+      height: 40vh;
+      top : 5%;
+      right: 5%;
+      transform: translate(5%, -5%);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .FooterNav a {
+      font-size: 1.5vw;
+      color: white;
+      font-family: 'Montserrat';
+      font-weight: bold;
+      margin-bottom: 1vw;
+      font-size: 3vw;
+    }
+
+    .ApexContact {
+      position: absolute;
+      width: 25%;
+      height: 25%;
+      left: 2%;
+      top: 15%;
+      transform: translate(-2%, -15%);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .ApexContact .Contact {
+      width : 70%;
+      height : 15%;
+      min-height: 0;
+
+      display : flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ContactField {
+        width: 100%;
+        font-family: 'Montserrat';
+        color: darkgray;
+        font-size: 3vw;
+        margin: 0 0 0 0;
+    }
+
+    .ContactValue {
+        width: 100%;
+        font-family: 'Montserrat';
+        color: white;
+        font-size: 3vw;
+        text-wrap: nowrap;
+        margin: 0 0 0 0;
+    }
+
+    .Operator {
+      font-size: clamp(6px, 2vw, 12px);
+      width: 100%;
+    }
+
+    .LegalProtections {
+      position: absolute;
+      transform: translate(-50%, -65%);
+      left : 50%;
+      top : 65%;
+      width : 90%;
+      height: 40%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .Footer .SocialsNav {
+      position: absolute;
+      width: 15%;
+      height: 20vw;
+      top : 5%;
+      left: 99%;
+      transform: translate(-99%, -5%);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .Footer .SocialsNav a img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+
+    .Footer .SocialsNav a {
+      width: 100%;
+      font-size: 1vw;
+      color: white;
+      font-family: 'Montserrat';
+      font-weight: bold;
+      margin-bottom: 1vw;
+    }
+
+    .Divider {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 1px;
+      min-height: 1px;
+      background-color: rgb(64, 64, 64);
+    }
+
+    .LegalNav {
+      display: grid;
+      place-items: center;
+      grid-template-columns: 1fr 1fr 1fr;
+      row-gap: 20px;
+      width: 95%;
+
+      position: absolute;
+      top : 50%;
+      left : 50%;
+      transform: translate(-50%, 50%);
+    }
+
+    .LegalNav a {
+      font-family: 'Montserrat';
+      color: gray;
+      font-size: clamp(12px, 3vw, 24px);
+      text-align: center;
+    }
+
+
+
+    .LegalDisclaimers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .LegalDisclaimers span {
+      font-size: clamp(6px, 2vw, 12px);
+      width: 100%;
+      font-weight: normal;
+
+      margin-bottom: 5px;
+
+      color: white;
+    }
+
+    .LegalDisclaimers span span {
+      font-size: clamp(6px, 2vw, 12px);
+      font-weight: bold;
+
+      color: white;
+    }
+
+    .Rights {
+      width: 100%;
+      font-size: clamp(6px, 2vw, 12px);
+    }
+}
